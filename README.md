@@ -2,11 +2,15 @@
 Water_team's AWESOME class project of COMP2021
 
 ## DEADLINE
-27 November 2017
+**2017/11/27**
+
+**2017/11/27**
+
+**2017/11/27**
 
 ## Contributors
-He Shiqi [Dalao]
+* He Shiqi [Dalao]
 
-Yang Yutong [Dalao]
+* Yang Yutong [Dalao]
 
-Zhang Hanyu [Xianyu]
+* Zhang Hanyu [Xianyu]
