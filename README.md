@@ -6,6 +6,6 @@
 **2017/11/27**
 
 ## Contributors
-* He Shiqi (Dalao)
-* Yang Yutong (Dalao)
-* Zhang Hanyu (Xianyu)
+* He Shiqi
+* Yang Yutong
+* Zhang Hanyu (16097165D)
