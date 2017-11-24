@@ -28,12 +28,12 @@ public class Property {
 
     public void setBelongs(Player belongs) {
         this.belongs = belongs;
-        if (belongs == null) Output.println(name + " belongs to no one now.");
-        else Output.println(name + " belongs to " + belongs + " now.");
+        if (belongs == null) Output.printlnAndDelay(name + " belongs to no one now.");
+        else Output.printlnAndDelay(name + " belongs to " + belongs + " now.");
     }
 
     @Override
     public String toString() {
-        return name + "(price: " + price + ", rent: " + rent + ")";
+        return name + " (price: " + price + ", rent: " + rent + ")";
     }
 }

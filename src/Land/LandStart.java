@@ -5,18 +5,18 @@ import Player.Player;
 
 public class LandStart extends Land {
     private final int BONUSMONEY = 1500;
-    public LandStart(String str) {
-        super(str);
+    public LandStart(String name, int gridNo) {
+        super(name, gridNo);
     }
 
     @Override
     public void run(Player player) {
         landOn(player);
-        Output.println("Nothing happens.");
+        Output.printlnAndDelay("Nothing happens.");
     }
 
     public void pass(Player player) {
-        Output.println(player + " passes " + getName() + " Area.");
+        Output.printlnAndDelay(player + " passes " + this + ".");
         player.incMoney(BONUSMONEY);
     }
 }

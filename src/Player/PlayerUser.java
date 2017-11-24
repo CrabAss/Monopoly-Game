@@ -3,6 +3,9 @@ package Player;
 import Land.Land;
 import Others.Input;
 import Others.Output;
+import Others.Property;
+
+import java.util.List;
 
 public class PlayerUser extends Player {
 
@@ -10,21 +13,17 @@ public class PlayerUser extends Player {
         super(str, startGrid);
     }
 
+    PlayerUser(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
+        super(name, money, status, jailDay, propertyList, position);
+    }
+
     @Override
     public int getInput(String hint, int limit) {
-        System.out.println(name + " is deciding what to do...");
-        System.out.println(hint);
-        int inp = Input.getInt();
-        while (!(inp >= 0 && inp < limit)) {
-            System.out.println("Invalid Input.");
-            System.out.println(hint);
-            inp = Input.getInt();
-        }
-        return inp;
+        Output.println(name + " is deciding what to do...");
+        return Input.getInput(hint, limit);
     }
 
     public Player toRobot() {
-        Player player = new PlayerAI(name, money, status, jailDay, propertyList, position);
-        return player;
+        return new PlayerAI(name, money, status, jailDay, propertyList, position);
     }
 }

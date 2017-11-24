@@ -9,6 +9,8 @@ import Player.*;
 public class Game {
     private final int MAXLANDNUMBER = 20;
     private final int MAXPLAYERNUMBER = 6;
+    private final int STARTLAND = 1;
+    private final int JAILLAND = 1;
     private Land landList[] = new Land[MAXLANDNUMBER + 1];
     private Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber;
@@ -41,25 +43,25 @@ public class Game {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
                 case "Start":
-                    landList[i] = new LandStart(landName[i]);
+                    landList[i] = new LandStart(landName[i], i);
                     break;
                 case "Tax Paid":
-                    landList[i] = new LandTax(landName[i]);
+                    landList[i] = new LandTax(landName[i], i);
                     break;
                 case "Jail":
-                    landList[i] = new Land(landName[i]);
+                    landList[i] = new LandOrdinary(landName[i], i);
                     break;
                 case "Chance":
-                    landList[i] = new LandChance(landName[i]);
+                    landList[i] = new LandChance(landName[i], i);
                     break;
                 case "Free Parking":
-                    landList[i] = new Land(landName[i]);
+                    landList[i] = new LandOrdinary(landName[i], i);
                     break;
                 case "Go to Jail":
-                    landList[i] = new LandGotoJail(landName[i], landList[6]);;
+                    landList[i] = new LandGotoJail(landName[i], i, landList[JAILLAND]);;
                     break;
                 default:
-                    landList[i] = new LandProperty(new Property(landName[i], landPrice[i], landRent[i]));
+                    landList[i] = new LandProperty(new Property(landName[i], landPrice[i], landRent[i]), i);
                     break;
             }
         for (int i = 1; i < MAXLANDNUMBER; i++)
@@ -76,9 +78,9 @@ public class Game {
             int type = Input.getInput(hint2, 0, 1);
 
             if (type == 0)
-                playerList[i - 1] = new PlayerUser("Player " + i, landList[1]);
+                playerList[i - 1] = new PlayerUser("Player " + i, landList[STARTLAND]);
             else
-                playerList[i - 1] = new PlayerAI("Player " + i, landList[1]);
+                playerList[i - 1] = new PlayerAI("Player " + i, landList[STARTLAND]);
         }
 
         rounds = 0;
@@ -95,10 +97,10 @@ public class Game {
     public void loadGame() {}
 
     void report() {
-        Output.printTitle("Players' Location");
+        Output.printlnAndDelay(Output.title("Players' Location"));
         for (Player player : playerList)
             if (player != null && !player.isDead()) {
-                Output.println(player + " : " + player.getPosition());
+                Output.printlnAndDelay(player + " : " + player.getPosition());
             }
     }
 
@@ -112,9 +114,9 @@ public class Game {
                     continue;
                 if (player instanceof PlayerUser) {
                     while (true) {
-                        Output.printTitle("Game Option");
-                        int inp = Input.getInput(hint, 0, 5);
-                        switch (inp) {
+                        Output.printlnAndDelay(Output.title("Game Option"));
+                        int option = Input.getInput(hint, 0, 5);
+                        switch (option) {
                             case 0:
                                 break;
                             case 1:
@@ -133,7 +135,7 @@ public class Game {
                                 loadGame();
                                 break;
                         }
-                        if (inp == 0 || inp == 2 || inp == 3) break;
+                        if (option == 0 || option == 2 || option == 3) break;
                     }
                 }
                 player.run();
@@ -143,15 +145,15 @@ public class Game {
             if (playerAlive == 1) break;
         }
 
-        Output.printTitle("Game terminated");
+        Output.printlnAndDelay(Output.title("Game terminated"));
         int maxvalue = 0;
         for (Player player : playerList)
             if (player != null && !player.isDead() && player.getMoney() > maxvalue)
                 maxvalue = player.getMoney();
 
-        Output.println("Winner:");
+        Output.printlnAndDelay("Winner:");
         for (Player player : playerList)
             if (player != null && !player.isDead() && player.getMoney() == maxvalue)
-                Output.println(player.toString());
+                Output.printlnAndDelay(player.toString());
     }
 }

@@ -15,7 +15,7 @@ public class Dice {
     }
     public void dice(Player player) {
         dice();
-        Output.println(player + " dices " + x + " and " + y + '.');
+        Output.printlnAndDelay(player + " dices " + x + " and " + y + '.');
     }
 
     public int getStep() {

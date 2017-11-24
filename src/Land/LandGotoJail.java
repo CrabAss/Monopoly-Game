@@ -5,16 +5,16 @@ import Others.Output;
 import Player.Player;
 
 public class LandGotoJail extends Land {
-    private Land JailGrid;
+    private Land jailGrid;
 
-    public LandGotoJail(String str, Land JailGrid) {
-        super(str);
-        this.JailGrid = JailGrid;
+    public LandGotoJail(String name, int gridNo, Land jailGrid) {
+        super(name, gridNo);
+        this.jailGrid = jailGrid;
     }
 
     @Override
-    public void run(Player player) throws BankruptException {
+    public void run(Player player) {
         landOn(player);
-        player.gotoJail(JailGrid);
+        player.gotoJail(jailGrid);
     }
 }

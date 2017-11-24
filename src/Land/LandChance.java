@@ -9,8 +9,8 @@ import java.util.Random;
 public class LandChance extends Land {
     private final int MAXINCREASEMONEY = 200;
     private final int MAXDECREASEMONEY = 300;
-    public LandChance(String str) {
-        super(str);
+    public LandChance(String name, int gridNo) {
+        super(name, gridNo);
     }
 
     @Override
