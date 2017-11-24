@@ -14,9 +14,57 @@ public class Game {
     private int playerAlive;
     private int rounds;
 
+    private final String landName[] = {"",
+            "Start", "Central", "Wan chai", "Tax Paid", "Stanley",
+            "Jail", "Shek O", "Mong Kok", "Chance", "Tsing Yi",
+            "Free Parking", "Shatin", "Chance", "Tuen Mun", "Tai Po",
+            "Go to Jail", "Sai Kung", "Yuen Long", "Chance", "Tai O"
+    };
+    private final int landPrice[] = {0,
+            0, 850, 750, 0, 650,
+            0, 350, 550, 0, 450,
+            0, 650, 0, 350, 550,
+            0, 400, 450, 0, 650
+    };
+    private final int landRent[] = {0,
+            0, 90, 70, 0, 65,
+            0, 15, 35, 0, 20,
+            0, 70, 0, 25, 20,
+            0, 15, 25, 0, 30
+    };
+
     public Game() {
         BuildLandList();
         initGame();
+    }
+    private void BuildLandList() {
+        for (int i = 1; i <= MAX_LAND_NUMBER; i++)
+            switch (landName[i]){
+                case "Start":
+                    landList[i] = new LandStart(landName[i]);
+                    break;
+                case "Tax Paid":
+                    landList[i] = new LandTax(landName[i]);
+                    break;
+                case "Jail":
+                    landList[i] = new Land(landName[i]);
+                    break;
+                case "Chance":
+                    landList[i] = new LandChance(landName[i]);
+                    break;
+                case "Free Parking":
+                    landList[i] = new Land(landName[i]);
+                    break;
+                case "Go to Jail":
+                    landList[i] = new LandGotoJail(landName[i], landList[6]);;
+                    break;
+                default:
+                    landList[i] = new LandProperty(new Property(landName[i], landPrice[i], landRent[i]));
+                    break;
+            }
+        for (int i = 1; i < MAX_LAND_NUMBER; i++)
+            landList[i].setNextLand(landList[i + 1]);
+        landList[MAX_LAND_NUMBER].setNextLand(landList[1]);
     }
 
     void initGame() {
@@ -114,30 +162,5 @@ public class Game {
         return inp;
     }
 
-    private void BuildLandList() {
-        landList = new Land[21];
-        landList[1] = new LandStart("Start");
-        landList[2] = new LandProperty(new Property("Central", 850, 90));
-        landList[3] = new LandProperty(new Property("Wan Chai", 750, 70));
-        landList[4] = new LandTax("Tax Paid");
-        landList[5] = new LandProperty(new Property("Stanley", 650, 65));
-        landList[6] = new Land("Jail");
-        landList[7] = new LandProperty(new Property("Shek O", 350, 15));
-        landList[8] = new LandProperty(new Property("Mong Kok", 550, 35));
-        landList[9] = new LandChance("Chance");
-        landList[10] = new LandProperty(new Property("Tsing Yi", 450, 20));
-        landList[11] = new Land("Free Parking");
-        landList[12] = new LandProperty(new Property("Shatin", 650, 70));
-        landList[13] = new LandChance("Chance");
-        landList[14] = new LandProperty(new Property("Tuen Mun", 350, 25));
-        landList[15] = new LandProperty(new Property("Tai Po", 550, 20));
-        landList[16] = new LandGotoJail("Go to Jail", landList[6]);
-        landList[17] = new LandProperty(new Property("Sai Kung", 400, 15));
-        landList[18] = new LandProperty(new Property("Yuen Long", 450, 25));
-        landList[19] = new LandChance("Chance");
-        landList[20] = new LandProperty(new Property("Tai O", 650, 30));
-        for (int i = 1; i < 20; i++)
-            landList[i].setNextLand(landList[i + 1]);
-        landList[20].setNextLand(landList[1]);
-    }
+
 }
