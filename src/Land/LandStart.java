@@ -16,7 +16,7 @@ public class LandStart extends Land {
     }
 
     public void pass(Player player) {
-        Output.println(player + " passes " + name + " Area.");
+        Output.println(player + " passes " + getName() + " Area.");
         player.incMoney(BONUSMONEY);
     }
 }

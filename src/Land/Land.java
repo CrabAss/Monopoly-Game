@@ -5,12 +5,13 @@ import Others.Output;
 import Player.Player;
 
 public class Land {
-    String name;
+    private String name;
     private Land nextLand;
 
     public Land(String str) {
         name = str;
     }
+    public String getName() { return name;}
 
     public Land getNextLand() {
         return nextLand;

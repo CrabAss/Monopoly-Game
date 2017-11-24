@@ -6,9 +6,9 @@ public class Output {
     private final static int MAXTITLELENGTH = 40;
     public static void println(String oup) {
         System.out.println(oup);
-        try {
-            sleep(100);
-        } catch (Exception e) {}
+        /*try {
+            //sleep(100);
+        } catch (Exception e) {}*/
     }
 
     public static void print(String oup) {

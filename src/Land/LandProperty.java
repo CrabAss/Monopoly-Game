@@ -32,9 +32,9 @@ public class LandProperty extends Land {
         }
         else {
             if (property.getBelongs() == player)
-                Output.println(name + " belongs to " + player + " himself. Nothing happens");
+                Output.println(getName() + " belongs to " + player + " himself. Nothing happens");
             else {
-                Output.println(name + " belongs to " + property.getBelongs() + " now.");
+                Output.println(getName() + " belongs to " + property.getBelongs() + " now.");
                 Output.println(player + " has to paid to " + property.getBelongs() + ".");
                 player.decMoney(property.getRent());
                 property.getBelongs().incMoney(property.getRent());

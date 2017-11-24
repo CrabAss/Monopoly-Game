@@ -10,7 +10,7 @@ import Land.LandStart;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Player {
+ public abstract class Player {
     String name;
     int money;
     int status; // 0: Normal; 1:InJail; 2:Dead;

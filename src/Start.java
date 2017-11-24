@@ -8,22 +8,22 @@ public class Start {
 
         Scanner inp = new Scanner(System.in);
         int command = 0;
-        Output.print("This game is fictional.");
+        Output.println("This game is fictional.");
         while (true) {
             Output.printTitle("Monopoly");
-            Output.print("1. New game");
-            Output.print("2. Load game");
-            Output.print("3. Quit");
+            Output.println("1. New game");
+            Output.println("2. Load game");
+            Output.println("3. Quit");
 
             command = Input.getInput("Your choice:", 1, 3);
             if (command == 1) {
                 Game game = new Game();
-                game.runGame();
+                game.newGame();
             } else if (command == 2) {//Start a new game
                 Game game = new Game();
                 game.loadGame();
             } else if (command == 3) {
-                System.out.println("Thanks for playing!");
+                Output.println("Thanks for playing!");
                 break;
             }
         }

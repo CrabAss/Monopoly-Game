@@ -35,7 +35,6 @@ public class Game {
 
     public Game() {
         initLand();
-        initGame();
     }
 
     private void initLand() {
@@ -86,6 +85,23 @@ public class Game {
         playerAlive = playerNumber;
     }
 
+    public void newGame(){
+        initGame();
+        runGame();
+    }
+
+    public void saveGame() {}
+
+    public void loadGame() {}
+
+    void report() {
+        Output.printTitle("Players' Location");
+        for (Player player : playerList)
+            if (player != null && !player.isDead()) {
+                Output.println(player + " : " + player.getPosition());
+            }
+    }
+
     public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load. :";
         while (++rounds <= 100) {
@@ -130,24 +146,12 @@ public class Game {
         Output.printTitle("Game terminated");
         int maxvalue = 0;
         for (Player player : playerList)
-            if (!player.isDead() && player.getMoney() > maxvalue)
+            if (player != null && !player.isDead() && player.getMoney() > maxvalue)
                 maxvalue = player.getMoney();
 
         Output.println("Winner:");
         for (Player player : playerList)
-            if (!player.isDead() && player.getMoney() == maxvalue)
+            if (player != null && !player.isDead() && player.getMoney() == maxvalue)
                 Output.println(player.toString());
-    }
-
-    public void saveGame() {}
-
-    public void loadGame() {}
-
-    void report() {
-        Output.printTitle("Players' Location");
-        for (Player player : playerList)
-            if (!player.isDead()) {
-                Output.println(player + " : " + player.getPosition());
-            }
     }
 }

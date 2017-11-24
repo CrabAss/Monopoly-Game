@@ -5,7 +5,7 @@ import Others.Output;
 import Player.Player;
 
 public class LandGotoJail extends Land {
-    Land JailGrid;
+    private Land JailGrid;
 
     public LandGotoJail(String str, Land JailGrid) {
         super(str);

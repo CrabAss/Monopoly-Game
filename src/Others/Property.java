@@ -3,9 +3,9 @@ package Others;
 import Player.Player;
 
 public class Property {
-    String name;
-    int price, rent;
-    Player belongs;
+    private String name;
+    private int price, rent;
+    private Player belongs = null;
 
     public Property(String name, int price, int rent) {
         this.name = name;
@@ -16,15 +16,12 @@ public class Property {
     public String getName() {
         return name;
     }
-
     public int getPrice() {
         return price;
     }
-
     public int getRent() {
         return rent;
     }
-
     public Player getBelongs() {
         return belongs;
     }
