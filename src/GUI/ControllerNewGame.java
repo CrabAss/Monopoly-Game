@@ -1,12 +1,10 @@
 package GUI;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
-import javafx.beans.value.*;
+import Game.Game;
 
 public class ControllerNewGame {
     @FXML
@@ -24,6 +22,7 @@ public class ControllerNewGame {
 
     @FXML
     private void HandleStartGame(ActionEvent event){
+
 
     }
 }

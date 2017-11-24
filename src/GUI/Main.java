@@ -11,9 +11,10 @@ public class Main extends Application {
     private final static int WIDTH = 854;
     private final static int HEIGHT = 480;
     private static Stage MainStage;
-    public Game game;
+    private static Game game = new Game();
 
     private static void setMainStage(Stage PrimaryStage) {MainStage = PrimaryStage;}
+    public static Game getGame() {return game;}
 
     public static void setStage(Parent root, int width, int height){
         try{
