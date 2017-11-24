@@ -6,13 +6,15 @@ import Others.Property;
 import Others.Output;
 import Player.*;
 
+import java.lang.annotation.Documented;
+
 public class Game {
     private final int MAXLANDNUMBER = 20;
     private final int MAXPLAYERNUMBER = 6;
     private final int STARTLAND = 1;
-    private final int JAILLAND = 1;
-    private Land landList[] = new Land[MAXLANDNUMBER + 1];
-    private Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
+    private final int JAILLAND = 6;
+    protected Land landList[] = new Land[MAXLANDNUMBER + 1];
+    protected Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber;
     private int rounds;
 
@@ -35,12 +37,50 @@ public class Game {
             0, 15, 25, 0, 30
     };
 
+    public int getPlayerAlive() {
+        return playerAlive;
+    }
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+    public int getMAXLANDNUMBER() {
+        return MAXLANDNUMBER;
+    }
+    public int getMAXLAND() {
+        return MAXLANDNUMBER;
+    }
+    public int getJAILLAND() { return JAILLAND; }
+    public int getSTARTLAND() {
+        return STARTLAND;
+    }
+    public int getRounds() {
+        return rounds;
+    }
+    public int[] getLandPrice() {
+        return landPrice;
+    }
+    public int[] getLandRent() {
+        return landRent;
+    }
+    public String[] getLandName() {
+        return landName;
+    }
+
+    public void setPlayerAlive(int playerAlive) {
+        this.playerAlive = playerAlive;
+    }
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+    public void setRounds(int rounds) {
+        this.rounds = rounds;
+    }
 
     public Game() {
         initLand();
     }
 
-    private void initLand() {
+    public void initLand() {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
                 case "Start":
