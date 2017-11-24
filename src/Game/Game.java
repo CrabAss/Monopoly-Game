@@ -7,10 +7,12 @@ import Others.Output;
 import Player.*;
 
 public class Game {
-    Land landList[];
-    Player playerList[];
-    int playerAlive;
-    int rounds;
+    private final int MAX_LAND_NUMBER = 20;
+    private final int MAX_PLAYER_NUMBER = 6;
+    private Land landList[] = new Land[MAX_LAND_NUMBER + 1];
+    private Player playerList[] = new Player[MAX_PLAYER_NUMBER];
+    private int playerAlive;
+    private int rounds;
 
     public Game() {
         BuildLandList();
