@@ -14,9 +14,9 @@ public class Input {
         return val;
     }
     public static int getInput(String hint, int lo, int hi) {
-        System.out.println(hint);
+        System.out.print(hint);
         int inp = Input.getInt();
-        while (!(inp >= lo && inp < hi)) {
+        while (!(inp >= lo && inp <= hi)) {
             System.out.println("Invalid Input.");
             System.out.println(hint);
             inp = Input.getInt();

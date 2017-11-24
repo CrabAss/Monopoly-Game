@@ -6,7 +6,7 @@ public class Output {
     public static void println(String oup) {
         System.out.println(oup);
         try {
-            sleep(500);
+            //sleep(500);
         } catch (Exception e) {}
     }
 

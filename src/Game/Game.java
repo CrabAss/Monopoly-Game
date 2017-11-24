@@ -7,11 +7,11 @@ import Others.Output;
 import Player.*;
 
 public class Game {
-    private final int MAX_LAND_NUMBER = 20;
-    private final int MAX_PLAYER_NUMBER = 6;
-    private Land landList[] = new Land[MAX_LAND_NUMBER + 1];
-    private Player playerList[] = new Player[MAX_PLAYER_NUMBER];
-    private int playerAlive;
+    private final int MAXLANDNUMBER = 20;
+    private final int MAXPLAYERNUMBER = 6;
+    private Land landList[] = new Land[MAXLANDNUMBER + 1];
+    private Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
+    private int playerAlive, playerNumber;
     private int rounds;
 
     private final String landName[] = {"",
@@ -39,7 +39,7 @@ public class Game {
     }
 
     private void initLand() {
-        for (int i = 1; i <= MAX_LAND_NUMBER; i++)
+        for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
                 case "Start":
                     landList[i] = new LandStart(landName[i]);
@@ -63,33 +63,33 @@ public class Game {
                     landList[i] = new LandProperty(new Property(landName[i], landPrice[i], landRent[i]));
                     break;
             }
-        for (int i = 1; i < MAX_LAND_NUMBER; i++)
+        for (int i = 1; i < MAXLANDNUMBER; i++)
             landList[i].setNextLand(landList[i + 1]);
-        landList[MAX_LAND_NUMBER].setNextLand(landList[1]);
+        landList[MAXLANDNUMBER].setNextLand(landList[1]);
     }
 
     private void initGame() {
         String hint1 = "Please input the number of players (2-6):";
-        int inp = Input.getInput(hint1, 2, 7);
+        playerNumber = Input.getInput(hint1, 2, 6);
 
-        playerList = new Player[inp];
-        for (int i = 1; i <= playerList.length; i++) {
-            String hint2 = "Please decide the identity of Player " + i + " (0: human; 1: AI):";
-            inp = Input.getInput(hint2, 0, 2);
-            if (inp == 0)
+        for (int i = 1; i <= playerNumber; i++) {
+            String hint2 = "Please decide the type of Player " + i + " (0: human; 1: AI):";
+            int type = Input.getInput(hint2, 0, 1);
+
+            if (type == 0)
                 playerList[i - 1] = new PlayerUser("Player " + i, landList[1]);
             else
                 playerList[i - 1] = new PlayerAI("Player " + i, landList[1]);
         }
 
         rounds = 0;
-        playerAlive = playerList.length;
+        playerAlive = playerNumber;
     }
 
     public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load.";
         while (++rounds <= 100) {
-            for (int i = 0; i < playerList.length; i++) {
+            for (int i = 0; i < playerNumber; i++) {
                 Player player = playerList[i];
                 if (playerAlive == 1) break;
                 if (player.isDead())
@@ -97,7 +97,7 @@ public class Game {
                 if (player instanceof PlayerUser) {
                     while (true) {
                         Output.printTitle("Game Option");
-                        int inp = Input.getInput(hint, 0, 6);
+                        int inp = Input.getInput(hint, 0, 5);
                         switch (inp) {
                             case 0:
                                 break;
