@@ -35,6 +35,7 @@ public class Game {
             0, 15, 25, 0, 30
     };
 
+
     public Game() {
         initLand();
     }
