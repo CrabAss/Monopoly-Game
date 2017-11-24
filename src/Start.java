@@ -23,7 +23,7 @@ public class Start {
                     break;
                 } else if (command == 1) {//Start a new game
                     Game game = new Game();
-                    game.newGame();
+                    game.runGame();
                 } else if (command == 2) {
                     Game game = new Game();
                     game.loadGame();

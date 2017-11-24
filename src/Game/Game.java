@@ -34,10 +34,11 @@ public class Game {
     };
 
     public Game() {
-        BuildLandList();
+        initLand();
         initGame();
     }
-    private void BuildLandList() {
+
+    private void initLand() {
         for (int i = 1; i <= MAX_LAND_NUMBER; i++)
             switch (landName[i]){
                 case "Start":
@@ -67,15 +68,14 @@ public class Game {
         landList[MAX_LAND_NUMBER].setNextLand(landList[1]);
     }
 
-    void initGame() {
-        BuildLandList();
-
+    private void initGame() {
         String hint1 = "Please input the number of players (2-6):";
-        int inp = getInput(hint1, 2, 7);
+        int inp = Input.getInput(hint1, 2, 7);
+
         playerList = new Player[inp];
         for (int i = 1; i <= playerList.length; i++) {
             String hint2 = "Please decide the identity of Player " + i + " (0: human; 1: AI):";
-            inp = getInput(hint2, 0, 2);
+            inp = Input.getInput(hint2, 0, 2);
             if (inp == 0)
                 playerList[i - 1] = new PlayerUser("Player " + i, landList[1]);
             else
@@ -86,7 +86,7 @@ public class Game {
         playerAlive = playerList.length;
     }
 
-    public void newGame() {
+    public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load.";
         while (++rounds <= 100) {
             for (int i = 0; i < playerList.length; i++) {
@@ -97,7 +97,7 @@ public class Game {
                 if (player instanceof PlayerUser) {
                     while (true) {
                         Output.printTitle("Game Option");
-                        int inp = getInput(hint, 0, 6);
+                        int inp = Input.getInput(hint, 0, 6);
                         switch (inp) {
                             case 0:
                                 break;
@@ -150,17 +150,4 @@ public class Game {
                 Output.println(player + " : " + player.getPosition());
             }
     }
-
-    public int getInput(String hint, int lo, int hi) {
-        System.out.println(hint);
-        int inp = Input.getInt();
-        while (!(inp >= lo && inp < hi)) {
-            System.out.println("Invalid Input.");
-            System.out.println(hint);
-            inp = Input.getInt();
-        }
-        return inp;
-    }
-
-
 }
