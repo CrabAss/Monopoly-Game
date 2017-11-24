@@ -14,7 +14,7 @@ public class Main extends Application {
     private static GUIGame game = new GUIGame();
 
     private static void setMainStage(Stage PrimaryStage) {MainStage = PrimaryStage;}
-    public static Game getGame() {return game;}
+    public static GUIGame getGame() {return game;}
 
     public static void setStage(Parent root, int width, int height){
         try{

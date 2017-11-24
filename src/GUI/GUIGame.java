@@ -7,7 +7,9 @@ import Player.PlayerUser;
 
 public class GUIGame extends Game {
 
-    private void initGame(int NumberOfplayer, int NumberOfAI) {
+    GUIGame(){super();}
+
+    public void initGame(int NumberOfplayer, int NumberOfAI) {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
