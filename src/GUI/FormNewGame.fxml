@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ControllerNewGame">
    <children>
       <GridPane alignment="CENTER" hgap="10.0" prefHeight="144.0" prefWidth="600.0" vgap="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -29,13 +28,13 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Slider blockIncrement="1.0" majorTickUnit="1.0" max="6.0" min="2.0" minorTickCount="0" prefHeight="44.0" prefWidth="335.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4.0" GridPane.columnIndex="1" />
+            <Slider fx:id="NumberOfPlayer" blockIncrement="1.0" majorTickUnit="1.0" max="6.0" min="2.0" minorTickCount="0" onMouseReleased="#HandleNumberOfPlayer" prefHeight="44.0" prefWidth="335.0" showTickLabels="true" snapToTicks="true" value="2.0" GridPane.columnIndex="1" />
             <Label text="Number of AIs: " GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Slider blockIncrement="1.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="18.0" prefWidth="335.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Slider fx:id="NumberOfAI" blockIncrement="1.0" majorTickUnit="1.0" max="2.0" minorTickCount="0" prefHeight="18.0" prefWidth="335.0" showTickLabels="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -43,7 +42,10 @@
       </GridPane>
       <ButtonBar layoutX="148.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Start Game!" />
+          <Button fx:id="StartGame" mnemonicParsing="false" text="Start Game!">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
         </buttons>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

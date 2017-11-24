@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 public class ControllerWelcome {
+    private final int NEWGAMEWIDTH = 600;
+    private final int NEWGAMEHEIGHT = 204;
     @FXML
     private Button NewGame;
     @FXML
@@ -15,22 +17,22 @@ public class ControllerWelcome {
     private Button Quit;
 
     @FXML
-    public void HandleNewGame(ActionEvent event){
+    private void HandleNewGame(ActionEvent event){
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
-            Main.setStage(root);
+            Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
         } catch (Exception e){
             System.out.print(e);
         }
     }
 
     @FXML
-    public void HandleLoadGame(ActionEvent event){
+    private void HandleLoadGame(ActionEvent event){
 
     }
 
     @FXML
-    public void HandleQuit(ActionEvent event){
+    private void HandleQuit(ActionEvent event){
         System.exit(0);
     }
 }
