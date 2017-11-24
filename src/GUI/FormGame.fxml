@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ControllerGame">
    <children>
       <HBox alignment="CENTER" layoutX="200.0" layoutY="150.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -35,8 +34,8 @@
                   <GridPane>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,14 +45,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="2000" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="Playing" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 1" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label text="Human" GridPane.columnIndex="2" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -65,8 +65,8 @@
                   <GridPane GridPane.rowIndex="1">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -76,14 +76,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="Retired" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 2" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 2: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label text="AI" GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -92,8 +93,8 @@
                   <GridPane GridPane.rowIndex="2">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -103,14 +104,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="200" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="In Jail" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 3" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 3: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label text="Human" GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -119,8 +121,8 @@
                   <GridPane GridPane.rowIndex="3">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -133,11 +135,12 @@
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#00bcd4" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 4" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 4: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -146,8 +149,8 @@
                   <GridPane GridPane.rowIndex="4">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -160,11 +163,12 @@
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#3f51b5" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 5" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 5: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -173,8 +177,8 @@
                   <GridPane GridPane.rowIndex="5">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="56.0" minWidth="10.0" prefWidth="30.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="67.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="78.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -187,11 +191,12 @@
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#9c27b0" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 6" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label text="Player 6: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Label GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -337,6 +342,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
+                     <children>
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#00bcd4" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#3f51b5" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#9c27b0" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                     </children>
                   </GridPane>
                   <GridPane style="-fx-border-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="5">
                      <columnConstraints>
