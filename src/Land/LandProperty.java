@@ -8,14 +8,14 @@ import Player.Player;
 public class LandProperty extends Land {
     private final Property property;
 
-    public LandProperty(Property v) {
-        super(v.getName());
-        this.property = v;
+    public LandProperty(Property x) {
+        super(x.getName());
+        this.property = x;
     }
 
     @Override
     public void run(Player player) throws BankruptException {
-        Output.println(player + " reaches " + name + " Area.");
+        landOn(player);
 
         String hint = "0: do nothing; 1: rent " + property.toString() + ".";
 

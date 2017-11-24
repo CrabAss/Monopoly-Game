@@ -14,7 +14,7 @@ public class LandGotoJail extends Land {
 
     @Override
     public void run(Player player) throws BankruptException {
-        Output.println(player + " reaches " + name + " Area.");
+        landOn(player);
         player.gotoJail(JailGrid);
     }
 }

@@ -20,8 +20,10 @@ public class Land {
         this.nextLand = nextLand;
     }
 
-    public void run(Player player) throws BankruptException {
+    public void landOn(Player player){
         Output.println(player + " reaches " + name + " Area.");
+    }
+    public void run(Player player) throws BankruptException {
         Output.println("Nothing happens.");
     }
 

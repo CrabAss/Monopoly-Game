@@ -87,7 +87,7 @@ public class Game {
     }
 
     public void runGame() {
-        String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load.";
+        String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load. :";
         while (++rounds <= 100) {
             for (int i = 0; i < playerNumber; i++) {
                 Player player = playerList[i];

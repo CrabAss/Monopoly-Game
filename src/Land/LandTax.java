@@ -11,7 +11,8 @@ public class LandTax extends Land {
 
     @Override
     public void run(Player player) throws BankruptException {
-        Output.println(player + " reaches " + name + " Area.");
-        player.decMoney(player.getMoney() / 10);
+        landOn(player);
+        int Tax = player.getMoney() / 10;
+        player.decMoney(Tax);
     }
 }

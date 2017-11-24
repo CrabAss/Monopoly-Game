@@ -7,16 +7,19 @@ import Player.Player;
 import java.util.Random;
 
 public class LandChance extends Land {
+    private final int MAXINCREASEMONEY = 200;
+    private final int MAXDECREASEMONEY = 300;
     public LandChance(String str) {
         super(str);
     }
 
     @Override
     public void run(Player player) throws BankruptException {
-        Output.println(player + " reaches " + name + " Area.");
+        landOn(player);
         Random random = new Random();
-        int money = random.nextInt(501) - 300;
-        if (money >= 0) player.incMoney(money);
-        else player.decMoney(-money);
+        int incORdec = random.nextInt(1);
+
+        if (incORdec == 0) player.incMoney(random.nextInt(MAXINCREASEMONEY + 1));
+        else player.decMoney(random.nextInt(MAXDECREASEMONEY + 1));
     }
 }
