@@ -60,8 +60,9 @@ public class GUIPlayer {
                 }
                 Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
                 Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
-                System.out.print(step);
+
                 player.move(step);
+
                 Main.getGame().controllerGame.updateGraph();
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
@@ -69,7 +70,7 @@ public class GUIPlayer {
                 }else player.getPosition().run(player);
             }
         } catch (BankruptException e) {
-            return;
+            Main.getGame().nextTurn();
         }
     }
 

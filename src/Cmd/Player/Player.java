@@ -133,7 +133,7 @@ public abstract class Player {
         Output.printlnAndDelay(name + " pays " + val + " HKD.");
         money -= val;
         Output.printlnAndDelay(name + "'s current money: " + money + " HKD.");
-        if (money < 0) bankrupt();
+        if (money < 0) {bankrupt(); throw new BankruptException();}
     }
 
     public void addProperty(Property property) {

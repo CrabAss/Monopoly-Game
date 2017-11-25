@@ -26,6 +26,9 @@ import static java.lang.Thread.sleep;
 
 public class ControllerGame {
     @FXML
+    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent;
+
+    @FXML
     public Button ButtonContinue;
 
     @FXML
@@ -68,7 +71,7 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    private GridPane TurnMenu, ActionMenu;
+    public GridPane TurnMenu, ActionMenu;
 
     @FXML
     private ImageView Dice1, Dice2;
@@ -115,7 +118,6 @@ public class ControllerGame {
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
             Main.getGame().getGuiOutput().Print(player + "decide to end turn.");
             Main.getGame().nextTurn();
-            changeMenu();
             updateGraph();
         }else{//Dice
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
@@ -131,8 +133,9 @@ public class ControllerGame {
             if (dice.isEqual()) {
                 player.release();
                 int step = dice.getStep();
-                System.out.print(step);
+
                 player.move(step);
+
                 Main.getGame().controllerGame.updateGraph();
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
@@ -141,7 +144,8 @@ public class ControllerGame {
                     try {
                         player.getPosition().run(player);
                     }catch(Exception e){
-                        System.out.print("");
+                        updateGraph();
+                        Main.getGame().nextTurn();
                     }
                 }
             }else if (player.getJailDay() == 3){//The thrid day
@@ -151,7 +155,8 @@ public class ControllerGame {
                     player.release();
                     guiPlayer.run();
                 }catch (Exception e){
-                    System.out.print("");
+                    updateGraph();
+                    Main.getGame().nextTurn();
                 }
             }
         }
@@ -174,12 +179,13 @@ public class ControllerGame {
 
             } else {//In Jail
                 Output.printlnAndDelay(player + " decides to pay.");
-                player.decMoney(90);
+                player.decMoney(22290);
                 player.release();
                 guiPlayer.run();
             }
         } catch (BankruptException e){
-          return;
+          updateGraph();
+          Main.getGame().nextTurn();
         }
         updateGraph();
     }
@@ -199,8 +205,8 @@ public class ControllerGame {
             if (!Main.getGame().playerList[i].isDead()) {
                 RectanglePlayer[i].setOpacity(1.0f);
                 Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
-            }
-            System.out.println(Main.getGame().getGUIhelper()[i].getPosition());
+            }else RectanglePlayer[i].setOpacity(0.0f);
+
         }
         //Cmd.Land[12].add(RectanglePlayer[1], 0, 0);
         for (int i  = Main.getGame().getPlayerNumber(); i < MAXPLAYERNUMBER; i++) {
@@ -217,7 +223,17 @@ public class ControllerGame {
                     }
                 }
             }
-
+        if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
+            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+            CurrentLandName.setText(player.getPosition().getName());
+            if (player.getPosition() instanceof LandProperty){
+                CurrentLandPrice.setText("" + ((LandProperty)player.getPosition()).getProperty().getPrice());
+                CurrentLandRent.setText("" + ((LandProperty)player.getPosition()).getProperty().getRent());
+            }else {
+                CurrentLandPrice.setText("0");
+                CurrentLandRent.setText("0");
+            }
+        }
 
         //TypePlayer[1].setText("Funny");
     }

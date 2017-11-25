@@ -70,11 +70,13 @@ public class GUIGame extends Game {
         setPlayerAlive(getPlayerNumber());
     }
     public void EndGame(){
-
+        controllerGame.ActionMenu.setDisable(true);
+        controllerGame.TurnMenu.setDisable(true);
+        controllerGame.CurrentLandName.setText("Win!");
     }
     public void nextTurn(){
         if (getPlayerAlive() == 1){ EndGame(); return;}
-
+        if (controllerGame.ActionMenu.getOpacity() == 1.0f) controllerGame.changeMenu();
         do{
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
