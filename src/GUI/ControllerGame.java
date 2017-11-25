@@ -39,6 +39,12 @@ public class ControllerGame {
     private final static int MAXLANDNUMBER = 20;
 
     @FXML
+    private GridPane GridPanePlayer1, GridPanePlayer2, GridPanePlayer3;
+    @FXML
+    private GridPane GridPanePlayer4, GridPanePlayer5, GridPanePlayer6;
+    private GridPane GridPanePlayer[];
+
+    @FXML
     private GridPane Land1, Land2, Land3, Land4, Land5, Land6, Land7, Land8, Land9, Land10;
     @FXML
     private GridPane Land11, Land12, Land13, Land14, Land15, Land16, Land17, Land18, Land19, Land20;
@@ -86,10 +92,12 @@ public class ControllerGame {
 
     @FXML
     public void initialize() {
+        GridPanePlayer = new GridPane[]{GridPanePlayer1, GridPanePlayer2, GridPanePlayer3, GridPanePlayer4, GridPanePlayer5, GridPanePlayer6};
         TypePlayer = new Label[]{TypePlayer1, TypePlayer2, TypePlayer3, TypePlayer4, TypePlayer5, TypePlayer6};
         MoneyPlayer = new Label[]{MoneyPlayer1, MoneyPlayer2, MoneyPlayer3, MoneyPlayer4, MoneyPlayer5, MoneyPlayer6};
         StatuPlayer = new Label[]{StatuPlayer1, StatuPlayer2, StatuPlayer3, StatuPlayer4, StatuPlayer5, StatuPlayer6};
         RectanglePlayer = new Rectangle[]{RectanglePlayer1, RectanglePlayer2, RectanglePlayer3, RectanglePlayer4, RectanglePlayer5, RectanglePlayer6};
+
         Land = new GridPane[]{Land1,
                 Land1, Land2, Land3, Land4, Land5,
                 Land6, Land7, Land8, Land9, Land10,
@@ -213,7 +221,13 @@ public class ControllerGame {
 
     public void updateGraph(){
         //GridPanePlayer1.
-        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) Land[i].setStyle("-fx-border-color: #000; -fx-background-color: #ffffff");
+        for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
+            GridPanePlayer[i].setStyle("");
+
+        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
+            Land[i].setStyle("-fx-border-color: #000; -fx-background-color: #ffffff");
+
+
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
             for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) Land[i].getChildren().remove(RectanglePlayer[j]);
         }
@@ -229,12 +243,14 @@ public class ControllerGame {
             }else RectanglePlayer[i].setOpacity(0.0f);
 
         }
+
         //Cmd.Land[12].add(RectanglePlayer[1], 0, 0);
         for (int i  = Main.getGame().getPlayerNumber(); i < MAXPLAYERNUMBER; i++) {
             TypePlayer[i].setText("");
             MoneyPlayer[i].setText("");
             StatuPlayer[i].setText("");
             RectanglePlayer[i].setOpacity(0.0f);
+            GridPanePlayer[i].setOpacity(0.0f);
         }
 
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
@@ -247,6 +263,8 @@ public class ControllerGame {
             }
         if (Main.getGame().getPlayerAlive() > 1 && Main.getGame().getRounds() <= 100 ) {
             if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
+                GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
+
                 Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
                 CurrentLandName.setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
@@ -264,7 +282,6 @@ public class ControllerGame {
             CurrentLandName.setText("Finish!");
         }
 
-        //TypePlayer[1].setText("Funny");
     }
 
 }

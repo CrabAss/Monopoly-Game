@@ -90,7 +90,7 @@ public class GUIGame extends Game {
         }while (playerList[curPlayer].isDead());
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
-
+        controllerGame.updateGraph();
         if (playerList[curPlayer] instanceof PlayerAI) {
             Main.getGame().controllerGame.HandleContinue();
         }
