@@ -4,8 +4,10 @@ import Cmd.Others.BankruptException;
 import Cmd.Others.Output;
 import Cmd.Player.Player;
 
-abstract public class Land {
-    private final String name;
+import java.io.Serializable;
+
+abstract public class Land implements Serializable {
+    protected final String name;
     private final int gridNo;
     private Land nextLand;
     public Land(String name, int gridNo) {

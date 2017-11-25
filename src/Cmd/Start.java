@@ -31,6 +31,7 @@ public class Start {
             } else if (command == 2) { //Cmd.Start a new game
                 Game game = new Game();
                 game.loadGame();
+                game.runGame();
             } else if (command == 3) {
                 Output.println("Thanks for playing!");
                 break;

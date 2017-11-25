@@ -144,7 +144,7 @@ public class ControllerGame {
     public void HandleEndTurn(){
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
-            Main.getGame().getGuiOutput().Print(player + " decide to end turn.");
+            Main.getGame().getGuiOutput().Print(player + " decides to end turn.");
             updateGraph();
             Main.getGame().nextTurn();
         }else{//Dice

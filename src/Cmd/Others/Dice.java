@@ -2,9 +2,10 @@ package Cmd.Others;
 
 import Cmd.Player.Player;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Dice {
+public class Dice implements Serializable {
     private Random random = new Random();
     private int x, y, sum;
 

@@ -1,5 +1,11 @@
 package Cmd.Others;
 
+import com.sun.xml.internal.fastinfoset.tools.FI_SAX_Or_XML_SAX_DOM_SAX_SAXEvent;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -15,6 +21,40 @@ public class Input {
         }
         catch (Exception e) { return -1; }
         return val;
+    }
+
+    public static ObjectInputStream getInputStream(String hint) {
+        ObjectInputStream ois = null;
+        String path;
+        while (ois == null) {
+            try {
+                Output.println(hint);
+                path = scanner.next();
+                FileInputStream fis = new FileInputStream(path);
+                ois = new ObjectInputStream(fis);
+            } catch (Exception e) {
+                Output.println("Invalid input.");
+                ois = null;
+            }
+        }
+        return ois;
+    }
+
+    public static ObjectOutputStream getOutputStream(String hint) {
+        ObjectOutputStream oos = null;
+        String path;
+        while (oos == null) {
+            try {
+                Output.println(hint);
+                path = scanner.next();
+                FileOutputStream fos = new FileOutputStream(path);
+                oos = new ObjectOutputStream(fos);
+            } catch (Exception e) {
+                Output.println("Invalid input.");
+                oos = null;
+            }
+        }
+        return oos;
     }
 
     public static int getInput(String hint, int lo, int hi) {

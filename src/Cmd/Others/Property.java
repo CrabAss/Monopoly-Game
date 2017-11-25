@@ -2,7 +2,9 @@ package Cmd.Others;
 
 import Cmd.Player.Player;
 
-public class Property {
+import java.io.Serializable;
+
+public class Property implements Serializable {
     private String name;
     private int price, rent;
     private Player belongs = null;

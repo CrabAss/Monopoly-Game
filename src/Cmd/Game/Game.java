@@ -6,6 +6,9 @@ import Cmd.Others.Property;
 import Cmd.Others.Output;
 import Cmd.Player.*;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  * Class for game control.
  */
@@ -22,7 +25,7 @@ public class Game {
      *
      */
     public Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
-    private int playerAlive, playerNumber;
+    private int playerAlive, playerNumber, currentPlayer;
     /**
      *
      */
@@ -194,8 +197,9 @@ public class Game {
                 playerList[i - 1] = new PlayerAI("Player " + i, landList[STARTLAND]);
         }
 
-        rounds = 0;
+        rounds = 1;
         playerAlive = playerNumber;
+        currentPlayer = 0;
     }
 
     /**
@@ -209,12 +213,37 @@ public class Game {
     /**
      *
      */
-    public void saveGame() {}
+    public void saveGame() {
+        String hint = "Please input the data path:";
+        ObjectOutputStream oos = Input.getOutputStream(hint);
+        try {
+            oos.writeInt(playerNumber);
+            oos.writeInt(playerAlive);
+            oos.writeInt(currentPlayer);
+            for (int i = 0; i < playerNumber; i++)
+                oos.writeObject(playerList[i]);
+            for (int i = 1; i <= MAXLANDNUMBER; i++) {
+                oos.writeObject(landList[i]);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+    }
 
     /**
      *
      */
-    public void loadGame() {}
+    public void loadGame() {
+        String hint = "Please input the data path:";
+        ObjectInputStream ois = Input.getInputStream(hint);
+        try {
+            playerNumber = ois.readInt();
+            playerAlive = ois.readInt();
+            currentPlayer = ois.readInt();
+            for (int i = 0; i < playerNumber; i++)
+                playerList[i] = (Player) ois.readObject();
+            for (int i = 1; i <= MAXLANDNUMBER; i++)
+                landList[i] = (Land) ois.readObject();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
 
     /**
      *
@@ -232,9 +261,9 @@ public class Game {
      */
     public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load. :";
-        while (++rounds <= 100) {
-            for (int i = 0; i < playerNumber; i++) {
-                Player player = playerList[i];
+        while (rounds <= 100) {
+            for ( ; currentPlayer < playerNumber; currentPlayer++) {
+                Player player = playerList[currentPlayer];
                 if (playerAlive == 1) break;
                 if (player.isDead())
                     continue;
@@ -249,7 +278,7 @@ public class Game {
                                 report();
                                 break;
                             case 2:
-                                player = playerList[i] = ((PlayerUser) player).toRobot();
+                                player = playerList[currentPlayer] = ((PlayerUser) player).toRobot();
                                 break;
                             case 3:
                                 player.retired();
@@ -259,6 +288,7 @@ public class Game {
                                 break;
                             case 5:
                                 loadGame();
+                                player = playerList[currentPlayer];
                                 break;
                         }
                         if (option == 0 || option == 2 || option == 3) break;
@@ -269,6 +299,8 @@ public class Game {
                     playerAlive--;
             }
             if (playerAlive == 1) break;
+            rounds++;
+            currentPlayer = 0;
         }
 
         Output.println(Output.title("Game terminated"));
@@ -282,4 +314,5 @@ public class Game {
             if (player != null && !player.isDead() && player.getMoney() == maxvalue)
                 Output.println(player.toString());
     }
+
 }
