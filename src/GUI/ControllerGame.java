@@ -3,6 +3,7 @@ package GUI;
 import Others.Dice;
 import Player.PlayerAI;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
 import javafx.scene.layout.GridPane;
 import javafx.event.ActionEvent;
