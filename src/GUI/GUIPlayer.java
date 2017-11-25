@@ -1,19 +1,12 @@
 package GUI;
 
-import Cmd.Land.LandStart;
 import Cmd.Others.BankruptException;
 import Cmd.Player.Player;
 import Cmd.Others.Dice;
 import Cmd.Player.PlayerAI;
 import javafx.scene.image.*;
-import javax.swing.Timer;
-import javafx.application.Platform;
 
 import java.util.Random;
-import java.util.Date;
-
-import static java.lang.Thread.interrupted;
-import static java.lang.Thread.sleep;
 
 public class GUIPlayer {
 
@@ -41,56 +34,60 @@ public class GUIPlayer {
         return 0;
     }
 
-    public void run(){
-        GUIOutput guiOutput= Main.getGame().getGuiOutput();
+    public int run(){
+        GUIOutput guiOutput = Main.getGame().getGuiOutput();
         try {
             int step = -1;
             Main.getGame().Action.setDisable(true);
 
-            if (player.isDead()) {Main.getGame().controllerGame.HandleEndTurn();return;}
+            if (player.isDead())
+                Main.getGame().controllerGame.HandleEndTurn();
 
-            if (player.isInJail()) {
+            else if (player.isInJail()) {
+
                 int jailDay = player.getJailDay();
                 player.setJailDay(jailDay + 1);
 
-                guiOutput.Print(player+ " has been stayed in jail for " + jailDay + " turns.");
+                guiOutput.Print(player+ " has stayed in jail for " + jailDay + " turn(s).");
                 if (jailDay <= 3) {
-                    guiOutput.Print(player + " has to decide paid to release or dice. ");
-                    guiOutput.Print("(will get release if doubles is thrown)");
+                    guiOutput.Print(player + " has to decide to whether pay to release or dice. ");
+                    guiOutput.Print("(will get released if a double is thrown)");
                     Main.getGame().Action.setDisable(false);
                     Main.getGame().EndTurn.setText("Dice");
                     if (player instanceof PlayerAI){
                         Random rand = new Random();
-                        if (rand.nextInt(1) == 0) {
+                        if (rand.nextInt(1) == 0)
                             Main.getGame().controllerGame.HandleAction();
-                        }else {
+                        else
                             Main.getGame().controllerGame.HandleEndTurn();
-                        }
                     }
                 }
-            }else if (!player.isInJail()) {
+                return -90;
+
+            } else {
                 Dice dice = new Dice();
-                if (step == -1) {
-                    dice.dice();
-                    step = dice.getStep();
-                }
+                dice.dice();
+                step = dice.getStep();
                 Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
                 Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
                 player.move(step);
                 Main.getGame().controllerGame.updateGraph();
+
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
-                    Guimodule.run(player.getPosition(), player);
-                }else {
-                    player.getPosition().run(player);
-                    if (player instanceof PlayerAI){
+                    return Guimodule.run(player.getPosition(), player);
+                } else {
+                    int returnValue = player.getPosition().run(player);
+                    if (player instanceof PlayerAI) {
                         Main.getGame().controllerGame.HandleEndTurn();
                     }
+                    return returnValue;
                 }
             }
         } catch (BankruptException e) {
             Main.getGame().nextTurn();
         }
+        return 0;
     }
 
 }

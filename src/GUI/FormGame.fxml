@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -46,15 +47,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label fx:id="MoneyPlayer1" text="2000" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="StatuPlayer1" text="Playing" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="MoneyPlayer1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="StatuPlayer1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
                         <Label text="Player 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="TypePlayer1" text="Human" GridPane.columnIndex="2" />
+                        <Label fx:id="TypePlayer1" GridPane.columnIndex="2" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -77,15 +78,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label fx:id="MoneyPlayer2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="StatuPlayer2" text="Retired" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="MoneyPlayer2" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="StatuPlayer2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
                         <Label text="Player 2: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="TypePlayer2" text="AI" GridPane.columnIndex="2" />
+                        <Label fx:id="TypePlayer2" GridPane.columnIndex="2" />
                      </children>
                      
                      <padding>
@@ -106,15 +107,15 @@
                      <children>
                         <Label text="Money: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Status: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Label fx:id="MoneyPlayer3" text="200" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="StatuPlayer3" text="In Jail" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="MoneyPlayer3" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="StatuPlayer3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
                         <Label text="Player 3: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="TypePlayer3" text="Human" GridPane.columnIndex="2" />
+                        <Label fx:id="TypePlayer3" GridPane.columnIndex="2" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
@@ -293,13 +294,6 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Free Parking" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land12" style="-fx-border-color: #000;" GridPane.columnIndex="1">
                      <columnConstraints>
@@ -311,24 +305,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shatin" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land13" style="-fx-border-color: #000;" GridPane.columnIndex="2">
                      <columnConstraints>
@@ -340,13 +316,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land14" style="-fx-border-color: #000;" GridPane.columnIndex="3">
                      <columnConstraints>
@@ -358,24 +327,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tuen Mun" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land15" style="-fx-border-color: #000;" GridPane.columnIndex="4">
                      <columnConstraints>
@@ -387,24 +338,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai Po" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land16" style="-fx-border-color: #000;" GridPane.columnIndex="5">
                      <columnConstraints>
@@ -416,13 +349,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Jail" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land17" style="-fx-border-color: #000;" GridPane.columnIndex="5" GridPane.rowIndex="1">
                      <columnConstraints>
@@ -434,24 +360,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sai Kung" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 400" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land18" style="-fx-border-color: #000;" GridPane.columnIndex="5" GridPane.rowIndex="2">
                      <columnConstraints>
@@ -463,24 +371,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yuen Long" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land19" style="-fx-border-color: #000;" GridPane.columnIndex="5" GridPane.rowIndex="3">
                      <columnConstraints>
@@ -492,13 +382,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land20" style="-fx-border-color: #000;" GridPane.columnIndex="5" GridPane.rowIndex="4">
                      <columnConstraints>
@@ -510,24 +393,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai O" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land1" style="-fx-border-color: #000;" GridPane.columnIndex="5" GridPane.rowIndex="5">
                      <columnConstraints>
@@ -540,11 +405,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Go" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
                         <Rectangle fx:id="RectanglePlayer1" arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Rectangle fx:id="RectanglePlayer2" arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <Rectangle fx:id="RectanglePlayer3" arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -563,24 +423,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Central" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 850" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land3" style="-fx-border-color: #000;" GridPane.columnIndex="3" GridPane.rowIndex="5">
                      <columnConstraints>
@@ -592,24 +434,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wan Chai" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 750" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land4" style="-fx-border-color: #000;" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <columnConstraints>
@@ -621,13 +445,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land5" style="-fx-border-color: #000;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <columnConstraints>
@@ -639,24 +456,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stanley" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land6" style="-fx-border-color: #000;" GridPane.rowIndex="5">
                      <columnConstraints>
@@ -668,13 +467,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jail" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land7" style="-fx-border-color: #000;" GridPane.rowIndex="4">
                      <columnConstraints>
@@ -686,24 +478,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shek O" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land8" style="-fx-border-color: #000;" GridPane.rowIndex="3">
                      <columnConstraints>
@@ -715,24 +489,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mong Kok" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land9" style="-fx-border-color: #000;" GridPane.rowIndex="2">
                      <columnConstraints>
@@ -744,13 +500,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
                   </GridPane>
                   <GridPane fx:id="Land10" style="-fx-border-color: #000;" GridPane.rowIndex="1">
                      <columnConstraints>
@@ -762,64 +511,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tsing Yi" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets bottom="3.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="5.0" />
-                           </GridPane.margin>
-                        </Text>
-                     </children>
-                  </GridPane>
-                  <GridPane alignment="CENTER" style="-fx-background-color: #F4F4F4; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Start" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </padding>
-                        </Label>
-                        <Label alignment="CENTER" text="Price" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" text="Rent" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="CurrentLandPrice" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Label fx:id="CurrentLandRent" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                     </children>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
                   </GridPane>
                   <GridPane fx:id="ActionMenu" style="-fx-background-color: #fff; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3">
                     <columnConstraints>
@@ -829,39 +520,241 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" percentHeight="66.67" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" percentHeight="33.33" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="Dice1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="2">
+                        <ImageView fx:id="Dice1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@resources/d6.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="Dice2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                        <ImageView fx:id="Dice2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@resources/d4.jpg" />
                            </image>
                         </ImageView>
-                        <Button fx:id="ButtonAction" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Pay" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ButtonAction" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Pay" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="18.0" />
+                              <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ButtonEndTurn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleEndTurn" text="End turn" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ButtonEndTurn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleEndTurn" text="End turn" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="18.0" />
+                              <Font size="24.0" />
                            </font>
                         </Button>
                      </children>
                   </GridPane>
+                  <GridPane fx:id="OnSalePane" alignment="CENTER" style="-fx-background-color: #F4F4F4; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Start" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" text="Price" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" text="Rent" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="CurrentLandPrice" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Label fx:id="CurrentLandRent" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+                  <GridPane fx:id="NonSalePane" style="-fx-background-color: #F4F4F4; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="NonSaleLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Start" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="CurMoneyChange" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Circle fill="TRANSPARENT" radius="30.0" stroke="BLACK" strokeWidth="5.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="P" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="3.0" top="3.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Shatin&#10;$ 650" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="Georgia" size="48.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuen Mun&#10;$ 350" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Tai Po&#10;$ 550" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="Go to&#10;Jail" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Sai Kung&#10;$ 400" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Yuen Long&#10;$ 450" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Georgia" size="48.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Tai O&#10;$ 650" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="Go" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Central&#10;$ 850" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Wan Chai&#10;$ 750" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="Tax" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Stanley&#10;$ 650" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="Jail" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Shek O&#10;$ 350" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Mong Kok&#10;$ 550" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
+                  <Text stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="?" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Georgia" size="48.0" />
+                     </font>
+                  </Text>
+                  <Text lineSpacing="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Tsing Yi&#10;$ 450" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Text>
                </children>
             </GridPane>
             <GridPane prefWidth="187.0" HBox.hgrow="ALWAYS">

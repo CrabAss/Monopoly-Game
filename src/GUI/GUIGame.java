@@ -73,10 +73,15 @@ public class GUIGame extends Game {
         controllerGame.TurnMenu.setDisable(true);
         controllerGame.CurrentLandName.setText("Finish!");
     }
+
     public void nextTurn(){
-        if (getPlayerAlive() == 1){ EndGame(); return;}
-        if (controllerGame.ActionMenu.getOpacity() == 1.0f) controllerGame.changeMenu();
-        do{
+        if (getPlayerAlive() == 1) {
+            EndGame();
+            return;
+        }
+        if (controllerGame.ActionMenu.isVisible())
+            controllerGame.changeMenu();
+        do {
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
                 curPlayer = 0;
@@ -87,7 +92,7 @@ public class GUIGame extends Game {
                 }
                 guiOutput.Print(Output.title("Round " + rounds));
             }
-        }while (playerList[curPlayer].isDead());
+        } while (playerList[curPlayer].isDead());
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
         controllerGame.updateGraph();

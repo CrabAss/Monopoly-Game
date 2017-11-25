@@ -42,7 +42,12 @@
       </GridPane>
       <ButtonBar layoutX="148.0" layoutY="144.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <buttons>
-          <Button fx:id="StartGame" mnemonicParsing="false" onAction="#HandleStartGame" text="Start Game!">
+            <Button fx:id="BackBtn" cancelButton="true" mnemonicParsing="false" onAction="#HandleBackBtn" text="&lt; Back">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+          <Button fx:id="StartGame" defaultButton="true" mnemonicParsing="false" onAction="#HandleStartGame" text="Start Game!">
                <font>
                   <Font size="18.0" />
                </font></Button>

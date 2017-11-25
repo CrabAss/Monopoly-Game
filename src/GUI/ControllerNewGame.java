@@ -22,20 +22,29 @@ public class ControllerNewGame {
     @FXML
     private void HandleNumberOfPlayer(){
         NumberOfAI.setMax(NumberOfPlayer.getValue());
-        System.out.println(NumberOfPlayer.getValue());
+        // System.out.println(NumberOfPlayer.getValue());
     }
 
     @FXML
     private void HandleStartGame(ActionEvent event){
         Main.getGame().initGame((int)(NumberOfPlayer.getValue()), (int)(NumberOfAI.getValue()));
 
-        try{
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
             Main.setStage(root, WIDTH, HEIGHT);
             Main.getGame().nextTurn();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    @FXML
+    private void HandleBackBtn(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FormWelcome.fxml"));
+            Main.setStage(root, WIDTH, HEIGHT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

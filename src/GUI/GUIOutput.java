@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 public class GUIOutput extends Output{
     private TextArea textArea;
 
-
     public GUIOutput(TextArea textArea) {
         this.textArea = textArea;
     }

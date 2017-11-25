@@ -33,7 +33,7 @@
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="NewGame" mnemonicParsing="false" onAction="#HandleNewGame" prefHeight="56.0" prefWidth="240.0" text="New Game" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                  <Button fx:id="NewGame" defaultButton="true" mnemonicParsing="false" onAction="#HandleNewGame" prefHeight="56.0" prefWidth="240.0" text="New Game" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>

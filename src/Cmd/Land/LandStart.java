@@ -10,10 +10,11 @@ public class LandStart extends Land {
     }
 
     @Override
-    public void run(Player player) {
+    public int run(Player player) {
         landOn(player);
         Output.println("Nothing happens.");
         player.incMoney(BONUSMONEY);
+        return BONUSMONEY;
     }
 
     public void pass(Player player) {

@@ -19,7 +19,7 @@ public class PlayerUser extends Player {
 
     @Override
     public int getInput(String hint, int limit) {
-        Output.println(name + " is deciding what to do...");
+        Output.println(name + " is making decisions...");
         return Input.getInput(hint, limit);
     }
 

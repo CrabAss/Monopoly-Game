@@ -18,7 +18,7 @@ public class LandProperty extends Land {
     }
 
     @Override
-    public void run(Player player) throws BankruptException {
+    public int run(Player player) throws BankruptException {
         landOn(player);
 
         String hint = "0: do nothing; 1: rent " + property.toString() + ".";
@@ -26,23 +26,28 @@ public class LandProperty extends Land {
         if (property.getBelongs() == null) {
             Output.println("No one owns " + property.getName() + " now.");
             int inp = player.getInput(hint, 2);
-            if (inp == 0) Output.println(player + " decides to do nothing.");
+            if (inp == 0) {
+                Output.println(player + " decides to do nothing.");
+            }
             else {
                 Output.println(player + " decides to rent " + property.toString() + ".");
                 player.addProperty(property);
                 player.decMoney(property.getPrice());
                 property.setBelongs(player);
+                return -property.getPrice();
             }
-        }
-        else {
-            if (property.getBelongs() == player)
-                Output.println(getName() + " belongs to " + player + " himself. Nothing happens");
+        } else {
+            if (property.getBelongs() == player) {
+                Output.println(getName() + " belongs to " + player + " himself. \nNothing happens. ");
+            }
             else {
                 Output.println(getName() + " belongs to " + property.getBelongs() + " now.");
-                Output.println(player + " has to paid to " + property.getBelongs() + ".");
+                Output.println(player + " has to pay to " + property.getBelongs() + ".");
                 player.decMoney(property.getRent());
                 property.getBelongs().incMoney(property.getRent());
+                return -property.getRent();
             }
         }
+        return 0;
     }
 }

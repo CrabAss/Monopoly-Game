@@ -30,6 +30,7 @@ public class Output {
         int r = MAXTITLELENGTH - l - oup.length();
         for (int i = 0; i < l; i++) oup = '-' + oup;
         for (int i = 0; i < r; i++) oup = oup + '-';
+        oup = "\n" + oup;
         return oup;
     }
 }

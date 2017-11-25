@@ -19,7 +19,7 @@ abstract public class Land implements Serializable {
         Output.println(player + " reaches " + this + ".");
     }
 
-    abstract public void run(Player player) throws BankruptException;
+    abstract public int run(Player player) throws BankruptException;
 
     public String getName() {
         return name;
@@ -35,6 +35,6 @@ abstract public class Land implements Serializable {
 
     @Override
     public String toString() {
-        return name + "Area (Grid " + gridNo + ")";
+        return name + " Area (Grid " + gridNo + ")";
     }
 }

@@ -19,7 +19,7 @@ public class GUILandProperty {
         return curProperty;
     }
 
-    public void run(Cmd.Land.Land Land, Cmd.Player.Player player){
+    public int run(Cmd.Land.Land Land, Cmd.Player.Player player){
         Cmd.Land.LandProperty curLand = (Cmd.Land.LandProperty)Land;
         Cmd.Others.Property property = curLand.getProperty();
         curLand.landOn(player);
@@ -33,22 +33,22 @@ public class GUILandProperty {
                 if (rand.nextInt(1) == 0) {Main.getGame().controllerGame.HandleAction(); Main.getGame().controllerGame.HandleEndTurn();}
                 else Main.getGame().controllerGame.HandleEndTurn();
             }
+            return -property.getPrice();
         }
         else {
             try {
-                if (property.getBelongs() == player){
-                    Output.println(curLand.getName() + " belongs to " + player + " himself. Nothing happens");}
-                else {
+                if (property.getBelongs() == player) {
+                    Output.println(curLand.getName() + " belongs to " + player + " himself. \nNothing happens.");
+                } else {
                     Output.println(curLand.getName() + " belongs to " + property.getBelongs() + " now.");
-                    Output.println(player + " has to paid to " + property.getBelongs() + ".");
+                    Output.println(player + " has to pay to " + property.getBelongs() + ".");
                     player.decMoney(property.getRent());
                     property.getBelongs().incMoney(property.getRent());
+                    return -property.getRent();
                 }
                 if (player instanceof PlayerAI) Main.getGame().controllerGame.HandleEndTurn();
-
-                }catch (BankruptException e){
-                return;
-            }
+            } catch (BankruptException ignored) {}
         }
+        return 0;
     }
 }
