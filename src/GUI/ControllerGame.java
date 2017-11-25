@@ -107,9 +107,9 @@ public class ControllerGame {
     }
     @FXML
     public void HandleContinue(){
+        changeMenu();
         Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()].run();
         updateGraph();
-        changeMenu();
         //System.out.print("Continue pressed");
     }
 
@@ -119,6 +119,10 @@ public class ControllerGame {
         player.retired();
         updateGraph();
         Main.getGame().nextTurn();
+    }
+    @FXML
+    public void HandleAuto(){
+
     }
     @FXML
     public void HandleEndTurn(){
@@ -172,7 +176,7 @@ public class ControllerGame {
     }
 
     @FXML
-    public void HandleAction(ActionEvent event){
+    public void HandleAction(){
         Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
         GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
         Property property = GUILandProperty.getCurProperty();
@@ -187,7 +191,7 @@ public class ControllerGame {
 
             } else {//In Jail
                 Output.printlnAndDelay(player + " decides to pay.");
-                player.decMoney(22290);
+                player.decMoney(90);
                 player.release();
                 guiPlayer.run();
             }

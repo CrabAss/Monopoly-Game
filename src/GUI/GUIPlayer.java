@@ -4,7 +4,11 @@ import Cmd.Land.LandStart;
 import Cmd.Others.BankruptException;
 import Cmd.Player.Player;
 import Cmd.Others.Dice;
+import Cmd.Player.PlayerAI;
 import javafx.scene.image.*;
+
+import java.util.Random;
+
 import static java.lang.Thread.sleep;
 
 public class GUIPlayer {
@@ -51,6 +55,14 @@ public class GUIPlayer {
                     guiOutput.Print("(will get release if doubles is thrown)");
                     Main.getGame().Action.setDisable(false);
                     Main.getGame().EndTurn.setText("Dice");
+                    if (player instanceof PlayerAI){
+                        Random rand = new Random();
+                        if (rand.nextInt(1) == 0) {
+                            Main.getGame().controllerGame.HandleAction();
+                        }else {
+                            Main.getGame().controllerGame.HandleEndTurn();
+                        }
+                    }
                 }
             }else if (!player.isInJail()) {
                 Dice dice = new Dice();
@@ -67,7 +79,12 @@ public class GUIPlayer {
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
                     Guimodule.run(player.getPosition(), player);
-                }else player.getPosition().run(player);
+                }else {
+                    player.getPosition().run(player);
+                    if (player instanceof PlayerAI){
+                        Main.getGame().controllerGame.HandleEndTurn();
+                    }
+                }
             }
         } catch (BankruptException e) {
             Main.getGame().nextTurn();

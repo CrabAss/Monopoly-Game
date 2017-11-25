@@ -72,7 +72,7 @@ public class GUIGame extends Game {
     public void EndGame(){
         controllerGame.ActionMenu.setDisable(true);
         controllerGame.TurnMenu.setDisable(true);
-        controllerGame.CurrentLandName.setText("Win!");
+        controllerGame.CurrentLandName.setText("Finish!");
     }
     public void nextTurn(){
         if (getPlayerAlive() == 1){ EndGame(); return;}
@@ -92,10 +92,7 @@ public class GUIGame extends Game {
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
 
-        if (playerList[curPlayer] instanceof PlayerAI){
-            //Main.getGame().controllerGame.HandleContinue();
-
-        }
+        if (playerList[curPlayer] instanceof PlayerAI) Main.getGame().controllerGame.HandleContinue();
     }
 
 }

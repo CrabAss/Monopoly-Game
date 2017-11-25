@@ -4,7 +4,10 @@ import Cmd.Land.LandProperty;
 import Cmd.Others.BankruptException;
 import Cmd.Others.Output;
 import Cmd.Others.Property;
+import Cmd.Player.PlayerAI;
 import sun.swing.BakedArrayList;
+
+import java.util.Random;
 
 public class GUILandProperty {
     private static Property curProperty;
@@ -25,6 +28,11 @@ public class GUILandProperty {
         if (curLand.getProperty().getBelongs() == null) {
             Output.printlnAndDelay("No one owns " + property.getName() + " now.");
             Main.getGame().Action.setDisable(false);
+            if (player instanceof PlayerAI){
+                Random rand = new Random();
+                if (rand.nextInt(1) == 0) {Main.getGame().controllerGame.HandleAction(); Main.getGame().controllerGame.HandleEndTurn();}
+                else Main.getGame().controllerGame.HandleEndTurn();
+            }
         }
         else {
             try {
