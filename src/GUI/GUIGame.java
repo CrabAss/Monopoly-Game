@@ -6,9 +6,12 @@ import Player.PlayerAI;
 import Player.PlayerUser;
 
 public class GUIGame extends Game {
+
     private GUIPlayer GUIhelper[] = new GUIPlayer[getMAXPLAYERNUMBER()];
 
-    GUIGame(){super();}
+    GUIGame(){
+        super();
+    }
 
     public GUIPlayer[] getGUIhelper() {
         return GUIhelper;
@@ -25,6 +28,7 @@ public class GUIGame extends Game {
         setRounds(0);
         setPlayerAlive(getPlayerNumber());
     }
+
     @Override
     public void runGame(){
         System.out.print("I love it!!");

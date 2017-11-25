@@ -9,8 +9,10 @@ import javafx.event.ActionEvent;
 import Game.Game;
 
 public class ControllerNewGame {
+
     private final int WIDTH = 854;
     private final int HEIGHT = 480;
+
     @FXML
     private Slider NumberOfPlayer;
     @FXML
@@ -36,4 +38,5 @@ public class ControllerNewGame {
             System.out.print(e);
         }
     }
+
 }
