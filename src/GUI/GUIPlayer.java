@@ -6,9 +6,13 @@ import Cmd.Player.Player;
 import Cmd.Others.Dice;
 import Cmd.Player.PlayerAI;
 import javafx.scene.image.*;
+import javax.swing.Timer;
+import javafx.application.Platform;
 
 import java.util.Random;
+import java.util.Date;
 
+import static java.lang.Thread.interrupted;
 import static java.lang.Thread.sleep;
 
 public class GUIPlayer {
@@ -72,9 +76,7 @@ public class GUIPlayer {
                 }
                 Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
                 Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
-
                 player.move(step);
-
                 Main.getGame().controllerGame.updateGraph();
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
