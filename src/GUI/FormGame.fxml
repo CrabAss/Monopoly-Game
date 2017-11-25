@@ -87,6 +87,7 @@
                         </Label>
                         <Label fx:id="TypePlayer2" text="AI" GridPane.columnIndex="2" />
                      </children>
+                     
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
@@ -792,7 +793,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Go" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Start" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <font>
                               <Font size="21.0" />
                            </font>
