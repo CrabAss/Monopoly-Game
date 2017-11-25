@@ -16,7 +16,7 @@ public class Game {
     public Land landList[] = new Land[MAXLANDNUMBER + 1];
     public Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber;
-    private int rounds;
+    protected int rounds;
 
     private final String landName[] = {"",
             "Start", "Central", "Wan chai", "Tax Paid", "Stanley",

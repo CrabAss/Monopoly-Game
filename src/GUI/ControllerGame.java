@@ -1,5 +1,6 @@
 package GUI;
 
+import Others.Dice;
 import Player.PlayerAI;
 import com.sun.org.apache.regexp.internal.RE;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.control.*;
 
 public class ControllerGame {
+    @FXML
+    public Button ButtonContinue;
 
     private final static int MAXPLAYERNUMBER = 6;
     private final static int MAXLANDNUMBER = 20;
@@ -67,16 +70,27 @@ public class ControllerGame {
                 Land11, Land12, Land13, Land14, Land15,
                 Land16, Land17, Land18, Land19, Land20
         };
+        Main.getGame().setGuiOutput(ActionLog);
+        Main.getGame().setContinue(ButtonContinue);
+        HandleContinue();
         changeMenu();
         updateGraph();
     }
     @FXML
-    public void HandleContinue(ActionEvent event){
-        updateGraph();
+    public void HandleContinue(){
+        Dice dice = new Dice();
+        dice.dice();
+        changeMenu();
+        
+        System.out.print("Continue pressed");
     }
 
     @FXML
     public void HandleAction(ActionEvent event){
+
+    }
+    @FXML
+    public void HandleAll(){
 
     }
 

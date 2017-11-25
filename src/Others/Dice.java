@@ -17,6 +17,11 @@ public class Dice {
         dice();
         Output.printlnAndDelay(player + " dices " + x + " and " + y + '.');
     }
+    public int getX() {return x;}
+
+    public int getY() {
+        return y;
+    }
 
     public int getStep() {
         return sum;
