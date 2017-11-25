@@ -112,6 +112,13 @@ public class ControllerGame {
         changeMenu();
         //System.out.print("Continue pressed");
     }
+
+    @FXML
+    public void HandleRetire(){
+        Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+        player.retired();
+        Main.getGame().nextTurn();
+    }
     @FXML
     public void HandleEndTurn(){
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
