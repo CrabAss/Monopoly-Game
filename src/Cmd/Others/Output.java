@@ -4,9 +4,6 @@ import static java.lang.Thread.sleep;
 
 public class Output {
     private final static int MAXTITLELENGTH = 40;
-    public static void printlnAndDelay(String oup) {
-        Output.println(oup);
-    }
 
     public static void print(String oup) {
         if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
@@ -14,7 +11,7 @@ public class Output {
             try {
                 System.out.print(oup);
                 sleep(100);
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 
@@ -24,7 +21,7 @@ public class Output {
             try {
                 System.out.println(oup);
                 sleep(100);
-            } catch (Exception e) {}
+            } catch (Exception ignored) {}
         }
     }
 

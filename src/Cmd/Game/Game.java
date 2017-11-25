@@ -220,10 +220,10 @@ public class Game {
      *
      */
     void report() {
-        Output.printlnAndDelay(Output.title("Players' Location"));
+        Output.println(Output.title("Players' Location"));
         for (Player player : playerList)
             if (player != null && !player.isDead()) {
-                Output.printlnAndDelay(player + " : " + player.getPosition());
+                Output.println(player + " : " + player.getPosition());
             }
     }
 
@@ -240,7 +240,7 @@ public class Game {
                     continue;
                 if (player instanceof PlayerUser) {
                     while (true) {
-                        Output.printlnAndDelay(Output.title("Game Option"));
+                        Output.println(Output.title("Game Option"));
                         int option = Input.getInput(hint, 0, 5);
                         switch (option) {
                             case 0:
@@ -271,15 +271,15 @@ public class Game {
             if (playerAlive == 1) break;
         }
 
-        Output.printlnAndDelay(Output.title("Game terminated"));
+        Output.println(Output.title("Game terminated"));
         int maxvalue = 0;
         for (Player player : playerList)
             if (player != null && !player.isDead() && player.getMoney() > maxvalue)
                 maxvalue = player.getMoney();
 
-        Output.printlnAndDelay("Winner:");
+        Output.println("Winner:");
         for (Player player : playerList)
             if (player != null && !player.isDead() && player.getMoney() == maxvalue)
-                Output.printlnAndDelay(player.toString());
+                Output.println(player.toString());
     }
 }

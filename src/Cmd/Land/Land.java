@@ -14,7 +14,7 @@ abstract public class Land {
     }
 
     public void landOn(Player player) {
-        Output.printlnAndDelay(player + " reaches " + this + ".");
+        Output.println(player + " reaches " + this + ".");
     }
 
     abstract public void run(Player player) throws BankruptException;

@@ -15,7 +15,7 @@ public class Dice {
     }
     public void dice(Player player) {
         dice();
-        Output.printlnAndDelay(player + " dices " + x + " and " + y + '.');
+        Output.println(player + " dices " + x + " and " + y + '.');
     }
     public int getX() {return x;}
 

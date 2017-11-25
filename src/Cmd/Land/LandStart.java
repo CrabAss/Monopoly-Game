@@ -12,12 +12,12 @@ public class LandStart extends Land {
     @Override
     public void run(Player player) {
         landOn(player);
-        Output.printlnAndDelay("Nothing happens.");
+        Output.println("Nothing happens.");
         player.incMoney(BONUSMONEY);
     }
 
     public void pass(Player player) {
-        Output.printlnAndDelay(player + " passes " + this + ".");
+        Output.println(player + " passes " + this + ".");
         player.incMoney(BONUSMONEY);
     }
 }

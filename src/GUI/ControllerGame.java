@@ -158,7 +158,7 @@ public class ControllerGame {
                 }
             }else if (player.getJailDay() == 3){//The thrid day
                 try{
-                    Output.printlnAndDelay(player + " must pay.");
+                    Output.println(player + " must pay.");
                     player.decMoney(90);
                     player.release();
                     guiPlayer.run();
@@ -179,14 +179,14 @@ public class ControllerGame {
         //Buy
         try {
             if (player.getPosition() instanceof LandProperty) {
-                Output.printlnAndDelay(player + " decides to rent " + property.toString() + ".");
+                Output.println(player + " decides to rent " + property.toString() + ".");
                 player.addProperty(property);
                 player.decMoney(property.getPrice());
                 property.setBelongs(player);
                 Main.getGame().Action.setDisable(true);
 
             } else {//In Jail
-                Output.printlnAndDelay(player + " decides to pay.");
+                Output.println(player + " decides to pay.");
                 player.decMoney(22290);
                 player.release();
                 guiPlayer.run();

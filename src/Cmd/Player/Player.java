@@ -64,26 +64,26 @@ public abstract class Player {
         String jailHint = "0: pay to leave; 1: dice.";
 
         if (isDead()) return;
-        Output.printlnAndDelay(Output.title(name + "'s Turn"));
-        Output.printlnAndDelay(name + "'s current money: " + money + " HKD.");
+        Output.println(Output.title(name + "'s Turn"));
+        Output.println(name + "'s current money: " + money + " HKD.");
 
         try {
             int step = -1;
 
             if (isInJail()) {
                 jailDay++;
-                Output.printlnAndDelay(name + " has been stayed in jail for " + jailDay + " turns.");
+                Output.println(name + " has been stayed in jail for " + jailDay + " turns.");
                 if (jailDay <= 3) {
                     Output.print(name + " has to decide paid to release or dice. ");
-                    Output.printlnAndDelay("(will get release if doubles is thrown)");
+                    Output.println("(will get release if doubles is thrown)");
                     int inp = getInput(jailHint, 2);
 
                     if (inp == 0) {
-                        Output.printlnAndDelay(name + " decides to pay.");
+                        Output.println(name + " decides to pay.");
                         decMoney(90);
                         release();
                     } else {
-                        Output.printlnAndDelay(name + " decides to dice.");
+                        Output.println(name + " decides to dice.");
                         dice.dice(this);
                         if (dice.isEqual()) {
                             release();
@@ -91,7 +91,7 @@ public abstract class Player {
                         }
                     }
                 } else {
-                    Output.printlnAndDelay(name + " must pay to release.");
+                    Output.println(name + " must pay to release.");
                     decMoney(90);
                     release();
                 }
@@ -108,31 +108,31 @@ public abstract class Player {
         } catch (BankruptException e) {
             return;
         }
-        Output.printlnAndDelay(name + "'s turn ends.");
+        Output.println(name + "'s turn ends.");
     }
 
     public void gotoJail(Land JailGrid) {
-        Output.printlnAndDelay(name + " is sent to jail.");
+        Output.println(name + " is sent to jail.");
         status = 1;
         jailDay = 0;
         position = JailGrid;
     }
 
     public void release() {
-        Output.printlnAndDelay(name + " is released now.");
+        Output.println(name + " is released now.");
         status = 0;
     }
 
     public void incMoney(int val) {
-        Output.printlnAndDelay(name + " earns " + val + " HKD.");
+        Output.println(name + " earns " + val + " HKD.");
         money += val;
-        Output.printlnAndDelay(name + "'s current money: " + money + " HKD.");
+        Output.println(name + "'s current money: " + money + " HKD.");
     }
 
     public void decMoney(int val) throws BankruptException {
-        Output.printlnAndDelay(name + " pays " + val + " HKD.");
+        Output.println(name + " pays " + val + " HKD.");
         money -= val;
-        Output.printlnAndDelay(name + "'s current money: " + money + " HKD.");
+        Output.println(name + "'s current money: " + money + " HKD.");
         if (money < 0) {bankrupt(); throw new BankruptException();}
     }
 
@@ -141,8 +141,8 @@ public abstract class Player {
     }
 
     public void bankrupt() throws BankruptException {
-        Output.printlnAndDelay(name + "'s current money is less than 0.");
-        Output.printlnAndDelay(name + " is bankrupted and leaves the game.");
+        Output.println(name + "'s current money is less than 0.");
+        Output.println(name + " is bankrupted and leaves the game.");
         status = 2;
         for (Property x : propertyList)
             x.setBelongs(null);
