@@ -1,5 +1,6 @@
 package GUI;
 
+import Cmd.Land.Land;
 import Cmd.Land.LandProperty;
 import Cmd.Others.BankruptException;
 import Cmd.Others.Dice;
@@ -71,12 +72,14 @@ public class ControllerGame {
 
     @FXML
     private ImageView Dice1, Dice2;
+    private String color[] = {"#F8BBD0", "#FFE0B2", "#C8E6C9", "#B2EBF2", "#C5CAE9", "#E1BEE7"};
 
     public void changeMenu(){
         if (ActionMenu.getOpacity() == 0.0f) {ActionMenu.setOpacity(1.0f); ActionMenu.setDisable(false);}
         else {ActionMenu.setOpacity(0.0f); ActionMenu.setDisable(true);}
 
     }
+
     @FXML
     public void initialize() {
         TypePlayer = new Label[]{TypePlayer1, TypePlayer2, TypePlayer3, TypePlayer4, TypePlayer5, TypePlayer6};
@@ -152,6 +155,7 @@ public class ControllerGame {
                 }
             }
         }
+        updateGraph();
     }
 
     @FXML
@@ -182,6 +186,7 @@ public class ControllerGame {
 
     public void updateGraph(){
         //GridPanePlayer1.
+        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) Land[i].setStyle("-fx-border-color: #000; -fx-background-color: #ffffff");
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
             for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) Land[i].getChildren().remove(RectanglePlayer[j]);
         }
@@ -204,6 +209,15 @@ public class ControllerGame {
             StatuPlayer[i].setText("");
             RectanglePlayer[i].setOpacity(0.0f);
         }
+        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
+            for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) {
+                if (Main.getGame().landList[i] instanceof  LandProperty){
+                    if (((LandProperty)Main.getGame().landList[i]).getProperty().getBelongs() == Main.getGame().playerList[j]){
+                        Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color[j]);
+                    }
+                }
+            }
+
 
         //TypePlayer[1].setText("Funny");
     }

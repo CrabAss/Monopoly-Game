@@ -717,7 +717,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Go" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Go" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -735,8 +735,8 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Label alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Label fx:id="CurrentLandPrice" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Label fx:id="CurrentLandRent" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                      <GridPane.margin>
                         <Insets bottom="10.0" top="10.0" />

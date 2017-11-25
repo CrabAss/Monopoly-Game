@@ -13,6 +13,7 @@ public class LandStart extends Land {
     public void run(Player player) {
         landOn(player);
         Output.printlnAndDelay("Nothing happens.");
+        player.incMoney(BONUSMONEY);
     }
 
     public void pass(Player player) {
