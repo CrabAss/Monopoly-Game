@@ -1,18 +1,25 @@
 package GUI;
 
-import Others.Dice;
-import Player.PlayerAI;
+import Cmd.Player.PlayerAI;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.*;
+
+
 import javafx.scene.layout.GridPane;
 import javafx.event.ActionEvent;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+
+import static java.lang.Thread.sleep;
 
 public class ControllerGame {
     @FXML
     public Button ButtonContinue;
+
+    @FXML
+    public Button ButtonAction, ButtonEndTurn;
 
     private final static int MAXPLAYERNUMBER = 6;
     private final static int MAXLANDNUMBER = 20;
@@ -47,12 +54,14 @@ public class ControllerGame {
     private Rectangle RectanglePlayer4, RectanglePlayer5, RectanglePlayer6;
     private Rectangle RectanglePlayer[];
 
-
     @FXML
     private TextArea ActionLog;
 
     @FXML
     private GridPane TurnMenu, ActionMenu;
+
+    @FXML
+    private ImageView Dice1, Dice2;
 
     public void changeMenu(){
         if (ActionMenu.getOpacity() == 0.0f) {ActionMenu.setOpacity(1.0f); ActionMenu.setDisable(false);}
@@ -72,17 +81,25 @@ public class ControllerGame {
         };
         Main.getGame().setGuiOutput(ActionLog);
         Main.getGame().setContinue(ButtonContinue);
-        HandleContinue();
+        Main.getGame().setAction(ButtonAction);
+        Main.getGame().setDice1(Dice1);
+        Main.getGame().setDice2(Dice2);
+        Main.getGame().setControllerGame(this);
         changeMenu();
         updateGraph();
     }
     @FXML
     public void HandleContinue(){
-        Dice dice = new Dice();
-        dice.dice();
+        Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()].run();
+        updateGraph();
         changeMenu();
-
-        System.out.print("Continue pressed");
+        //System.out.print("Continue pressed");
+    }
+    @FXML
+    public void HandleEndTurn(){
+        Main.getGame().nextTurn();
+        changeMenu();
+        updateGraph();
     }
 
     @FXML
@@ -106,7 +123,9 @@ public class ControllerGame {
             StatuPlayer[i].setText(Main.getGame().getGUIhelper()[i].getStatus());
             RectanglePlayer[i].setOpacity(1.0f);
             Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
+            System.out.println(Main.getGame().getGUIhelper()[i].getPosition());
         }
+        //Cmd.Land[12].add(RectanglePlayer[1], 0, 0);
         for (int i  = Main.getGame().getPlayerNumber(); i < MAXPLAYERNUMBER; i++) {
             TypePlayer[i].setText("");
             MoneyPlayer[i].setText("");

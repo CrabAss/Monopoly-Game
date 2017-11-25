@@ -1,9 +1,9 @@
-package Player;
+package Cmd.Player;
 
-import Land.Land;
-import Others.Input;
-import Others.Output;
-import Others.Property;
+import Cmd.Land.Land;
+import Cmd.Others.Input;
+import Cmd.Others.Output;
+import Cmd.Others.Property;
 
 import java.util.List;
 

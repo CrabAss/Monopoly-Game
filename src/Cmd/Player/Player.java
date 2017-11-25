@@ -1,11 +1,11 @@
-package Player;
+package Cmd.Player;
 
-import Others.Dice;
-import Others.Property;
-import Others.BankruptException;
-import Others.Output;
-import Land.Land;
-import Land.LandStart;
+import Cmd.Others.Dice;
+import Cmd.Others.Property;
+import Cmd.Others.BankruptException;
+import Cmd.Others.Output;
+import Cmd.Land.Land;
+import Cmd.Land.LandStart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,19 @@ import java.util.List;
 public abstract class Player {
     String name;
     int money;
-    int status; // 0: Normal; 1:InJail; 2:Dead;
+    public int status; // 0: Normal; 1:InJail; 2:Dead;
     int jailDay;
     List<Property> propertyList = new ArrayList<>();
     Land position;
     private Dice dice = new Dice();
+
+    public int getJailDay() {
+        return jailDay;
+    }
+
+    public void setJailDay(int jailDay) {
+        this.jailDay = jailDay;
+    }
 
     public Player(String str, Land startGrid) {
         name = str;
@@ -69,6 +77,7 @@ public abstract class Player {
                     Output.print(name + " has to decide paid to release or dice. ");
                     Output.printlnAndDelay("(will get release if doubles is thrown)");
                     int inp = getInput(jailHint, 2);
+
                     if (inp == 0) {
                         Output.printlnAndDelay(name + " decides to pay.");
                         decMoney(90);
@@ -151,6 +160,10 @@ public abstract class Player {
 
     public Land getPosition() {
         return position;
+    }
+
+    public void setPosition(Land position) {
+        this.position = position;
     }
 
     @Override

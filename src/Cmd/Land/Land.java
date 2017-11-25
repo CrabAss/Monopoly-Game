@@ -1,14 +1,13 @@
-package Land;
+package Cmd.Land;
 
-import Others.BankruptException;
-import Others.Output;
-import Player.Player;
+import Cmd.Others.BankruptException;
+import Cmd.Others.Output;
+import Cmd.Player.Player;
 
 abstract public class Land {
     private final String name;
     private final int gridNo;
     private Land nextLand;
-
     public Land(String name, int gridNo) {
         this.name = name;
         this.gridNo = gridNo;

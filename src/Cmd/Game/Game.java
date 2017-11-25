@@ -1,12 +1,10 @@
-package Game;
+package Cmd.Game;
 
-import Land.*;
-import Others.Input;
-import Others.Property;
-import Others.Output;
-import Player.*;
-
-import java.lang.annotation.Documented;
+import Cmd.Land.*;
+import Cmd.Others.Input;
+import Cmd.Others.Property;
+import Cmd.Others.Output;
+import Cmd.Player.*;
 
 public class Game {
     private final int MAXLANDNUMBER = 20;
@@ -19,7 +17,7 @@ public class Game {
     protected int rounds;
 
     private final String landName[] = {"",
-            "Start", "Central", "Wan chai", "Tax Paid", "Stanley",
+            "Cmd.Start", "Central", "Wan chai", "Tax Paid", "Stanley",
             "Jail", "Shek O", "Mong Kok", "Chance", "Tsing Yi",
             "Free Parking", "Shatin", "Chance", "Tuen Mun", "Tai Po",
             "Go to Jail", "Sai Kung", "Yuen Long", "Chance", "Tai O"
@@ -83,7 +81,7 @@ public class Game {
     public void initLand() {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
-                case "Start":
+                case "Cmd.Start":
                     landList[i] = new LandStart(landName[i], i);
                     break;
                 case "Tax Paid":
@@ -186,7 +184,7 @@ public class Game {
             if (playerAlive == 1) break;
         }
 
-        Output.printlnAndDelay(Output.title("Game terminated"));
+        Output.printlnAndDelay(Output.title("Cmd.Game terminated"));
         int maxvalue = 0;
         for (Player player : playerList)
             if (player != null && !player.isDead() && player.getMoney() > maxvalue)

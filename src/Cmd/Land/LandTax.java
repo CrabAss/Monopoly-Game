@@ -1,8 +1,6 @@
-package Land;
+package Cmd.Land;
 
-import Others.BankruptException;
-import Others.Output;
-import Player.Player;
+import Cmd.Player.Player;
 
 public class LandTax extends Land {
     public LandTax(String name, int gridNo) {

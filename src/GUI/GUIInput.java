@@ -1,7 +1,6 @@
 package GUI;
 
-import Others.Input;
-import javafx.scene.control.*;
+import Cmd.Others.Input;
 
 public class GUIInput extends Input{
     int inp;

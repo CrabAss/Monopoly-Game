@@ -1,6 +1,6 @@
 package GUI;
 
-import Others.Output;
+import Cmd.Others.Output;
 import javafx.scene.control.*;
 
 public class GUIOutput extends Output{

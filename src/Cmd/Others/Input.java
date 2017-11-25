@@ -1,6 +1,5 @@
-package Others;
+package Cmd.Others;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import Game.Game;
 
 public class Main extends Application {
 
@@ -13,6 +12,7 @@ public class Main extends Application {
     private final static int HEIGHT = 480;
     private static Stage MainStage;
     private static GUIGame game = new GUIGame();
+    public static int GUI = 0;
 
     private static void setMainStage(Stage PrimaryStage) {
         MainStage = PrimaryStage;
@@ -21,6 +21,10 @@ public class Main extends Application {
     public static GUIGame getGame() {
         return game;
     }
+    public static void setGUI(int GUI) {
+        Main.GUI = GUI;
+    }
+    public static boolean isGUI() {return GUI == 1;}
 
     public static void setStage(Parent root, int width, int height) {
         try {
@@ -33,7 +37,9 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
     public void start(Stage primaryStage) throws Exception{
+        setGUI(1);
         Parent root = FXMLLoader.load(getClass().getResource("FormWelcome.fxml"));
         setMainStage(primaryStage);
         setStage(root, WIDTH, HEIGHT);

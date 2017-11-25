@@ -49,7 +49,7 @@
                         <Label fx:id="MoneyPlayer1" text="2000" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer1" text="Playing" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -80,7 +80,7 @@
                         <Label fx:id="MoneyPlayer2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer2" text="Retired" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 2: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 2: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -108,7 +108,7 @@
                         <Label fx:id="MoneyPlayer3" text="200" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer3" text="In Jail" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 3: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 3: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -136,7 +136,7 @@
                         <Label fx:id="MoneyPlayer4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#00bcd4" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 4: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 4: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -164,7 +164,7 @@
                         <Label fx:id="MoneyPlayer5" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer5" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#3f51b5" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 5: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 5: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -192,7 +192,7 @@
                         <Label fx:id="MoneyPlayer6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="StatuPlayer6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#9c27b0" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="RIGHT" GridPane.rowSpan="3" GridPane.valignment="CENTER" />
-                        <Label text="Player 6: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Label text="Cmd.Player 6: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -755,12 +755,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <ImageView fx:id="Dice1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                            <image>
                               <Image url="@resources/d6.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <ImageView fx:id="Dice2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@resources/d4.jpg" />
                            </image>
@@ -773,12 +773,12 @@
                               <Insets />
                            </GridPane.margin>
                         </Label>
-                        <Button fx:id="Action" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Action" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ButtonAction" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Action" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Do nothing" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ButtonEndTurn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleEndTurn" text="End turn" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>

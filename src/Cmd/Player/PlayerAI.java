@@ -1,7 +1,7 @@
-package Player;
+package Cmd.Player;
 
-import Land.Land;
-import Others.Property;
+import Cmd.Land.Land;
+import Cmd.Others.Property;
 
 import java.util.List;
 import java.util.Random;

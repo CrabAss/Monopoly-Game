@@ -1,7 +1,9 @@
-import Game.Game;
+package Cmd;
+
+import Cmd.Game.Game;
 import java.util.*;
-import Others.Input;
-import Others.Output;
+import Cmd.Others.Input;
+import Cmd.Others.Output;
 
 public class Start {
     public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class Start {
             if (command == 1) {
                 Game game = new Game();
                 game.newGame();
-            } else if (command == 2) { //Start a new game
+            } else if (command == 2) { //Cmd.Start a new game
                 Game game = new Game();
                 game.loadGame();
             } else if (command == 3) {

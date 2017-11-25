@@ -1,9 +1,9 @@
-package Land;
+package Cmd.Land;
 
-import Others.BankruptException;
-import Others.Property;
-import Others.Output;
-import Player.Player;
+import Cmd.Others.BankruptException;
+import Cmd.Others.Property;
+import Cmd.Others.Output;
+import Cmd.Player.Player;
 
 public class LandProperty extends Land {
     private final Property property;

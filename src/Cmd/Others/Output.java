@@ -1,4 +1,4 @@
-package Others;
+package Cmd.Others;
 
 import static java.lang.Thread.sleep;
 
@@ -12,6 +12,7 @@ public class Output {
     }
 
     public static void print(String oup) {
+        //if (GUI.Main.isGUI() )
         System.out.print(oup);
     }
 

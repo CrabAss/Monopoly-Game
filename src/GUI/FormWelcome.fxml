@@ -20,12 +20,12 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </ImageView>
-            <Button fx:id="NewGame" mnemonicParsing="false" onAction="#HandleNewGame" prefHeight="56.0" prefWidth="189.0" text="New Game" textAlignment="CENTER">
+            <Button fx:id="NewGame" mnemonicParsing="false" onAction="#HandleNewGame" prefHeight="56.0" prefWidth="189.0" text="New Cmd.Game" textAlignment="CENTER">
                <font>
                   <Font name="Courier New Bold" size="26.0" />
                </font>
             </Button>
-            <Button fx:id="LoadGame" mnemonicParsing="false" onAction="#HandleLoadGame" prefHeight="56.0" prefWidth="189.0" text="Load Game" textAlignment="CENTER">
+            <Button fx:id="LoadGame" mnemonicParsing="false" onAction="#HandleLoadGame" prefHeight="56.0" prefWidth="189.0" text="Load Cmd.Game" textAlignment="CENTER">
                <font>
                   <Font name="Courier New Bold" size="26.0" />
                </font>

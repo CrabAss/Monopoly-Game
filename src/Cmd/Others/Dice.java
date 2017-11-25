@@ -1,6 +1,6 @@
-package Others;
+package Cmd.Others;
 
-import Player.Player;
+import Cmd.Player.Player;
 
 import java.util.Random;
 

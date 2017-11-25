@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
-import Game.Game;
 
 public class ControllerNewGame {
 

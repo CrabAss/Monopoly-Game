@@ -1,7 +1,7 @@
-package Land;
+package Cmd.Land;
 
-import Others.Output;
-import Player.Player;
+import Cmd.Others.Output;
+import Cmd.Player.Player;
 
 public class LandStart extends Land {
     private final int BONUSMONEY = 1500;

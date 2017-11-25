@@ -1,8 +1,7 @@
-package Land;
+package Cmd.Land;
 
-import Others.BankruptException;
-import Others.Output;
-import Player.Player;
+import Cmd.Others.BankruptException;
+import Cmd.Player.Player;
 
 import java.util.Random;
 
