@@ -2,7 +2,6 @@ package GUI;
 
 import Others.Dice;
 import Player.PlayerAI;
-import com.sun.org.apache.regexp.internal.RE;
 import javafx.fxml.FXML;
 import javafx.scene.shape.*;
 import javafx.scene.layout.GridPane;

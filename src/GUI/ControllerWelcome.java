@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 public class ControllerWelcome {
+
     private final int NEWGAMEWIDTH = 600;
     private final int NEWGAMEHEIGHT = 204;
+
     @FXML
     private Button NewGame;
     @FXML
@@ -35,4 +37,5 @@ public class ControllerWelcome {
     private void HandleQuit(ActionEvent event){
         System.exit(0);
     }
+
 }
