@@ -6,14 +6,26 @@ import Cmd.Others.Property;
 import Cmd.Others.Output;
 import Cmd.Player.*;
 
+/**
+ * Class for game control.
+ */
 public class Game {
     private final int MAXLANDNUMBER = 20;
     private final int MAXPLAYERNUMBER = 6;
     private final int STARTLAND = 1;
     private final int JAILLAND = 6;
+    /**
+     *
+     */
     public Land landList[] = new Land[MAXLANDNUMBER + 1];
+    /**
+     *
+     */
     public Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber;
+    /**
+     *
+     */
     protected int rounds;
 
     private final String landName[] = {"",
@@ -35,49 +47,105 @@ public class Game {
             0, 15, 25, 0, 30
     };
 
+    /**
+     * @return The amount of alive players.
+     */
     public int getPlayerAlive() {
         return playerAlive;
     }
+
+    /**
+     * @return The amount of total players.
+     */
     public int getPlayerNumber() {
         return playerNumber;
     }
+
+    /**
+     * @return The maximum amount of lands.
+     */
     public int getMAXLANDNUMBER() {
         return MAXLANDNUMBER;
     }
+
+    /**
+     * @return The maximum amount of players.
+     */
     public int getMAXPLAYERNUMBER() {
         return MAXPLAYERNUMBER;
     }
+
+    /**
+     * @return The number of the "Jail" land.
+     */
     public int getJAILLAND() { return JAILLAND; }
+
+    /**
+     * @return The number of the "Start" land.
+     */
     public int getSTARTLAND() {
         return STARTLAND;
     }
+
+    /**
+     * @return The round of the game.
+     */
     public int getRounds() {
         return rounds;
     }
+
+    /**
+     * @return The prices of lands.
+     */
     public int[] getLandPrice() {
         return landPrice;
     }
+
+    /**
+     * @return The rents of lands.
+     */
     public int[] getLandRent() {
         return landRent;
     }
+
+    /**
+     * @return The names of lands.
+     */
     public String[] getLandName() {
         return landName;
     }
 
+    /**
+     * @param playerAlive The current amount of alive players.
+     */
     public void setPlayerAlive(int playerAlive) {
         this.playerAlive = playerAlive;
     }
+
+    /**
+     * @param playerNumber The current amount of total players.
+     */
     public void setPlayerNumber(int playerNumber) {
         this.playerNumber = playerNumber;
     }
+
+    /**
+     * @param rounds The current round of the game.
+     */
     public void setRounds(int rounds) {
         this.rounds = rounds;
     }
 
+    /**
+     * Initializer: call initLand().
+     */
     public Game() {
         initLand();
     }
 
+    /**
+     * Initialize landList:
+     */
     public void initLand() {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
@@ -126,15 +194,27 @@ public class Game {
         playerAlive = playerNumber;
     }
 
+    /**
+     *
+     */
     public void newGame(){
         initGame();
         runGame();
     }
 
+    /**
+     *
+     */
     public void saveGame() {}
 
+    /**
+     *
+     */
     public void loadGame() {}
 
+    /**
+     *
+     */
     void report() {
         Output.printlnAndDelay(Output.title("Players' Location"));
         for (Player player : playerList)
@@ -143,6 +223,9 @@ public class Game {
             }
     }
 
+    /**
+     *
+     */
     public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load. :";
         while (++rounds <= 100) {

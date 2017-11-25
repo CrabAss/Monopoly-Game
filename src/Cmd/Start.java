@@ -5,7 +5,14 @@ import java.util.*;
 import Cmd.Others.Input;
 import Cmd.Others.Output;
 
+/**
+ * The command-line interface for user to start a Monopoly game.
+ */
 public class Start {
+
+    /**
+     * @param args not used.
+     */
     public static void main(String[] args) {
 
         Scanner inp = new Scanner(System.in);

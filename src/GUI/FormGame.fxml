@@ -505,12 +505,12 @@
                               <Font size="30.0" />
                            </font>
                         </Text>
-                        <Rectangle fx:id="RectanglePlayer1" arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Rectangle fx:id="RectanglePlayer2" arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Rectangle fx:id="RectanglePlayer3" arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Rectangle fx:id="RectanglePlayer4" arcHeight="10.0" arcWidth="10.0" fill="#00bcd4" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Rectangle fx:id="RectanglePlayer5" arcHeight="10.0" arcWidth="10.0" fill="#3f51b5" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Rectangle fx:id="RectanglePlayer6" arcHeight="10.0" arcWidth="10.0" fill="#9c27b0" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer1" arcHeight="10.0" arcWidth="10.0" fill="#e91e63" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer2" arcHeight="10.0" arcWidth="10.0" fill="#ff9800" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer3" arcHeight="10.0" arcWidth="10.0" fill="#4caf50" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer4" arcHeight="10.0" arcWidth="10.0" fill="#00bcd4" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer5" arcHeight="10.0" arcWidth="10.0" fill="#3f51b5" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="RectanglePlayer6" arcHeight="10.0" arcWidth="10.0" fill="#9c27b0" height="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="2.0" width="20.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane fx:id="Land2" style="-fx-border-color: #000;" GridPane.columnIndex="4" GridPane.rowIndex="5">
