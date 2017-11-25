@@ -5,14 +5,25 @@ import Cmd.Others.Property;
 import Cmd.Others.Output;
 import Cmd.Player.Player;
 
+/**
+ * The grid with property.
+ */
 public class LandProperty extends Land {
     private final Property property;
 
+    /**
+     * Initialize landProperty.
+     * @param property Initialzation value.
+     * @param gridNo Initialzation value.
+     */
     public LandProperty(Property property, int gridNo) {
         super(property.getName(), gridNo);
         this.property = property;
     }
 
+    /**
+     * @return The property of the grid.
+     */
     public Property getProperty() {
         return property;
     }

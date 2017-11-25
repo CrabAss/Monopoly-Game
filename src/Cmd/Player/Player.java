@@ -11,41 +11,61 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The superclass of PlayerAI and PlayerUser.
+ */
 public abstract class Player implements Serializable {
-    String name;
-    int money;
-    public int status; // 0: Normal; 1:InJail; 2:Dead;
-    int jailDay;
-    public List<Property> propertyList = new ArrayList<>();
-    Land position;
+    private static final int JAILPENALTY = 90;
+    private static final int STARTGRIDMONEY = 1500;
+    private String name;
+    private int money;
+    private int status; // 0: Normal; 1: InJail; 2: Dead;
+    private int jailDay;
+    private List<Property> propertyList = new ArrayList<>();
+    private Land position;
     private Dice dice = new Dice();
 
-    public int getJailDay() {
-        return jailDay;
-    }
-
-    public void setJailDay(int jailDay) {
-        this.jailDay = jailDay;
-    }
-
-    public Player(String str, Land startGrid) {
-        name = str;
-        money = 1500;
+    /**
+     * Initialize player.
+     * @param name Initialization value.
+     * @param position Initialization value.
+     */
+    public Player(String name, Land position) {
+        this.name = name;
+        money = STARTGRIDMONEY;
         status = jailDay = 0;
-        position = startGrid;
+        this.position = position;
     }
 
+    /**
+     * Initialize player.
+     * @param name Initialization value.
+     * @param money Initialization value.
+     * @param status Initialization value.
+     * @param jailDay Initialization value.
+     * @param propertyList Initialization value.
+     * @param position Initialization value.
+     */
     public Player(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
         this(name, position);
         this.money = money;
         this.status = status;
         this.jailDay = jailDay;
         this.propertyList = propertyList;
-
     }
 
+    /**
+     * Get response from the player when he has to make a choice.
+     * @param hint The guidance message.
+     * @param limit The number of choices.
+     * @return An integer as the choice of the player.
+     */
     public abstract int getInput(String hint, int limit);
 
+    /**
+     * Player moves forwards for some steps.
+     * @param step The number of steps the player should move.
+     */
     public void move(int step) {
         for (int i = 1; i <= step; i++) {
             position = position.getNextLand();
@@ -54,14 +74,23 @@ public abstract class Player implements Serializable {
         }
     }
 
+    /**
+     * @return true if the player is in jail.
+     */
     public boolean isInJail() {
         return status == 1;
     }
 
+    /**
+     * @return true if the player is retired or bankrupted.
+     */
     public boolean isDead() {
         return status == 2;
     }
 
+    /**
+     * Conduct a turn of the player.
+     */
     public void run() {
         String jailHint = "0: pay to leave; 1: dice.";
 
@@ -82,7 +111,7 @@ public abstract class Player implements Serializable {
 
                     if (inp == 0) {
                         Output.println(name + " decides to pay.");
-                        decMoney(90);
+                        decMoney(JAILPENALTY);
                         release();
                     } else {
                         Output.println(name + " decides to dice.");
@@ -94,7 +123,7 @@ public abstract class Player implements Serializable {
                     }
                 } else {
                     Output.println(name + " must pay to release.");
-                    decMoney(90);
+                    decMoney(JAILPENALTY);
                     release();
                 }
             }
@@ -113,6 +142,10 @@ public abstract class Player implements Serializable {
         Output.println(name + "'s turn ends.");
     }
 
+    /**
+     * The player is sent to jail.
+     * @param JailGrid the position of jailGrid.
+     */
     public void gotoJail(Land JailGrid) {
         Output.println(name + " is sent to jail.");
         status = 1;
@@ -120,6 +153,9 @@ public abstract class Player implements Serializable {
         position = JailGrid;
     }
 
+    /**
+     * The player is released from jail.
+     */
     public void release() {
         Output.println(name + " is released now.");
         status = 0;
@@ -130,12 +166,21 @@ public abstract class Player implements Serializable {
         else if (val < 0) decMoney(-val);
     }
 
+    /**
+     * Increase the money of the player.
+     * @param val the value of money to be increased.
+     */
     public void incMoney(int val) {
         Output.println(name + " earns " + val + " HKD.");
         money += val;
         Output.println(name + " currently has " + money + " HKD.");
     }
 
+    /**
+     * Decrease the money of the player.
+     * @param val the value of money to be decreased.
+     * @throws BankruptException may throws the BankruptException.
+     */
     public void decMoney(int val) throws BankruptException {
         Output.println(name + " pays " + val + " HKD.");
         money -= val;
@@ -143,11 +188,20 @@ public abstract class Player implements Serializable {
         if (money < 0) {bankrupt(); throw new BankruptException();}
     }
 
+    /**
+     * Add the property to the propertyList of the player.
+     * @param property The property to be added.
+     */
     public void addProperty(Property property) {
         propertyList.add(property);
     }
 
-    public void bankrupt() throws BankruptException {
+    /**
+     * A player retired.
+     * To remove the player out of the game.
+     * @throws BankruptException emit the signal of bankrupt to terminate the turn of the player.
+     */
+    private void bankrupt() throws BankruptException {
         Output.println(name + " runs out of money.");
         Output.println(name + " is bankrupted and eliminated.");
         status = 2;
@@ -155,22 +209,65 @@ public abstract class Player implements Serializable {
             x.setBelongs(null);
     }
 
+    /**
+     * A player is retired.
+     * To remove the player out of the game.
+     */
     public void retired() {
         status = 2;
         for (Property x : propertyList)
             x.setBelongs(null);
     }
 
+    /**
+     * Turn a player to robot controlled.
+     * @return A class of PlayerAI
+     */
+    public Player toRobot() {
+        return new PlayerAI(name, money, status, jailDay, propertyList, position);
+    }
+
+    /**
+     * @return The money of the player.
+     */
     public int getMoney() {
         return money;
     }
 
+    /**
+     * @return The position of the player.
+     */
     public Land getPosition() {
         return position;
     }
 
-    public void setPosition(Land position) {
-        this.position = position;
+    /**
+     * @return The property list of the player.
+     */
+    public List<Property> getPropertyList() {
+        return propertyList;
+    }
+
+    /**
+     * @return The number of days the player has been in jail.
+     */
+    public int getJailDay() {
+        return jailDay;
+    }
+
+    /**
+     * @return the name of the player.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the number of days the player has been in jail.
+     * @param jailDay The jail days to set.
+     */
+    public void setJailDay(int jailDay) {
+        this.jailDay = jailDay;
     }
 
     @Override

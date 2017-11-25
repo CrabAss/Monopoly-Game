@@ -15,8 +15,7 @@ public class Start {
      */
     public static void main(String[] args) {
 
-        Scanner inp = new Scanner(System.in);
-        int command = 0;
+        int command;
         Output.println("This game is fictional.");
         while (true) {
             Output.println(Output.title("Monopoly"));
@@ -27,7 +26,8 @@ public class Start {
             command = Input.getInput("Your choice:", 1, 3);
             if (command == 1) {
                 Game game = new Game();
-                game.newGame();
+                game.initGame();
+                game.runGame();
             } else if (command == 2) { //Cmd.Start a new game
                 Game game = new Game();
                 game.loadGame();

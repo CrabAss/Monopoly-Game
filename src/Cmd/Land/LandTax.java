@@ -2,7 +2,15 @@ package Cmd.Land;
 
 import Cmd.Player.Player;
 
+/**
+ * The gird to pay tax.
+ */
 public class LandTax extends Land {
+    /**
+     * Initialize landTax.
+     * @param name Initialization value.
+     * @param gridNo Initialization value.
+     */
     public LandTax(String name, int gridNo) {
         super(name, gridNo);
     }
