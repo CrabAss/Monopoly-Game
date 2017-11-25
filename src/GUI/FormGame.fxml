@@ -19,7 +19,7 @@
    <children>
       <HBox alignment="CENTER" layoutX="200.0" layoutY="150.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane alignment="CENTER" prefWidth="187.0">
+            <GridPane alignment="CENTER" prefWidth="187.0" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" />
               </columnConstraints>
@@ -205,7 +205,7 @@
                   </GridPane>
                </children>
             </GridPane>
-            <GridPane alignment="CENTER" prefWidth="480.0" style="-fx-background-color: #fff; -fx-border-color: #000;">
+            <GridPane alignment="CENTER" prefWidth="480.0" style="-fx-background-color: #fff; -fx-border-color: #000;" HBox.hgrow="NEVER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
@@ -223,7 +223,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <GridPane fx:id="TurnMenu" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3">
+                  <GridPane fx:id="TurnMenu" style="-fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -290,7 +290,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Free Parking" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Free Parking" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -308,15 +308,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shatin" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shatin" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -331,7 +337,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -349,15 +355,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tuen Mun" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tuen Mun" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -372,15 +384,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai Po" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai Po" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -395,7 +413,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Go to Jail" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Jail" textAlignment="CENTER" wrappingWidth="80.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -413,15 +431,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sai Kung" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sai Kung" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 400" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 400" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -436,15 +460,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yuen Long" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yuen Long" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -459,7 +489,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -477,15 +507,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai O" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tai O" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -524,15 +560,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Central" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Central" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 850" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 850" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -547,15 +589,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wan Chai" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wan Chai" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 750" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 750" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -570,7 +618,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -588,15 +636,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stanley" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stanley" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 650" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -611,7 +665,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jail" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jail" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -629,15 +683,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shek O" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Shek O" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 350" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -652,15 +712,21 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mong Kok" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mong Kok" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 550" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
@@ -675,7 +741,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chance" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -693,19 +759,25 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tsing Yi" textAlignment="CENTER" wrappingWidth="74.906982421875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tsing Yi" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets bottom="3.0" />
+                           </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HKD 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$ 450" textAlignment="CENTER" wrappingWidth="74.906982421875" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
-                              <Font size="11.0" />
+                              <Font size="14.0" />
                            </font>
+                           <GridPane.margin>
+                              <Insets top="5.0" />
+                           </GridPane.margin>
                         </Text>
                      </children>
                   </GridPane>
-                  <GridPane GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                  <GridPane alignment="CENTER" style="-fx-background-color: #eee; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -717,9 +789,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Go" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                        <Label fx:id="CurrentLandName" alignment="CENTER" contentDisplay="CENTER" style="-fx-border-radius: 8px; -fx-border-style: solid; -fx-border-width: 2px;" text="Free Parking" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="21.0" />
                            </font>
                            <padding>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
@@ -739,10 +811,13 @@
                         <Label fx:id="CurrentLandRent" alignment="CENTER" text="0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                      <GridPane.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets />
                      </GridPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </GridPane>
-                  <GridPane fx:id="ActionMenu" style="-fx-background-color: #fff;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3">
+                  <GridPane fx:id="ActionMenu" style="-fx-background-color: #fff; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="2" GridPane.rowSpan="3">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -755,39 +830,37 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="Dice1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <ImageView fx:id="Dice1" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="2">
                            <image>
                               <Image url="@resources/d6.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="Dice2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <ImageView fx:id="Dice2" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@resources/d4.jpg" />
                            </image>
                         </ImageView>
-                        <Label text="Take your action: " textAlignment="CENTER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <Button fx:id="ButtonAction" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Action" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
                            <font>
-                              <Font size="24.0" />
+                              <Font size="18.0" />
                            </font>
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </Label>
-                        <Button fx:id="ButtonAction" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleAction" text="Action" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <GridPane.margin>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </GridPane.margin>
                         </Button>
-                        <Button fx:id="ButtonEndTurn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleEndTurn" text="End turn" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ButtonEndTurn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleEndTurn" text="End turn" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Button>
                      </children>
                   </GridPane>
                </children>
             </GridPane>
-            <GridPane prefWidth="187.0">
+            <GridPane prefWidth="187.0" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -795,7 +868,7 @@
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="ActionLog" editable="false" prefHeight="307.0" prefWidth="187.0" />
+                  <TextArea fx:id="ActionLog" editable="false" prefHeight="307.0" prefWidth="187.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
          </children>
