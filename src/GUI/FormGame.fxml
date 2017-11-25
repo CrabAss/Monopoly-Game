@@ -757,12 +757,12 @@
                      <children>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@d6.jpg" />
+                              <Image url="@../../res/d6.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@d4.jpg" />
+                              <Image url="@../../res/d4.jpg" />
                            </image>
                         </ImageView>
                         <Label text="Take your action: " textAlignment="CENTER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
