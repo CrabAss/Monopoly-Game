@@ -7,13 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ *
+ */
 public class Main extends Application {
 
     private final static int WIDTH = 854;
     private final static int HEIGHT = 480;
     private static Stage MainStage;
     private static GUIGame game = new GUIGame();
-    public static int GUI = 0;
+    private static int GUI = 0;
 
     private static void setMainStage(Stage PrimaryStage) {
         MainStage = PrimaryStage;
@@ -43,11 +46,11 @@ public class Main extends Application {
      * @param width
      * @param height
      */
-    public static void setStage(Parent root, int width, int height) {
+    static void setStage(Parent root, int width, int height) {
         try {
             MainStage.hide();
-            MainStage.getIcons().add(new Image("file:resources/icon.png"));
-            MainStage.setTitle("Monopoly");
+            MainStage.getIcons().add(new Image("GUI/resources/icon.png"));
+            MainStage.setTitle("MONOPOLY");
             MainStage.setScene(new Scene(root, width, height));
             MainStage.setResizable(false);
             MainStage.show();
