@@ -34,7 +34,7 @@ public class ControllerNewGame {
             Main.setStage(root, WIDTH, HEIGHT);
             Main.getGame().nextTurn();
         } catch (Exception e){
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 

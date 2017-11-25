@@ -61,8 +61,8 @@ public class GUIGame extends Game {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
-            if (i <= getPlayerNumber() - NumberOfAI) playerList[i - 1] = new PlayerUser("Cmd/Player " + i, landList[getSTARTLAND()]);
-            else playerList[i - 1] = new PlayerAI("Cmd/Player " + i, landList[getSTARTLAND()]);
+            if (i <= getPlayerNumber() - NumberOfAI) playerList[i - 1] = new PlayerUser("Player " + i, landList[getSTARTLAND()]);
+            else playerList[i - 1] = new PlayerAI("Player " + i, landList[getSTARTLAND()]);
             GUIhelper[i - 1] = new GUIPlayer(playerList[i - 1]);
         }
         rounds = 0;
@@ -88,7 +88,7 @@ public class GUIGame extends Game {
             }
         }while (playerList[curPlayer].isDead());
 
-        guiOutput.Print(Output.title("Cmd/Player " + (curPlayer + 1)));
+        guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
 
         if (playerList[curPlayer] instanceof PlayerAI){
 

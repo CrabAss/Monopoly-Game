@@ -24,7 +24,7 @@ public class ControllerWelcome {
             Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
             Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
         } catch (Exception e){
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
