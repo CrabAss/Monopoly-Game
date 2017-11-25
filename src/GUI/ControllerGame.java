@@ -117,13 +117,14 @@ public class ControllerGame {
     public void HandleRetire(){
         Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
         player.retired();
+        updateGraph();
         Main.getGame().nextTurn();
     }
     @FXML
     public void HandleEndTurn(){
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
-            Main.getGame().getGuiOutput().Print(player + "decide to end turn.");
+            Main.getGame().getGuiOutput().Print(player + " decide to end turn.");
             Main.getGame().nextTurn();
             updateGraph();
         }else{//Dice

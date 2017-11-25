@@ -29,7 +29,7 @@ public class Game {
     protected int rounds;
 
     private final String landName[] = {"",
-            "Start", "Central", "Wan chai", "Tax Paid", "Stanley",
+            "Start", "Central", "Wan Chai", "Tax Paid", "Stanley",
             "Jail", "Shek O", "Mong Kok", "Chance", "Tsing Yi",
             "Free Parking", "Shatin", "Chance", "Tuen Mun", "Tai Po",
             "Go to Jail", "Sai Kung", "Yuen Long", "Chance", "Tai O"
@@ -51,6 +51,10 @@ public class Game {
      * @return The amount of alive players.
      */
     public int getPlayerAlive() {
+        playerAlive = 0;
+        for (int i = 0; i < playerNumber; i++){
+            if (!playerList[i].isDead()) playerAlive++;
+        }
         return playerAlive;
     }
 
