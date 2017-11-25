@@ -15,7 +15,7 @@ public abstract class Player {
     int money;
     public int status; // 0: Normal; 1:InJail; 2:Dead;
     int jailDay;
-    List<Property> propertyList = new ArrayList<>();
+    public List<Property> propertyList = new ArrayList<>();
     Land position;
     private Dice dice = new Dice();
 
@@ -40,6 +40,7 @@ public abstract class Player {
         this.status = status;
         this.jailDay = jailDay;
         this.propertyList = propertyList;
+        
     }
 
     public abstract int getInput(String hint, int limit);

@@ -8,6 +8,7 @@ import Cmd.Others.Output;
 import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
+import Cmd.Player.PlayerUser;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -122,7 +123,14 @@ public class ControllerGame {
     }
     @FXML
     public void HandleAuto(){
-
+        Player player = (PlayerUser)Main.getGame().playerList[Main.getGame().getCurPlayer()];
+        Main.getGame().playerList[Main.getGame().getCurPlayer()] = (PlayerAI)((PlayerUser) player).toRobot();
+        Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()] = new GUIPlayer(Main.getGame().playerList[Main.getGame().getCurPlayer()]);
+        for (Property x: Main.getGame().playerList[Main.getGame().getCurPlayer()].propertyList){
+            x.setBelongs(Main.getGame().playerList[Main.getGame().getCurPlayer()]);
+        }
+        updateGraph();
+        HandleContinue();
     }
     @FXML
     public void HandleEndTurn(){
@@ -191,6 +199,7 @@ public class ControllerGame {
 
             } else {//In Jail
                 Output.println(player + " decides to pay.");
+                Main.getGame().EndTurn.setText("End turn");
                 player.decMoney(90);
                 player.release();
                 guiPlayer.run();
@@ -227,14 +236,16 @@ public class ControllerGame {
             StatuPlayer[i].setText("");
             RectanglePlayer[i].setOpacity(0.0f);
         }
+
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
             for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) {
                 if (Main.getGame().landList[i] instanceof  LandProperty){
-                    if (((LandProperty)Main.getGame().landList[i]).getProperty().getBelongs() == Main.getGame().playerList[j]){
+                    if (((LandProperty)Main.getGame().landList[i]).getProperty().getBelongs() == (Player)Main.getGame().playerList[j]){
                         Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color[j]);
                     }
                 }
             }
+
         if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
             CurrentLandName.setText(player.getPosition().getName());

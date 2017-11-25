@@ -44,7 +44,9 @@ public class GUILandProperty {
                     player.decMoney(property.getRent());
                     property.getBelongs().incMoney(property.getRent());
                 }
-            }catch (BankruptException e){
+                if (player instanceof PlayerAI) Main.getGame().controllerGame.HandleEndTurn();
+
+                }catch (BankruptException e){
                 return;
             }
         }

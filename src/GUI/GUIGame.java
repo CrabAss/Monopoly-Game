@@ -11,7 +11,6 @@ import javafx.scene.image.*;
 public class GUIGame extends Game {
     private GUIPlayer GUIhelper[] = new GUIPlayer[getMAXPLAYERNUMBER()];
     private GUIOutput guiOutput;
-    private GUIInput guiInput = new GUIInput();
     public Button Continue, Save, Load, Auto, Retire;
     public Button Action, EndTurn;
     public ImageView Dice1, Dice2;
@@ -49,9 +48,6 @@ public class GUIGame extends Game {
 
     public void setGuiOutput(TextArea textArea) { this.guiOutput = new GUIOutput(textArea); }
 
-    public GUIInput getGuiInput() {
-        return guiInput;
-    }
 
     public GUIPlayer[] getGUIhelper() {
         return GUIhelper;
@@ -92,7 +88,9 @@ public class GUIGame extends Game {
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
 
-        if (playerList[curPlayer] instanceof PlayerAI) Main.getGame().controllerGame.HandleContinue();
+        if (playerList[curPlayer] instanceof PlayerAI) {
+            Main.getGame().controllerGame.HandleContinue();
+        }
     }
 
 }
