@@ -12,12 +12,13 @@ public class Output {
     }
 
     public static void print(String oup) {
-        //if (GUI.Main.isGUI() )
-        System.out.print(oup);
+        if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
+        else System.out.print(oup);
     }
 
     public static void println(String oup) {
-        System.out.println(oup);
+        if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
+        else System.out.print(oup);
     }
 
     public static String title(String oup) {

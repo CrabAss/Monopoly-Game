@@ -1,7 +1,14 @@
 package GUI;
 
+import Cmd.Land.LandProperty;
+import Cmd.Others.BankruptException;
+import Cmd.Others.Dice;
+import Cmd.Others.Output;
+import Cmd.Others.Property;
+import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
@@ -11,6 +18,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+
+import java.util.Objects;
 
 import static java.lang.Thread.sleep;
 
@@ -66,6 +75,7 @@ public class ControllerGame {
     public void changeMenu(){
         if (ActionMenu.getOpacity() == 0.0f) {ActionMenu.setOpacity(1.0f); ActionMenu.setDisable(false);}
         else {ActionMenu.setOpacity(0.0f); ActionMenu.setDisable(true);}
+
     }
     @FXML
     public void initialize() {
@@ -81,6 +91,7 @@ public class ControllerGame {
         };
         Main.getGame().setGuiOutput(ActionLog);
         Main.getGame().setContinue(ButtonContinue);
+        Main.getGame().setEndTurn(ButtonEndTurn);
         Main.getGame().setAction(ButtonAction);
         Main.getGame().setDice1(Dice1);
         Main.getGame().setDice2(Dice2);
@@ -97,18 +108,76 @@ public class ControllerGame {
     }
     @FXML
     public void HandleEndTurn(){
-        Main.getGame().nextTurn();
-        changeMenu();
-        updateGraph();
+        if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
+            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+            Main.getGame().getGuiOutput().Print(player + "decide to end turn.");
+            Main.getGame().nextTurn();
+            changeMenu();
+            updateGraph();
+        }else{//Dice
+            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+            GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
+
+            Dice dice = new Dice();
+            dice.dice();
+            Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
+            Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
+            Main.getGame().EndTurn.setText("End turn");
+            Main.getGame().Action.setDisable(true);
+
+            if (dice.isEqual()) {
+                player.release();
+                int step = dice.getStep();
+                System.out.print(step);
+                player.move(step);
+                Main.getGame().controllerGame.updateGraph();
+                if (player.getPosition() instanceof Cmd.Land.LandProperty){
+                    GUILandProperty Guimodule = new GUILandProperty();
+                    Guimodule.run(player.getPosition(), player);
+                }else {
+                    try {
+                        player.getPosition().run(player);
+                    }catch(Exception e){
+                        System.out.print("");
+                    }
+                }
+            }else if (player.getJailDay() == 3){//The thrid day
+                try{
+                    Output.printlnAndDelay(player + " must pay.");
+                    player.decMoney(90);
+                    player.release();
+                    guiPlayer.run();
+                }catch (Exception e){
+                    System.out.print("");
+                }
+            }
+        }
     }
 
     @FXML
     public void HandleAction(ActionEvent event){
+        Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+        GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
+        Property property = GUILandProperty.getCurProperty();
+        //Buy
+        try {
+            if (player.getPosition() instanceof LandProperty) {
+                Output.printlnAndDelay(player + " decides to rent " + property.toString() + ".");
+                player.addProperty(property);
+                player.decMoney(property.getPrice());
+                property.setBelongs(player);
+                Main.getGame().Action.setDisable(true);
 
-    }
-    @FXML
-    public void HandleAll(){
-
+            } else {//In Jail
+                Output.printlnAndDelay(player + " decides to pay.");
+                player.decMoney(90);
+                player.release();
+                guiPlayer.run();
+            }
+        } catch (BankruptException e){
+          return;
+        }
+        updateGraph();
     }
 
     public void updateGraph(){
@@ -121,8 +190,11 @@ public class ControllerGame {
             else TypePlayer[i].setText("Human");
             MoneyPlayer[i].setText(Main.getGame().getGUIhelper()[i].getMoney() + "");
             StatuPlayer[i].setText(Main.getGame().getGUIhelper()[i].getStatus());
-            RectanglePlayer[i].setOpacity(1.0f);
-            Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
+
+            if (!Main.getGame().playerList[i].isDead()) {
+                RectanglePlayer[i].setOpacity(1.0f);
+                Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
+            }
             System.out.println(Main.getGame().getGUIhelper()[i].getPosition());
         }
         //Cmd.Land[12].add(RectanglePlayer[1], 0, 0);

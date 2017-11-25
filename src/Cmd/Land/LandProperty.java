@@ -13,6 +13,10 @@ public class LandProperty extends Land {
         this.property = property;
     }
 
+    public Property getProperty() {
+        return property;
+    }
+
     @Override
     public void run(Player player) throws BankruptException {
         landOn(player);

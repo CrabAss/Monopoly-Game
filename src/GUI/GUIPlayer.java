@@ -32,20 +32,16 @@ public class GUIPlayer {
             if (player.getPosition() == Main.getGame().landList[i]) return i;
         return 0;
     }
-    public void move(int step){
-        for (int i = 1; i <= step; i++) {
-            player.setPosition(player.getPosition().getNextLand());
-            if (i < step && player.getPosition() instanceof LandStart)
-                ((LandStart) player.getPosition()).pass(player);
 
-        }
-    }
     public void run(){
         GUIOutput guiOutput= Main.getGame().getGuiOutput();
         try {
             int step = -1;
+            Main.getGame().Action.setDisable(true);
 
-            /*if (player.isInJail()) {
+            if (player.isDead()) {Main.getGame().controllerGame.HandleEndTurn();return;}
+
+            if (player.isInJail()) {
                 int jailDay = player.getJailDay();
                 player.setJailDay(jailDay + 1);
 
@@ -53,29 +49,10 @@ public class GUIPlayer {
                 if (jailDay <= 3) {
                     guiOutput.Print(player + " has to decide paid to release or dice. ");
                     guiOutput.Print("(will get release if doubles is thrown)");
-                    int inp = getInput(jailHint, 2);
-
-                    if (inp == 0) {
-                        Output.printlnAndDelay(name + " decides to pay.");
-                        decMoney(90);
-                        release();
-                    } else {
-                        Output.printlnAndDelay(name + " decides to dice.");
-                        dice.dice(this);
-                        if (dice.isEqual()) {
-                            release();
-                            step = dice.getStep();
-                        }
-                    }
-                } else {
-                    Output.printlnAndDelay(name + " must pay to release.");
-                    decMoney(90);
-                    release();
+                    Main.getGame().Action.setDisable(false);
+                    Main.getGame().EndTurn.setText("Dice");
                 }
-            }*/
-
-            if (!player.isInJail()) {
-                Main.getGame().Action.setDisable(true);
+            }else if (!player.isInJail()) {
                 Dice dice = new Dice();
                 if (step == -1) {
                     dice.dice();
@@ -84,14 +61,16 @@ public class GUIPlayer {
                 Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
                 Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
                 System.out.print(step);
-                move(step);
+                player.move(step);
                 Main.getGame().controllerGame.updateGraph();
-                player.getPosition().run(player);
+                if (player.getPosition() instanceof Cmd.Land.LandProperty){
+                    GUILandProperty Guimodule = new GUILandProperty();
+                    Guimodule.run(player.getPosition(), player);
+                }else player.getPosition().run(player);
             }
         } catch (BankruptException e) {
             return;
         }
-        guiOutput.Print(player + "'s turn ends.");
     }
 
 }

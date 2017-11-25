@@ -44,7 +44,7 @@ public abstract class Player {
 
     public abstract int getInput(String hint, int limit);
 
-    private void move(int step) {
+    public void move(int step) {
         for (int i = 1; i <= step; i++) {
             position = position.getNextLand();
             if (i < step && position instanceof LandStart)

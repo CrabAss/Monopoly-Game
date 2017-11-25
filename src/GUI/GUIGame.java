@@ -91,6 +91,7 @@ public class GUIGame extends Game {
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
 
         if (playerList[curPlayer] instanceof PlayerAI){
+            //Main.getGame().controllerGame.HandleContinue();
 
         }
     }
