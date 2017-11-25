@@ -80,7 +80,7 @@ public class ControllerGame {
         Dice dice = new Dice();
         dice.dice();
         changeMenu();
-        
+
         System.out.print("Continue pressed");
     }
 
