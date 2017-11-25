@@ -40,7 +40,7 @@ public abstract class Player {
         this.status = status;
         this.jailDay = jailDay;
         this.propertyList = propertyList;
-        
+
     }
 
     public abstract int getInput(String hint, int limit);

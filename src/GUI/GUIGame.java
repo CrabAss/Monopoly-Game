@@ -29,6 +29,9 @@ public class GUIGame extends Game {
         Action = action;
     }
 
+    @Override
+    public int getRounds() { return super.getRounds(); }
+
     public void setControllerGame(ControllerGame controllerGame) {
         this.controllerGame = controllerGame;
     }

@@ -137,8 +137,8 @@ public class ControllerGame {
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
             Main.getGame().getGuiOutput().Print(player + " decide to end turn.");
-            Main.getGame().nextTurn();
             updateGraph();
+            Main.getGame().nextTurn();
         }else{//Dice
             Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
             GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
@@ -245,17 +245,23 @@ public class ControllerGame {
                     }
                 }
             }
+        if (Main.getGame().getPlayerAlive() > 1 && Main.getGame().getRounds() <= 100 ) {
+            if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
+                Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+                CurrentLandName.setText(player.getPosition().getName());
+                if (player.getPosition() instanceof LandProperty) {
+                    CurrentLandPrice.setText("" + ((LandProperty) player.getPosition()).getProperty().getPrice());
+                    CurrentLandRent.setText("" + ((LandProperty) player.getPosition()).getProperty().getRent());
+                } else {
+                    CurrentLandPrice.setText("0");
+                    CurrentLandRent.setText("0");
+                }
 
-        if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
-            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
-            CurrentLandName.setText(player.getPosition().getName());
-            if (player.getPosition() instanceof LandProperty){
-                CurrentLandPrice.setText("" + ((LandProperty)player.getPosition()).getProperty().getPrice());
-                CurrentLandRent.setText("" + ((LandProperty)player.getPosition()).getProperty().getRent());
-            }else {
-                CurrentLandPrice.setText("0");
-                CurrentLandRent.setText("0");
             }
+        }else{
+            ActionMenu.setDisable(true);
+            TurnMenu.setDisable(true);
+            CurrentLandName.setText("Finish!");
         }
 
         //TypePlayer[1].setText("Funny");
