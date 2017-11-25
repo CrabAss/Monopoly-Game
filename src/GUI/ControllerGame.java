@@ -65,29 +65,33 @@ public class ControllerGame {
                 Land1, Land2, Land3, Land4, Land5,
                 Land6, Land7, Land8, Land9, Land10,
                 Land11, Land12, Land13, Land14, Land15,
-                Land16, Land17, Land18, Land19, Land20,
+                Land16, Land17, Land18, Land19, Land20
         };
         changeMenu();
         updateGraph();
     }
     @FXML
     public void HandleContinue(ActionEvent event){
-        changeMenu();
+        updateGraph();
     }
 
     @FXML
     public void HandleAction(ActionEvent event){
-        changeMenu();
+
     }
 
     public void updateGraph(){
         //GridPanePlayer1.
+        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
+            for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) Land[i].getChildren().remove(RectanglePlayer[j]);
+        }
         for (int i = 0; i < Main.getGame().getPlayerNumber(); i++){
             if (Main.getGame().playerList[i] instanceof PlayerAI) TypePlayer[i].setText("AI");
             else TypePlayer[i].setText("Human");
             MoneyPlayer[i].setText(Main.getGame().getGUIhelper()[i].getMoney() + "");
             StatuPlayer[i].setText(Main.getGame().getGUIhelper()[i].getStatus());
             RectanglePlayer[i].setOpacity(1.0f);
+            Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
         }
         for (int i  = Main.getGame().getPlayerNumber(); i < MAXPLAYERNUMBER; i++) {
             TypePlayer[i].setText("");
@@ -95,6 +99,7 @@ public class ControllerGame {
             StatuPlayer[i].setText("");
             RectanglePlayer[i].setOpacity(0.0f);
         }
+
         //TypePlayer[1].setText("Funny");
     }
 

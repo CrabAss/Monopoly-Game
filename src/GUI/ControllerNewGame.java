@@ -31,6 +31,7 @@ public class ControllerNewGame {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
             Main.setStage(root, WIDTH, HEIGHT);
+            Main.getGame().runGame();
         } catch (Exception e){
             System.out.print(e);
         }

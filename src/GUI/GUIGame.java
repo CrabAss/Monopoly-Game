@@ -25,5 +25,9 @@ public class GUIGame extends Game {
         setRounds(0);
         setPlayerAlive(getPlayerNumber());
     }
+    @Override
+    public void runGame(){
+        System.out.print("I love it!!");
+    }
 
 }
