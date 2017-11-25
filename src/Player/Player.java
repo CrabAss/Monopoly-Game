@@ -26,7 +26,7 @@ public abstract class Player {
         position = startGrid;
     }
 
-    Player(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
+    public Player(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
         this(name, position);
         this.money = money;
         this.status = status;

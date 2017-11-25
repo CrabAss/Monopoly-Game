@@ -26,7 +26,7 @@ public class ControllerNewGame {
 
     @FXML
     private void HandleStartGame(ActionEvent event){
-        //Main.getGame().initGame((int)(NumberOfPlayer.getValue()), (int)(NumberOfAI.getValue()));
+        Main.getGame().initGame((int)(NumberOfPlayer.getValue()), (int)(NumberOfAI.getValue()));
 
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));

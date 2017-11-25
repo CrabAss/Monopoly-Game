@@ -13,8 +13,8 @@ public class Game {
     private final int MAXPLAYERNUMBER = 6;
     private final int STARTLAND = 1;
     private final int JAILLAND = 6;
-    protected Land landList[] = new Land[MAXLANDNUMBER + 1];
-    protected Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
+    public Land landList[] = new Land[MAXLANDNUMBER + 1];
+    public Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber;
     private int rounds;
 
@@ -46,8 +46,8 @@ public class Game {
     public int getMAXLANDNUMBER() {
         return MAXLANDNUMBER;
     }
-    public int getMAXLAND() {
-        return MAXLANDNUMBER;
+    public int getMAXPLAYERNUMBER() {
+        return MAXPLAYERNUMBER;
     }
     public int getJAILLAND() { return JAILLAND; }
     public int getSTARTLAND() {
