@@ -12,6 +12,6 @@ public class LandTax extends Land {
         landOn(player);
         int Tax = player.getMoney() / 10;
         try { player.decMoney(Tax); }
-        catch (Exception e) {}
+        catch (Exception ignored) {}
     }
 }

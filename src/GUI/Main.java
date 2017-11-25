@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,17 +19,34 @@ public class Main extends Application {
         MainStage = PrimaryStage;
     }
 
+    /**
+     * @return
+     */
     public static GUIGame getGame() {
         return game;
     }
+
+    /**
+     * @param GUI
+     */
     public static void setGUI(int GUI) {
         Main.GUI = GUI;
     }
+
+    /**
+     * @return
+     */
     public static boolean isGUI() {return GUI == 1;}
 
+    /**
+     * @param root
+     * @param width
+     * @param height
+     */
     public static void setStage(Parent root, int width, int height) {
         try {
             MainStage.hide();
+            MainStage.getIcons().add(new Image("file:resources/icon.png"));
             MainStage.setTitle("Monopoly");
             MainStage.setScene(new Scene(root, width, height));
             MainStage.setResizable(false);
@@ -38,6 +56,7 @@ public class Main extends Application {
         }
     }
 
+    @Override
     public void start(Stage primaryStage) throws Exception{
         setGUI(1);
         Parent root = FXMLLoader.load(getClass().getResource("FormWelcome.fxml"));
@@ -45,6 +64,9 @@ public class Main extends Application {
         setStage(root, WIDTH, HEIGHT);
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

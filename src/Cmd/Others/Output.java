@@ -4,17 +4,14 @@ import static java.lang.Thread.sleep;
 
 public class Output {
     private final static int MAXTITLELENGTH = 40;
-    public static void printlnAndDelay(String oup) {
-        Output.println(oup);
-    }
 
     public static void print(String oup) {
         if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
         else {
             try {
                 System.out.print(oup);
-                //sleep(100);
-            } catch (Exception e) {}
+                sleep(100);
+            } catch (Exception ignored) {}
         }
     }
 
@@ -23,8 +20,8 @@ public class Output {
         else {
             try {
                 System.out.println(oup);
-                //sleep(100);
-            } catch (Exception e) {}
+                sleep(100);
+            } catch (Exception ignored) {}
         }
     }
 

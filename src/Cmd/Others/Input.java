@@ -21,7 +21,7 @@ public class Input {
         Output.println(hint);
         int inp = Input.getInt();
         while (!(inp >= lo && inp <= hi)) {
-            Output.printlnAndDelay("Invalid Input.");
+            Output.println("Invalid Input.");
             Output.println(hint);
             inp = Input.getInt();
         }

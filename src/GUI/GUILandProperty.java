@@ -26,7 +26,7 @@ public class GUILandProperty {
         setCurProperty(property);
 
         if (curLand.getProperty().getBelongs() == null) {
-            Output.printlnAndDelay("No one owns " + property.getName() + " now.");
+            Output.println("No one owns " + property.getName() + " now.");
             Main.getGame().Action.setDisable(false);
             if (player instanceof PlayerAI){
                 Random rand = new Random();
@@ -37,10 +37,10 @@ public class GUILandProperty {
         else {
             try {
                 if (property.getBelongs() == player){
-                    Output.printlnAndDelay(curLand.getName() + " belongs to " + player + " himself. Nothing happens");}
+                    Output.println(curLand.getName() + " belongs to " + player + " himself. Nothing happens");}
                 else {
-                    Output.printlnAndDelay(curLand.getName() + " belongs to " + property.getBelongs() + " now.");
-                    Output.printlnAndDelay(player + " has to paid to " + property.getBelongs() + ".");
+                    Output.println(curLand.getName() + " belongs to " + property.getBelongs() + " now.");
+                    Output.println(player + " has to paid to " + property.getBelongs() + ".");
                     player.decMoney(property.getRent());
                     property.getBelongs().incMoney(property.getRent());
                 }

@@ -17,12 +17,12 @@ public class Start {
 
         Scanner inp = new Scanner(System.in);
         int command = 0;
-        Output.printlnAndDelay("This game is fictional.");
+        Output.println("This game is fictional.");
         while (true) {
-            Output.printlnAndDelay(Output.title("Monopoly"));
-            Output.printlnAndDelay("1. New game");
-            Output.printlnAndDelay("2. Load game");
-            Output.printlnAndDelay("3. Quit");
+            Output.println(Output.title("Monopoly"));
+            Output.println("1. New game");
+            Output.println("2. Load game");
+            Output.println("3. Quit");
 
             command = Input.getInput("Your choice:", 1, 3);
             if (command == 1) {
@@ -32,7 +32,7 @@ public class Start {
                 Game game = new Game();
                 game.loadGame();
             } else if (command == 3) {
-                Output.printlnAndDelay("Thanks for playing!");
+                Output.println("Thanks for playing!");
                 break;
             }
         }
