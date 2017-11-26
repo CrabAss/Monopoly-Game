@@ -46,8 +46,8 @@ public class Main extends Application {
     public static void setStage(Parent root, int width, int height) {
         try {
             MainStage.hide();
-            MainStage.getIcons().add(new Image("file:resources/icon.png"));
-            MainStage.setTitle("Monopoly");
+            MainStage.getIcons().add(new Image("GUI/resources/icon.png"));
+            MainStage.setTitle("MONOPOLY");
             MainStage.setScene(new Scene(root, width, height));
             MainStage.setResizable(false);
             MainStage.show();

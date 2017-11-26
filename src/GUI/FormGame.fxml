@@ -653,7 +653,7 @@
                            <Insets />
                        </GridPane.margin>
                    </Text>
-                   <Text stroke="TRANSPARENT" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                   <Text stroke="TRANSPARENT" text="?" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                        <font>
                            <Font name="Georgia" size="48.0" />
                        </font>

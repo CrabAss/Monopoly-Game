@@ -13,7 +13,7 @@ public class LandChance extends Land {
     }
 
     @Override
-    public int run(Player player) throws BankruptException {
+    public void run(Player player) throws BankruptException {
         landOn(player);
         Random random = new Random();
         int incORdec = random.nextInt(1), moneyChange;
@@ -21,6 +21,5 @@ public class LandChance extends Land {
         if (incORdec == 0) moneyChange = random.nextInt(MAXINCREASEMONEY + 1);
         else moneyChange = -random.nextInt(MAXDECREASEMONEY + 1);
         player.changeMoney(moneyChange);
-        return moneyChange;
     }
 }

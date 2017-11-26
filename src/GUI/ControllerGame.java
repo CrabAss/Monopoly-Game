@@ -1,9 +1,5 @@
 package GUI;
 
-// TODO: 出狱后抵达他人租地，显示总花销 (NonSalePane)
-// TODO: 抵达 Start 应显示 NonSalePane(?)
-// TODO: 出狱选择投骰子之后应显示 NonSalePane
-
 import Cmd.Land.LandProperty;
 import Cmd.Others.BankruptException;
 import Cmd.Others.Dice;
@@ -40,9 +36,6 @@ public class ControllerGame {
 
     @FXML
     public Button ButtonAction, ButtonEndTurn;
-
-    @FXML
-    public GridPane OnSalePane, NonSalePane;
 
     @FXML
     private GridPane GridPanePlayer1, GridPanePlayer2, GridPanePlayer3,
@@ -123,7 +116,8 @@ public class ControllerGame {
     @FXML
     public void HandleContinue(){
         changeMenu();
-        updateGraph(Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()].run());
+        Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()].run();
+        updateGraph();
     }
 
     @FXML
@@ -276,102 +270,16 @@ public class ControllerGame {
                 GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
 
                 Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
-                OnSalePane.setVisible(true);
-                NonSalePane.setVisible(false);
                 CurrentLandName.setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
-                    CurrentLandPrice.setText("" + ((LandProperty) player.getPosition()).getProperty().getPrice());
+                    if (((LandProperty) player.getPosition()).getProperty().getBelongs() != null)
+                        CurrentLandPrice.setText("--");
+                    else
+                        CurrentLandPrice.setText("" + ((LandProperty) player.getPosition()).getProperty().getPrice());
                     CurrentLandRent.setText("" + ((LandProperty) player.getPosition()).getProperty().getRent());
                 } else {
-                    CurrentLandPrice.setText("0");
-                    CurrentLandRent.setText("0");
-                }
-
-            }
-        } else {
-            ActionMenu.setDisable(true);
-            TurnMenu.setDisable(true);
-            CurrentLandName.setText("Finish!");
-        }
-
-    }
-
-    public void updateGraph (int moneyChange) {
-        // reset
-        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
-            Land[i].setStyle("-fx-border-color: #000; -fx-background-color: #ffffff");
-            for (int j = 0; j < Main.getGame().getPlayerNumber(); j++)
-                Land[i].getChildren().remove(RectanglePlayer[j]);
-        }
-
-        for (int i = 0; i < Main.getGame().getPlayerNumber(); i++){
-            GridPanePlayer[i].setStyle("");
-
-            // set
-            if (Main.getGame().playerList[i] instanceof PlayerAI)
-                TypePlayer[i].setText("AI");
-            else
-                TypePlayer[i].setText("Human");
-
-            MoneyPlayer[i].setText(Main.getGame().getGUIhelper()[i].getMoney() + "");
-            StatuPlayer[i].setText(Main.getGame().getGUIhelper()[i].getStatus());
-
-            if (!Main.getGame().playerList[i].isDead()) {
-                RectanglePlayer[i].setVisible(true);
-                Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
-            } else
-                RectanglePlayer[i].setVisible(false);
-
-        }
-
-        for (int i = Main.getGame().getPlayerNumber(); i < MAXPLAYERNUMBER; i++) {
-            TypePlayer[i].setText("");
-            MoneyPlayer[i].setText("");
-            StatuPlayer[i].setText("");
-            RectanglePlayer[i].setVisible(false);
-            GridPanePlayer[i].setVisible(false);
-        }
-
-        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) {
-            for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) {
-                if (Main.getGame().landList[i] instanceof LandProperty) {
-                    if (((LandProperty) Main.getGame().landList[i]).getProperty().getBelongs() == (Player) Main.getGame().playerList[j]) {
-                        Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color[j]);
-                    }
-                }
-            }
-        }
-        if (Main.getGame().getPlayerAlive() > 1 && Main.getGame().getRounds() <= 100) {
-            if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
-                GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
-
-                Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
-                if (player.getPosition() instanceof LandProperty && ((LandProperty) player.getPosition()).getProperty().getBelongs() == null) {
-                    CurrentLandName.setText(player.getPosition().getName());
-                    CurrentLandPrice.setText("" + ((LandProperty) player.getPosition()).getProperty().getPrice());
-                    CurrentLandRent.setText("" + ((LandProperty) player.getPosition()).getProperty().getRent());
-                    OnSalePane.setVisible(true);
-                    NonSalePane.setVisible(false);
-                } else {
-                    NonSaleLandName.setText(player.getPosition().getName());
-                    if (player.isInJail()) {
-                        if (player.getJailDay() > 0)
-                            CurMoneyChange.setText("0 / -90");
-                        else
-                            CurMoneyChange.setText("0");
-                    }
-                    else {
-                        if (moneyChange > 0)
-                            CurMoneyChange.setText("+" + moneyChange + " HKD");
-                        else if (moneyChange < 0)
-                            CurMoneyChange.setText(moneyChange + " HKD");
-                        else
-                            CurMoneyChange.setText("" + moneyChange);
-                    }
-                    NonSalePane.setVisible(true);
-                    OnSalePane.setVisible(false);
-                    //CurrentLandPrice.setText("0");
-                    //CurrentLandRent.setText("0");
+                    CurrentLandPrice.setText("--");
+                    CurrentLandRent.setText("--");
                 }
 
             }

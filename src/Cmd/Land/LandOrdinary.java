@@ -8,9 +8,8 @@ public class LandOrdinary extends Land {
         super(name, gridNo);
     }
 
-    public int run(Player player) {
+    public void run(Player player) {
         landOn(player);
         Output.println("Nothing happens.");
-        return 0;
     }
 }
