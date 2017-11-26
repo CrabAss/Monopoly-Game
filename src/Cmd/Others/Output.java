@@ -1,12 +1,11 @@
 package Cmd.Others;
 
-//import static java.lang.Thread.sleep;
-
 /**
  * contains the methods for output in the game
  */
 public class Output {
-    private final static int MAXTITLELENGTH = 40;
+    private final static int CMD_MAXTITLELENGTH = 40;
+    private final static int GUI_MAXTITLELENGTH = 22;
 
     /**
      * to print the message
@@ -33,7 +32,7 @@ public class Output {
         else {
             try {
                 System.out.println(oup);
-//                sleep(100);
+                //sleep(100);
             } catch (Exception ignored) {}
         }
     }
@@ -44,6 +43,7 @@ public class Output {
      * @return the decorated title
      */
     public static String title(String oup) {
+        final int MAXTITLELENGTH = GUI.Main.isGUI() ? GUI_MAXTITLELENGTH : CMD_MAXTITLELENGTH;
         int l = (MAXTITLELENGTH - oup.length()) / 2;
         int r = MAXTITLELENGTH - l - oup.length();
         for (int i = 0; i < l; i++) oup = '-' + oup;

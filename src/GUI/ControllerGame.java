@@ -8,13 +8,13 @@ import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import Cmd.Player.PlayerUser;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
 import javafx.scene.layout.GridPane;
-import javafx.event.ActionEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,15 +23,19 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static java.lang.Thread.sleep;
 
+/**
+ * Controller for the JavaFX Form: FormGame.
+ */
 public class ControllerGame {
 
     private final static int MAXPLAYERNUMBER = 6, MAXLANDNUMBER = 20;
 
     @FXML
-    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent, NonSaleLandName, CurMoneyChange;
+    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent;
 
     @FXML
     public Button ButtonContinue;
@@ -79,13 +83,11 @@ public class ControllerGame {
     private ImageView Dice1, Dice2;
     private String color[] = {"#F8BBD0", "#FFE0B2", "#C8E6C9", "#B2EBF2", "#C5CAE9", "#E1BEE7"};
 
-    public void changeMenu(){
+    void changeMenu(){
         if (!ActionMenu.isVisible()) {
             ActionMenu.setVisible(true);
-            //ActionMenu.setDisable(false);
         } else {
             ActionMenu.setVisible(false);
-            //ActionMenu.setDisable(true);
         }
     }
 
@@ -154,8 +156,8 @@ public class ControllerGame {
                 Main.getGame().setSavePath(file.getAbsolutePath());
                 Main.getGame().saveGame();
 
-            } catch (Exception ex) {
-                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }
@@ -170,11 +172,10 @@ public class ControllerGame {
             Main.getGame().initGame(6, 0);
 
             try {
-
                 Main.getGame().setLoadPath(file.getAbsolutePath());
                 Main.getGame().loadGame();
-            } catch (Exception ex) {
-                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, e);
             }
             for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
                 Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().playerList[i]);
@@ -190,7 +191,7 @@ public class ControllerGame {
                 }
             }
 
-            System.out.println(Main.getGame().playerList[0].getPosition());
+            //System.out.println(Main.getGame().playerList[0].getPosition());
             updateGraph();
             Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
             Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
@@ -277,7 +278,7 @@ public class ControllerGame {
         updateGraph();
     }
 
-    public void updateGraph(){
+    void updateGraph(){
 
         // reset
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
