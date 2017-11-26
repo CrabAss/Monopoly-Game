@@ -76,7 +76,7 @@ public class GameTest {
      */
     @Test
     public void getJAILLAND() {
-        assert game.getLandList()[game.getJAILLAND()].getName().equals("Jail");
+        Assert.assertEquals(game.getLandList()[game.getJAILLAND()].getName(), "Jail");
     }
 
     /**
@@ -84,7 +84,7 @@ public class GameTest {
      */
     @Test
     public void getSTARTLAND() {
-        assert game.getLandList()[game.getSTARTLAND()].getName().equals("Start");
+        Assert.assertEquals(game.getLandList()[game.getSTARTLAND()].getName(), "Start");
     }
 
 
@@ -124,10 +124,10 @@ public class GameTest {
     public void initGame() {
         String s1 = "Please input the number of players (2-6):";
         String s2 = "Please decide the type of Player 1 (0: human; 1: AI):";
-        assert game.getPlayerList()[0] instanceof PlayerAI;
-        assert game.getPlayerList()[1] instanceof PlayerUser;
-        assert CmdTest.searchOutput(s1);
-        assert CmdTest.searchOutput(s2);
+        Assert.assertTrue(game.getPlayerList()[0] instanceof PlayerAI);
+        Assert.assertTrue(game.getPlayerList()[1] instanceof PlayerUser);
+        Assert.assertTrue(CmdTest.searchOutput(s1));
+        Assert.assertTrue(CmdTest.searchOutput(s2));
     }
 
     /**
@@ -138,10 +138,10 @@ public class GameTest {
         String input = "text0.txt\ntext0.txt\n";
         CmdTest.redirectInput(input);
         game.saveGame();
-        assert CmdTest.searchOutput("Save successfully.");
+        Assert.assertTrue(CmdTest.searchOutput("Save successfully."));
         CmdTest.redirectOutput();
         game.loadGame();
-        assert CmdTest.searchOutput("Load successfully.");
+        Assert.assertTrue(CmdTest.searchOutput("Load successfully."));
     }
 
     /**

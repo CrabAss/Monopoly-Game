@@ -59,7 +59,7 @@ public class PlayerTest {
     @Test
     public void move() {
         player.move(5);
-        assert player.getPosition().getName().equals("Jail");
+        Assert.assertEquals(player.getPosition().getName(), "Jail");
     }
 
     /**
@@ -68,7 +68,7 @@ public class PlayerTest {
     @Test
     public void isDead() {
         player.retired();
-        assert player.isDead();
+        Assert.assertTrue(player.isDead());
     }
 
     /**
@@ -78,7 +78,7 @@ public class PlayerTest {
     public void run() {
         player = player.toRobot();
         player.run();
-        assert !player.getPosition().equals(game.getLandList()[1]);
+        Assert.assertNotEquals(player.getPosition(), game.getLandList()[1]);
     }
 
     /**
@@ -87,8 +87,8 @@ public class PlayerTest {
     @Test
     public void gotoJail() {
         player.gotoJail(game.getLandList()[game.getJAILLAND()]);
-        assert player.getPosition().equals(game.getLandList()[game.getJAILLAND()]);
-        assert player.isInJail();
+        Assert.assertEquals(player.getPosition(), game.getLandList()[game.getJAILLAND()]);
+        Assert.assertTrue(player.isInJail());
     }
 
     /**
@@ -98,7 +98,7 @@ public class PlayerTest {
     public void release() {
         player.gotoJail(game.getLandList()[game.getJAILLAND()]);
         player.release();
-        assert !player.isInJail();
+        Assert.assertFalse(player.isInJail());
     }
 
     /**
@@ -125,7 +125,7 @@ public class PlayerTest {
             Assert.assertEquals(player.getMoney(), STARTMONEY - DECMONEY1);
             player.decMoney(DECMONEY2);
         } catch (Exception ignore) {}
-        assert player.isDead();
+        Assert.assertTrue(player.isDead());
     }
 
     /**
@@ -134,7 +134,7 @@ public class PlayerTest {
     @Test
     public void retired() {
         player.retired();
-        assert player.isDead();
+        Assert.assertTrue(player.isDead());
     }
 
     /**
@@ -151,7 +151,7 @@ public class PlayerTest {
      */
     @Test
     public void getPosition() {
-        assert player.getPosition().getName().equals("Start");
+        Assert.assertEquals(player.getPosition().getName(), "Start");
     }
 
     /**
@@ -159,7 +159,7 @@ public class PlayerTest {
      */
     @Test
     public void getName() {
-        assert player.getName().equals("Player 0");
+        Assert.assertEquals(player.getName(), "Player 0");
     }
 
     /**
@@ -177,7 +177,7 @@ public class PlayerTest {
      */
     @Test
     public void testToString() {
-        assert player.toString().equals("Player 0");
+        Assert.assertEquals(player.toString(), "Player 0");
     }
 
 }

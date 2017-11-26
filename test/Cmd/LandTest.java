@@ -5,6 +5,7 @@ import Cmd.Land.LandOrdinary;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +43,7 @@ public class LandTest {
     @Test
     public void landOn() {
         land.landOn(player);
-        assert CmdTest.searchOutput("Player 1 reaches Ordinary Area (Grid 8).");
+        Assert.assertTrue(CmdTest.searchOutput("Player 1 reaches Ordinary Area (Grid 8)."));
     }
 
     /**
@@ -50,7 +51,7 @@ public class LandTest {
      */
     @Test
     public void getName() {
-        assert land.getName().equals("Ordinary");
+        Assert.assertEquals(land.getName(), "Ordinary");
     }
 
     /**
@@ -58,10 +59,10 @@ public class LandTest {
      */
     @Test
     public void getSetNextLand() {
-        assert land.getNextLand().equals(nextLand);
+        Assert.assertEquals(land.getNextLand(), nextLand);
         Land newLand = new LandOrdinary("New", 9);
         land.setNextLand(newLand);
-        assert land.getNextLand().equals(newLand);
+        Assert.assertEquals(land.getNextLand(), newLand);
     }
 
     /**
@@ -69,6 +70,6 @@ public class LandTest {
      */
     @Test
     public void testToString() {
-        assert land.toString().equals("Ordinary Area (Grid 8)");
+        Assert.assertEquals(land.toString(), "Ordinary Area (Grid 8)");
     }
 }

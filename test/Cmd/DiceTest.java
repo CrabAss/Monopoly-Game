@@ -21,9 +21,9 @@ public class DiceTest {
         dice.dice();
         Assert.assertEquals(dice.getX() + dice.getY(), dice.getStep());
         if (dice.getX() != dice.getY())
-            assert !dice.isEqual();
+            Assert.assertFalse(dice.isEqual());
         else
-            assert dice.isEqual();
+            Assert.assertTrue(dice.isEqual());
         dice.dice(player);
     }
 }
