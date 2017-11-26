@@ -20,7 +20,6 @@ public class LandStart extends Land {
     public void run(Player player) {
         landOn(player);
         Output.println("Nothing happens.");
-        //到起点是不会拿钱的好像。。
     }
 
     /**
