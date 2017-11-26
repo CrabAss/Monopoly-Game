@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Slider;
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
 
 /**
  * Controller for the JavaFX Form: FormNewGame.
@@ -19,17 +17,16 @@ public class ControllerNewGame {
     private Slider NumberOfPlayer;
     @FXML
     private Slider NumberOfAI;
-    @FXML
-    private Button StartGame;
 
+    //adjust the number of ai sliber
     @FXML
     private void HandleNumberOfPlayer(){
         NumberOfAI.setMax(NumberOfPlayer.getValue());
-        // System.out.println(NumberOfPlayer.getValue());
     }
+    //handle start game
 
     @FXML
-    private void HandleStartGame(ActionEvent event){
+    private void HandleStartGame(){
         Main.getGame().initGame((int)(NumberOfPlayer.getValue()), (int)(NumberOfAI.getValue()));
 
         try {
@@ -42,7 +39,7 @@ public class ControllerNewGame {
     }
 
     @FXML
-    private void HandleBackBtn(ActionEvent event){
+    private void HandleBackBtn(){
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FormWelcome.fxml"));
             Main.setStage(root, WIDTH, HEIGHT);

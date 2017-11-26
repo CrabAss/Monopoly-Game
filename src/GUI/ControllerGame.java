@@ -7,7 +7,6 @@ import Cmd.Others.Output;
 import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
-import Cmd.Player.PlayerUser;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,13 +31,14 @@ public class ControllerGame {
     private final static int MAXPLAYERNUMBER = 6, MAXLANDNUMBER = 20;
 
     @FXML
-    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent;
+    private Label CurrentLandName;
+    @FXML
+    private Label CurrentLandPrice;
+    @FXML
+    private Label CurrentLandRent;
 
     @FXML
-    public Button ButtonContinue;
-
-    @FXML
-    public Button ButtonAction, ButtonEndTurn;
+    private Button ButtonAction, ButtonEndTurn;
 
     @FXML
     private GridPane GridPanePlayer1, GridPanePlayer2, GridPanePlayer3,
@@ -74,20 +74,50 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    public GridPane TurnMenu, ActionMenu;
+    private GridPane TurnMenu;
+    @FXML
+    private GridPane ActionMenu;
 
     @FXML
     private ImageView Dice1, Dice2;
-    private String color[] = {"#F8BBD0", "#FFE0B2", "#C8E6C9", "#B2EBF2", "#C5CAE9", "#E1BEE7"};
+    private final String Color[] = {"#F8BBD0" , "#FFE0B2", "#C8E6C9" , "#B2EBF2" , "#C5CAE9" , "#E1BEE7"};
 
+
+    /**
+     * @return the label landname
+     */
+    Label getCurrentLandName() {
+        return CurrentLandName;
+    }
+
+    /**
+     * @return the pane action menu
+     */
+    GridPane getActionMenu() {
+        return ActionMenu;
+    }
+
+    /**
+     * @return the pane turn menu
+     */
+    GridPane getTurnMenu() {
+        return TurnMenu;
+    }
+
+    /**
+     * Change the current menu interface
+     */
     void changeMenu(){
-        if (!ActionMenu.isVisible()) {
-            ActionMenu.setVisible(true);
+        if (!getActionMenu().isVisible()) {
+            getActionMenu().setVisible(true);
         } else {
-            ActionMenu.setVisible(false);
+            getActionMenu().setVisible(false);
         }
     }
 
+    /**
+     * Initialize this pane
+     */
     @FXML
     public void initialize() {
         GridPanePlayer = new GridPane[] {GridPanePlayer1, GridPanePlayer2, GridPanePlayer3,
@@ -113,6 +143,9 @@ public class ControllerGame {
         updateGraph();
     }
 
+    /**
+     * handle continue event
+     */
     @FXML
     public void HandleContinue(){
         changeMenu();
@@ -120,6 +153,9 @@ public class ControllerGame {
         updateGraph();
     }
 
+    /**
+     * handle retire event
+     */
     @FXML
     public void HandleRetire(){
         Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
@@ -128,10 +164,13 @@ public class ControllerGame {
         Main.getGame().nextTurn();
     }
 
+    /**
+     * handle auto event, change to robot
+     */
     @FXML
     public void HandleAuto(){
-        Player player = (PlayerUser)Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
-        Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()] = (PlayerAI)((PlayerUser) player).toRobot();
+        Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
+        Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()] = player.toRobot();
         Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()] = new GUIPlayer(Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()]);
         for (Property x: Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()].getPropertyList()){
             x.setBelongs(Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()]);
@@ -139,6 +178,10 @@ public class ControllerGame {
         updateGraph();
         HandleContinue();
     }
+
+    /**
+     * handle save event
+     */
     @FXML
     public void HandleSave(){
         FileChooser fileChooser = new FileChooser();
@@ -157,6 +200,10 @@ public class ControllerGame {
             }
         }
     }
+
+    /**
+     * handle load event, choose file and load
+     */
     @FXML
     public void HandleLoad() {
         FileChooser fileChooser = new FileChooser();
@@ -195,6 +242,11 @@ public class ControllerGame {
         }
     }
 
+    /**
+     * Handle end Turn event
+     * if end turn is end turn than end current turn
+     * else handle dice event
+     */
     @FXML
     public void HandleEndTurn(){
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
@@ -237,7 +289,8 @@ public class ControllerGame {
             } else if (player.getJailDay() == 3) { // The third day
                 try {
                     Output.println(player + " must pay.");
-                    player.decMoney(90);
+                    final int JAILMONEY = 90;
+                    player.decMoney(JAILMONEY);
                     player.release();
                     guiPlayer.run();
                 } catch (BankruptException e) {
@@ -253,6 +306,9 @@ public class ControllerGame {
         updateGraph();
     }
 
+    /**
+     * handle action event
+     */
     @FXML
     public void HandleAction(){
         Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
@@ -270,7 +326,8 @@ public class ControllerGame {
             } else { // In Jail
                 Output.println(player + " decides to pay.");
                 Main.getGame().getEndTurn().setText("End turn");
-                player.decMoney(90);
+                final int JAILMONEY = 90;
+                player.decMoney(JAILMONEY);
                 player.release();
                 guiPlayer.run();
             }
@@ -281,6 +338,9 @@ public class ControllerGame {
         updateGraph();
     }
 
+    /**
+     * update the graph
+     */
     void updateGraph(){
 
         // reset
@@ -319,21 +379,23 @@ public class ControllerGame {
             GridPanePlayer[i].setVisible(false);
         }
 
-        for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) {
+        for (int i = 1; i <= MAXLANDNUMBER; i++) {
             for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) {
                 if (Main.getGame().getLandList()[i] instanceof LandProperty) {
-                    if (((LandProperty) Main.getGame().getLandList()[i]).getProperty().getBelongs() == (Player) Main.getGame().getPlayerList()[j]) {
-                        Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color[j]);
+                    if (((LandProperty) Main.getGame().getLandList()[i]).getProperty().getBelongs() == Main.getGame().getPlayerList()[j]) {
+                        String color = Color[j];
+                        Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color);
                     }
                 }
             }
         }
         if (Main.getGame().getPlayerAlive() > 1 && Main.getGame().getRounds() <= 100) {
             if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
-                GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
+                String color = Color[Main.getGame().getCurPlayer()];
+                GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color);
 
                 Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
-                CurrentLandName.setText(player.getPosition().getName());
+                getCurrentLandName().setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
                     if (((LandProperty) player.getPosition()).getProperty().getBelongs() != null)
                         CurrentLandPrice.setText("--");
@@ -347,9 +409,10 @@ public class ControllerGame {
 
             }
         } else {
-            ActionMenu.setDisable(true);
-            TurnMenu.setDisable(true);
-            CurrentLandName.setText("Finish!");
+            getActionMenu().setDisable(true);
+            getTurnMenu().setDisable(true);
+            getCurrentLandName().setText("Finish!");
         }
     }
+
 }

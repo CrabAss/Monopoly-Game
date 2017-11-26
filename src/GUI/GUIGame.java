@@ -185,9 +185,9 @@ public class GUIGame extends Game {
      * This method is used to show the End Game interface
      */
     private void EndGame() {
-        getControllerGame().ActionMenu.setDisable(true);
-        getControllerGame().TurnMenu.setDisable(true);
-        getControllerGame().CurrentLandName.setText("Finish!");
+        getControllerGame().getActionMenu().setDisable(true);
+        getControllerGame().getTurnMenu().setDisable(true);
+        getControllerGame().getCurrentLandName().setText("Finish!");
     }
 
     /**
@@ -200,8 +200,7 @@ public class GUIGame extends Game {
             EndGame();
             return;
         }
-        if (getControllerGame().ActionMenu.isVisible())
-            getControllerGame().changeMenu();
+        if (getControllerGame().getActionMenu().isVisible()) getControllerGame().changeMenu();
         do {
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
