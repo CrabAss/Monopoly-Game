@@ -16,6 +16,8 @@ public class GUIGame extends Game {
     public ImageView Dice1, Dice2;
     public ControllerGame controllerGame;
     private int curPlayer;
+    private String SavePath, LoadPath;
+
 
     public void setContinue(Button Continue){this.Continue = Continue;}
     public void setSave(Button Save){this.Save = Save;}
@@ -28,6 +30,14 @@ public class GUIGame extends Game {
     public void setAction(Button action) {
         Action = action;
     }
+    public void setLoadPath(String loadPath) {
+        LoadPath = loadPath;
+    }
+    public void setSavePath(String savePath) {
+        SavePath = savePath;
+    }
+    public String getSavePath() {return SavePath; }
+    public String getLoadPath() { return LoadPath; }
 
     @Override
     public int getRounds() { return super.getRounds(); }
@@ -50,6 +60,10 @@ public class GUIGame extends Game {
     GUIGame(){super();}
 
     public void setGuiOutput(TextArea textArea) { this.guiOutput = new GUIOutput(textArea); }
+
+    public void setCurPlayer(int curPlayer) {
+        this.curPlayer = curPlayer;
+    }
 
 
     public GUIPlayer[] getGUIhelper() {
