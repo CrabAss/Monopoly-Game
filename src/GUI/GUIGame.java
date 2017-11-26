@@ -96,8 +96,8 @@ public class GUIGame extends Game {
         return guiOutput;
     }
 
-    public void setGuiOutput(TextArea textArea) {
-        this.guiOutput = new GUIOutput(textArea);
+    public void setGuiOutput(GUIOutput guiOutput) {
+        this.guiOutput = guiOutput;
     }
 
     public GUIPlayer[] getGUIhelper() {
@@ -108,12 +108,11 @@ public class GUIGame extends Game {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
-            if (i <= getPlayerNumber() - NumberOfAI)
-                playerList[i - 1] = new PlayerUser("Player " + i, landList[getSTARTLAND()]);
-            else playerList[i - 1] = new PlayerAI("Player " + i, landList[getSTARTLAND()]);
-            GUIhelper[i - 1] = new GUIPlayer(playerList[i - 1]);
+            if (i <= getPlayerNumber() - NumberOfAI) getPlayerList()[i - 1] = new PlayerUser("Player " + i, getLandList()[getSTARTLAND()]);
+            else getPlayerList()[i - 1] = new PlayerAI("Player " + i, getLandList()[getSTARTLAND()]);
+            GUIhelper[i - 1] = new GUIPlayer(getPlayerList()[i - 1]);
         }
-        rounds = 0;
+        setRounds(0);
         curPlayer = 10;
         setPlayerAlive(getPlayerNumber());
     }
@@ -135,18 +134,18 @@ public class GUIGame extends Game {
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
                 curPlayer = 0;
-                rounds++;
-                if (rounds > 100) {
+                setRounds(getRounds() + 1);
+                if (getRounds() > 100) {
                     EndGame();
                     return;
                 }
-                guiOutput.Print(Output.title("Round " + rounds));
+                guiOutput.Print(Output.title("Round " + getRounds()));
             }
-        } while (playerList[curPlayer].isDead());
+        } while (getPlayerList()[curPlayer].isDead());
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
         controllerGame.updateGraph();
-        if (playerList[curPlayer] instanceof PlayerAI) {
+        if (getPlayerList()[curPlayer] instanceof PlayerAI) {
             Main.getGame().controllerGame.HandleContinue();
         }
     }

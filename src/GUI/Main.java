@@ -52,6 +52,13 @@ public class Main extends Application {
     public static boolean isGUI() {return GUI == 1;}
 
     /**
+     * @return the main stage
+     */
+    public static Stage getMainStage() {
+        return MainStage;
+    }
+
+    /**
      * @param root the fxml
      * @param width the stage width
      * @param height the stage height

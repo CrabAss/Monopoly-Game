@@ -106,7 +106,7 @@ public class ControllerGame {
         Land = new GridPane[] {null, Land1, Land2, Land3, Land4, Land5, Land6, Land7, Land8, Land9, Land10,
                 Land11, Land12, Land13, Land14, Land15, Land16, Land17, Land18, Land19, Land20};
 
-        Main.getGame().setGuiOutput(ActionLog);
+        Main.getGame().setGuiOutput(new GUIOutput(ActionLog));
         Main.getGame().setContinue(ButtonContinue);
         Main.getGame().setEndTurn(ButtonEndTurn);
         Main.getGame().setAction(ButtonAction);
@@ -126,7 +126,7 @@ public class ControllerGame {
 
     @FXML
     public void HandleRetire(){
-        Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+        Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
         player.retired();
         updateGraph();
         Main.getGame().nextTurn();
@@ -134,11 +134,11 @@ public class ControllerGame {
 
     @FXML
     public void HandleAuto(){
-        Player player = (PlayerUser)Main.getGame().playerList[Main.getGame().getCurPlayer()];
-        Main.getGame().playerList[Main.getGame().getCurPlayer()] = (PlayerAI)((PlayerUser) player).toRobot();
-        Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()] = new GUIPlayer(Main.getGame().playerList[Main.getGame().getCurPlayer()]);
-        for (Property x: Main.getGame().playerList[Main.getGame().getCurPlayer()].propertyList){
-            x.setBelongs(Main.getGame().playerList[Main.getGame().getCurPlayer()]);
+        Player player = (PlayerUser)Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
+        Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()] = (PlayerAI)((PlayerUser) player).toRobot();
+        Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()] = new GUIPlayer(Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()]);
+        for (Property x: Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()].getPropertyList()){
+            x.setBelongs(Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()]);
         }
         updateGraph();
         HandleContinue();
@@ -178,20 +178,20 @@ public class ControllerGame {
                 //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, e);
             }
             for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
-                Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().playerList[i]);
+                Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().getPlayerList()[i]);
 
             for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
-                if (Main.getGame().landList[i] instanceof  LandProperty){
-                    ((LandProperty)Main.getGame().landList[i]).getProperty().setBelongs(null);
+                if (Main.getGame().getLandList()[i] instanceof  LandProperty){
+                    ((LandProperty)Main.getGame().getLandList()[i]).getProperty().setBelongs(null);
                 }
             }
             for (int i = 0; i < Main.getGame().getPlayerNumber(); i++) {
-                for (Property x : Main.getGame().playerList[i].propertyList) {
-                    x.setBelongs(Main.getGame().playerList[i]);
+                for (Property x : Main.getGame().getPlayerList()[i].getPropertyList()) {
+                    x.setBelongs(Main.getGame().getPlayerList()[i]);
                 }
             }
 
-            //System.out.println(Main.getGame().playerList[0].getPosition());
+            //System.out.println(Main.getGame().getPlayerList()[0].getPosition());
             updateGraph();
             Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
             Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
@@ -202,12 +202,12 @@ public class ControllerGame {
     @FXML
     public void HandleEndTurn(){
         if (Objects.equals(ButtonEndTurn.getText(), "End turn")) {
-            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+            Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
             Main.getGame().getGuiOutput().Print(player + " decides to end turn.");
             updateGraph();
             Main.getGame().nextTurn();
         } else { // Dice
-            Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+            Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
             GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
 
             Dice dice = new Dice();
@@ -252,7 +252,7 @@ public class ControllerGame {
 
     @FXML
     public void HandleAction(){
-        Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+        Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
         GUIPlayer guiPlayer = Main.getGame().getGUIhelper()[Main.getGame().getCurPlayer()];
         Property property = GUILandProperty.getCurProperty();
         // Buy
@@ -292,7 +292,7 @@ public class ControllerGame {
             GridPanePlayer[i].setStyle("");
 
         // set
-            if (Main.getGame().playerList[i] instanceof PlayerAI)
+            if (Main.getGame().getPlayerList()[i] instanceof PlayerAI)
                 TypePlayer[i].setText("AI");
             else
                 TypePlayer[i].setText("Human");
@@ -300,7 +300,7 @@ public class ControllerGame {
             MoneyPlayer[i].setText(Main.getGame().getGUIhelper()[i].getMoney() + "");
             StatuPlayer[i].setText(Main.getGame().getGUIhelper()[i].getStatus());
 
-            if (!Main.getGame().playerList[i].isDead()) {
+            if (!Main.getGame().getPlayerList()[i].isDead()) {
                 RectanglePlayer[i].setVisible(true);
                 Land[Main.getGame().getGUIhelper()[i].getPosition()].add(RectanglePlayer[i], i % 3, i / 3);
             } else
@@ -318,8 +318,8 @@ public class ControllerGame {
 
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) {
             for (int j = 0; j < Main.getGame().getPlayerNumber(); j++) {
-                if (Main.getGame().landList[i] instanceof LandProperty) {
-                    if (((LandProperty) Main.getGame().landList[i]).getProperty().getBelongs() == (Player) Main.getGame().playerList[j]) {
+                if (Main.getGame().getLandList()[i] instanceof LandProperty) {
+                    if (((LandProperty) Main.getGame().getLandList()[i]).getProperty().getBelongs() == (Player) Main.getGame().getPlayerList()[j]) {
                         Land[i].setStyle("-fx-border-color: #000; -fx-background-color: " + color[j]);
                     }
                 }
@@ -329,7 +329,7 @@ public class ControllerGame {
             if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
                 GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
 
-                Player player = Main.getGame().playerList[Main.getGame().getCurPlayer()];
+                Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
                 CurrentLandName.setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
                     if (((LandProperty) player.getPosition()).getProperty().getBelongs() != null)

@@ -36,7 +36,7 @@ public class GUIPlayer {
 
     public int getPosition(){
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
-            if (player.getPosition() == Main.getGame().landList[i]) return i;
+            if (player.getPosition() == Main.getGame().getLandList()[i]) return i;
         return 0;
     }
 
