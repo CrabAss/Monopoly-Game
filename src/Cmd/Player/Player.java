@@ -104,7 +104,7 @@ public abstract class Player implements Serializable {
             if (isInJail()) {
                 jailDay++;
                 Output.println(name + " has stayed in jail for " + jailDay + " turn(s).");
-                if (jailDay <= 3) {
+                if (jailDay <= 2) {
                     Output.print(name + " has to decide paid to release or dice. ");
                     Output.println("(will get released if a double is thrown)");
                     int inp = getInput(jailHint, 2);
@@ -180,7 +180,7 @@ public abstract class Player implements Serializable {
         Output.println(name + " pays " + val + " HKD.");
         money -= val;
         Output.println(name + " currently has " + money + " HKD.");
-        if (money < 0) {bankrupt(); throw new BankruptException();}
+        if (money <= 0) {bankrupt(); throw new BankruptException();}
     }
 
     /**

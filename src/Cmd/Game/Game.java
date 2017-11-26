@@ -69,7 +69,7 @@ public class Game {
     /**
      * @return The maximum amount of players.
      */
-    protected int getMAXPLAYERNUMBER() {
+    public int getMAXPLAYERNUMBER() {
         return MAXPLAYERNUMBER;
     }
 
@@ -81,7 +81,7 @@ public class Game {
     /**
      * @return The number of the "Start" land.
      */
-    protected int getSTARTLAND() {
+    public int getSTARTLAND() {
         return STARTLAND;
     }
 
@@ -107,30 +107,9 @@ public class Game {
     }
 
     /**
-     * @return The prices of lands.
-     */
-    public int[] getLandPrice() {
-        return landPrice;
-    }
-
-    /**
-     * @return The rents of lands.
-     */
-    public int[] getLandRent() {
-        return landRent;
-    }
-
-    /**
-     * @return The names of lands.
-     */
-    public String[] getLandName() {
-        return landName;
-    }
-
-    /**
      * @param playerAlive The current amount of alive players.
      */
-    protected void setPlayerAlive(int playerAlive) {
+    public void setPlayerAlive(int playerAlive) {
         this.playerAlive = playerAlive;
     }
 
@@ -159,7 +138,7 @@ public class Game {
     /**
      * @param rounds The current round of the game.
      */
-    protected void setRounds(int rounds) {
+    public void setRounds(int rounds) {
         this.rounds = rounds;
     }
 
@@ -171,7 +150,7 @@ public class Game {
     }
 
     /**
-     * Initialize landList:
+     * Initialize landList
      */
     private void initLand() {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
@@ -235,6 +214,7 @@ public class Game {
             oos.writeInt(playerNumber);
             oos.writeInt(playerAlive);
             oos.writeInt(currentPlayer);
+            oos.writeInt(rounds);
             for (int i = 0; i < playerNumber; i++)
                 oos.writeObject(playerList[i]);
             for (int i = 1; i <= MAXLANDNUMBER; i++) {
@@ -242,6 +222,7 @@ public class Game {
             }
             Output.println("Game saved");
         } catch (Exception e) { e.printStackTrace(); }
+        Output.println("Save successfully.");
     }
 
     /**
@@ -258,6 +239,7 @@ public class Game {
                 playerNumber = ois.readInt();
                 playerAlive = ois.readInt();
                 currentPlayer = ois.readInt();
+                rounds = ois.readInt();
                 for (int i = 0; i < playerNumber; i++)
                     playerList[i] = (Player) ois.readObject();
                 for (int i = 1; i <= MAXLANDNUMBER; i++)
@@ -267,6 +249,7 @@ public class Game {
                 loadSuccess = false;
             }
         }
+        Output.println("Load successfully.");
     }
 
     /**
@@ -338,5 +321,4 @@ public class Game {
             if (player != null && !player.isDead() && player.getMoney() == maxvalue)
                 Output.println(player.toString());
     }
-
 }

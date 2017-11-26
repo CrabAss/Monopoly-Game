@@ -105,6 +105,13 @@ public class Input {
      * @return The valid integer.
      */
     public static int getInput(String hint, int limit) {
-        return getInput(hint, 0, limit);
+        return getInput(hint, 0, limit - 1);
+    }
+
+    /**
+     * Used for junit test.
+     */
+    public static void resetScanner() {
+        scanner = new Scanner(System.in);
     }
 }
