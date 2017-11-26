@@ -603,7 +603,7 @@
                            <Insets left="3.0" top="3.0" />
                        </GridPane.margin>
                    </Text>
-                   <Text lineSpacing="2.0" text="Shatin&#10;$ 650" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                   <Text lineSpacing="2.0" text="Shatin&#10;$ 650" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                        <font>
                            <Font size="14.0" />
                        </font>
@@ -658,7 +658,7 @@
                            <Font name="Georgia" size="48.0" />
                        </font>
                    </Text>
-                   <Text lineSpacing="2.0" text="Tai O&#10;$ 650" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                   <Text lineSpacing="2.0" text="Tai O&#10;$ 650" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                        <font>
                            <Font size="14.0" />
                        </font>
