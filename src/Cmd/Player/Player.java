@@ -161,11 +161,6 @@ public abstract class Player implements Serializable {
         status = 0;
     }
 
-    public void changeMoney(int val) throws BankruptException {
-        if (val > 0) incMoney(val);
-        else if (val < 0) decMoney(-val);
-    }
-
     /**
      * Increase the money of the player.
      * @param val the value of money to be increased.

@@ -92,6 +92,13 @@ public class GUIGame extends Game {
         this.curPlayer = curPlayer;
     }
 
+    public GUIOutput getGuiOutput() {
+        return guiOutput;
+    }
+
+    public void setGuiOutput(GUIOutput guiOutput) {
+        this.guiOutput = guiOutput;
+    }
 
     public GUIPlayer[] getGUIhelper() {
         return GUIhelper;

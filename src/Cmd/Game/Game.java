@@ -141,9 +141,17 @@ public class Game {
         this.playerNumber = playerNumber;
     }
 
+    /**
+     * @return The current player of the game.
+     */
     public int getCurrentPlayer() {
         return currentPlayer;
     }
+
+    /**
+     * Set the current player of the game.
+     * @param currentPlayer The current player to set.
+     */
     public void setCurrentPlayer(int currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -220,7 +228,7 @@ public class Game {
     /**
      * To save the game
      */
-    private void saveGame() {
+    public void saveGame() {
         String hint = "Please input the data path:";
         ObjectOutputStream oos = Input.getOutputStream(hint);
         try {
