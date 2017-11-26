@@ -8,108 +8,175 @@ import Cmd.Player.PlayerUser;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
 
+/**
+ * The GUIGame is a subclass of Game,
+ * implement more methods which focus on GUI
+ */
 public class GUIGame extends Game {
-    public Button Continue, Save, Load, Auto, Retire;
-    public Button Action, EndTurn;
-    public ImageView Dice1, Dice2;
-    public ControllerGame controllerGame;
+    private Button Action, EndTurn;
+    private ImageView Dice1, Dice2;
+    private ControllerGame controllerGame;
     private GUIPlayer GUIhelper[] = new GUIPlayer[getMAXPLAYERNUMBER()];
     private GUIOutput guiOutput;
     private int curPlayer;
     private String SavePath, LoadPath;
     private Player gameWinner = null;    // winner
 
-
+    /**
+     * Build the GUIGame
+     */
     GUIGame() {
         super();
     }
 
-    public void setContinue(Button Continue) {
-        this.Continue = Continue;
-    }
-
-    public void setSave(Button Save) {
-        this.Save = Save;
-    }
-
-    public void setLoad(Button Load) {
-        this.Load = Load;
-    }
-
-    public void setAuto(Button Auto) {
-        this.Auto = Auto;
-    }
-
-    public void setRetire(Button Retire) {
-        this.Retire = Retire;
-    }
-
-    public void setEndTurn(Button endTurn) {
+    /*----------------------setxx method-------------------*/
+    /**
+     * @param endTurn The endTurn button
+     */
+    void setEndTurn(Button endTurn) {
         EndTurn = endTurn;
     }
 
-    public void setAction(Button action) {
+    /**
+     * @param action the action button
+     */
+    void setAction(Button action) {
         Action = action;
     }
 
+    /**
+     * @param savePath set the save path
+     */
+    void setSavePath(String savePath) {
+        SavePath = savePath;
+    }
+
+    /**
+     * @param loadPath set the load path
+     */
+    void setLoadPath(String loadPath) {
+        LoadPath = loadPath;
+    }
+
+    /**
+     * @param curPlayer set current player
+     */
+    void setCurPlayer(int curPlayer) {
+        this.curPlayer = curPlayer;
+    }
+
+    /**
+     * @param controllerGame the controllergame class
+     */
+    void setControllerGame(ControllerGame controllerGame) {
+        this.controllerGame = controllerGame;
+    }
+
+    /**
+     * @param dice1 The frist dice image view
+     */
+    void setDice1(ImageView dice1) {
+        Dice1 = dice1;
+    }
+
+    /**
+     * @param dice2 set the second dice imageview
+     */
+    void setDice2(ImageView dice2) {
+        Dice2 = dice2;
+    }
+
+    /**
+     * @param guiOutput set the guiOutput field
+     */
+    void setGuiOutput(GUIOutput guiOutput) {
+        this.guiOutput = guiOutput;
+    }
+
+    /*----------------------getxx method-------------------*/
+    /**
+     * @return get current player
+     */
+    int getCurPlayer() {
+        return curPlayer;
+    }
+
+    /**
+     * @return get the save path
+     */
     public String getSavePath() {
         return SavePath;
     }
 
-    public void setSavePath(String savePath) {
-        SavePath = savePath;
-    }
-
+    /**
+     * @return get the load path
+     */
     public String getLoadPath() {
         return LoadPath;
     }
 
-    public void setLoadPath(String loadPath) {
-        LoadPath = loadPath;
-    }
-
-    @Override
-    public int getRounds() {
-        return super.getRounds();
-    }
-
-    public void setControllerGame(ControllerGame controllerGame) {
-        this.controllerGame = controllerGame;
-    }
-
-    public void setDice1(ImageView dice1) {
-        Dice1 = dice1;
-    }
-
-    public void setDice2(ImageView dice2) {
-        Dice2 = dice2;
-    }
-
-    public int getCurPlayer() {
-        return curPlayer;
-    }
-
-    public void setCurPlayer(int curPlayer) {
-        this.curPlayer = curPlayer;
-    }
-
+    /**
+     * @return the guioutput of GUIOutput class
+     * it is the field that impletments GUIoutput
+     */
     public GUIOutput getGuiOutput() {
         return guiOutput;
     }
 
+    /**
+     * @return
+     */
     public Player getWinner() {
         return gameWinner;
     }
-
-    public void setGuiOutput(GUIOutput guiOutput) {
-        this.guiOutput = guiOutput;
-    }
-
-    public GUIPlayer[] getGUIhelper() {
+    /**
+     * @return return the GUIhelper list
+     */
+    GUIPlayer[] getGUIhelper() {
         return GUIhelper;
     }
 
-    public void initGame(int NumberOfplayer, int NumberOfAI) {
+    /**
+     * @return getaction button
+     */
+    Button getAction() {
+        return Action;
+    }
+
+    /**
+     * @return get endturn button
+     */
+    Button getEndTurn() {
+        return EndTurn;
+    }
+
+    /**
+     * @return get dice1
+     */
+    ImageView getDice1() {
+        return Dice1;
+    }
+
+    /**
+     * @return get dice2
+     */
+    ImageView getDice2() {
+        return Dice2;
+    }
+
+    /**
+     * @return get controllergame
+     */
+    ControllerGame getControllerGame() {
+        return controllerGame;
+    }
+
+    /**
+     * @param NumberOfplayer the number of player
+     * @param NumberOfAI the number of AI
+     * This method is used to initialize all the player and current player
+     */
+    void initGame(int NumberOfplayer, int NumberOfAI) {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
@@ -124,6 +191,9 @@ public class GUIGame extends Game {
         setPlayerAlive(getPlayerNumber());
     }
 
+    /**
+     * This method is used to show the End Game interface
+     */
     public void EndGame() {
         int maxvalue = 0;
         for (Player player : getPlayerList())
@@ -133,16 +203,21 @@ public class GUIGame extends Game {
             }
 
         guiOutput.Print("Winner: " + gameWinner.toString());
-        controllerGame.updateGraph();
+        getControllerGame().updateGraph();
     }
 
-    public void nextTurn() {
+    /**
+     * This method is nextTurn method
+     * it pass turn to next player and detect if the game is end
+     * it also refresh the menu of the interface
+     */
+    void nextTurn() {
         if (getPlayerAlive() == 1) {
             EndGame();
             return;
         }
-        if (controllerGame.ActionMenu.isVisible())
-            controllerGame.changeMenu();
+        if (getControllerGame().getActionMenu().isVisible())
+            getControllerGame().changeMenu();
         do {
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
@@ -157,10 +232,9 @@ public class GUIGame extends Game {
         } while (getPlayerList()[curPlayer].isDead());
 
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
-        controllerGame.updateGraph();
+        getControllerGame().updateGraph();
         if (getPlayerList()[curPlayer] instanceof PlayerAI) {
-            controllerGame.HandleContinue();
+            getControllerGame().HandleContinue();
         }
     }
-
 }
