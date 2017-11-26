@@ -287,6 +287,7 @@ public class ControllerGame {
         }
 
         for (int i = 0; i < Main.getGame().getPlayerNumber(); i++){
+            GridPanePlayer[i].setVisible(true);
             GridPanePlayer[i].setStyle("");
 
         // set
