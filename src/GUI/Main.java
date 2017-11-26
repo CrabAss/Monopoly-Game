@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * Class Main is used to excute the program and call main stage
@@ -55,7 +56,7 @@ public class Main extends Application {
      * @param width the stage width
      * @param height the stage height
      */
-    public static void setStage(Parent root, int width, int height) {
+    static void setStage(Parent root, int width, int height) {
         try {
             MainStage.hide();
             MainStage.getIcons().add(new Image("GUI/resources/icon.png"));
@@ -66,6 +67,10 @@ public class Main extends Application {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    static Stage getMainStage() {
+        return MainStage;
     }
 
     @Override
