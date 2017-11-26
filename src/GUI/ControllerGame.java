@@ -166,6 +166,8 @@ public class ControllerGame {
 
         File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
+            Main.getGame().initGame(6, 0);
+
             try {
 
                 Main.getGame().setLoadPath(file.getAbsolutePath());
