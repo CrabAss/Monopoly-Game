@@ -8,6 +8,8 @@ import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -31,11 +33,7 @@ public class ControllerGame {
     private final static int MAXPLAYERNUMBER = 6, MAXLANDNUMBER = 20;
 
     @FXML
-    private Label CurrentLandName;
-    @FXML
-    private Label CurrentLandPrice;
-    @FXML
-    private Label CurrentLandRent;
+    private Label CurrentLandName, CurrentLandPrice, CurrentLandRent, WinnerLbl;
 
     @FXML
     private Button ButtonAction, ButtonEndTurn;
@@ -74,9 +72,7 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    private GridPane TurnMenu;
-    @FXML
-    private GridPane ActionMenu;
+    private GridPane ActionMenu, FinishPane;
 
     @FXML
     private ImageView Dice1, Dice2;
@@ -86,7 +82,7 @@ public class ControllerGame {
     /**
      * @return the label landname
      */
-    Label getCurrentLandName() {
+    private Label getCurrentLandName() {
         return CurrentLandName;
     }
 
@@ -95,13 +91,6 @@ public class ControllerGame {
      */
     GridPane getActionMenu() {
         return ActionMenu;
-    }
-
-    /**
-     * @return the pane turn menu
-     */
-    GridPane getTurnMenu() {
-        return TurnMenu;
     }
 
     /**
@@ -224,7 +213,7 @@ public class ControllerGame {
                 Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().getPlayerList()[i]);
 
             for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
-                if (Main.getGame().getLandList()[i] instanceof  LandProperty){
+                if (Main.getGame().getLandList()[i] instanceof LandProperty){
                     ((LandProperty)Main.getGame().getLandList()[i]).getProperty().setBelongs(null);
                 }
             }
@@ -235,6 +224,7 @@ public class ControllerGame {
             }
 
             //System.out.println(Main.getGame().getPlayerList()[0].getPosition());
+            Main.getGame().clearWinner();
             updateGraph();
             Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
             Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
@@ -297,7 +287,7 @@ public class ControllerGame {
                     updateGraph();
                     Main.getGame().nextTurn();
                 }
-            }else {
+            } else {
                 if (player instanceof PlayerAI) {
                     Main.getGame().getControllerGame().HandleEndTurn();
                 }
@@ -336,6 +326,19 @@ public class ControllerGame {
           Main.getGame().nextTurn();
         }
         updateGraph();
+    }
+
+    /**
+     * handle restart event
+     */
+    public void HandleRestart() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
+            final int NEWGAMEHEIGHT = 204, NEWGAMEWIDTH = 600;
+            Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -394,6 +397,7 @@ public class ControllerGame {
                 String color = Color[Main.getGame().getCurPlayer()];
                 GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color);
 
+                FinishPane.setVisible(false);
                 Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
                 getCurrentLandName().setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
@@ -406,13 +410,16 @@ public class ControllerGame {
                     CurrentLandPrice.setText("--");
                     CurrentLandRent.setText("--");
                 }
-
             }
         } else {
-            getActionMenu().setDisable(true);
-            getTurnMenu().setDisable(true);
-            getCurrentLandName().setText("Finish!");
+            if (Main.getGame().getWinner() == null)
+                Main.getGame().EndGame();
+        }
+        if (Main.getGame().getWinner() != null) {
+            FinishPane.setVisible(true);
+            WinnerLbl.setText(Main.getGame().getWinner().getName() + "\nis the winner!");
+            String color = Color[Character.getNumericValue(Main.getGame().getWinner().getName().charAt(Main.getGame().getWinner().getName().length() - 1)) - 1];
+            FinishPane.setStyle("-fx-border-color: #000; -fx-background-color: " + color);
         }
     }
-
 }

@@ -91,7 +91,7 @@ public class GUIPlayer {
                     }
                 }
 
-            } else {
+            } else {    // normal process
                 Dice dice = new Dice();
                 dice.dice();
                 int step = dice.getStep();

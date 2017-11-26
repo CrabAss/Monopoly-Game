@@ -2,6 +2,7 @@ package GUI;
 
 import Cmd.Game.Game;
 import Cmd.Others.Output;
+import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import Cmd.Player.PlayerUser;
 import javafx.scene.control.Button;
@@ -19,6 +20,7 @@ public class GUIGame extends Game {
     private GUIOutput guiOutput;
     private int curPlayer;
     private String SavePath, LoadPath;
+    private Player gameWinner = null;    // winner
 
     /**
      * Build the GUIGame
@@ -122,6 +124,21 @@ public class GUIGame extends Game {
     }
 
     /**
+     * @return To get the game winner.
+     */
+    Player getWinner() {
+        return gameWinner;
+    }
+
+    /**
+     * To reset the game winner to null.
+     */
+    void clearWinner() {
+        //noinspection AssignmentToNull
+        gameWinner = null;
+    }
+
+    /**
      * @return return the GUIhelper list
      */
     GUIPlayer[] getGUIhelper() {
@@ -172,8 +189,10 @@ public class GUIGame extends Game {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
-            if (i <= getPlayerNumber() - NumberOfAI) getPlayerList()[i - 1] = new PlayerUser("Player " + i, getLandList()[getSTARTLAND()]);
-            else getPlayerList()[i - 1] = new PlayerAI("Player " + i, getLandList()[getSTARTLAND()]);
+            if (i <= getPlayerNumber() - NumberOfAI)
+                getPlayerList()[i - 1] = new PlayerUser("Player " + i, getLandList()[getSTARTLAND()]);
+            else
+                getPlayerList()[i - 1] = new PlayerAI("Player " + i, getLandList()[getSTARTLAND()]);
             GUIhelper[i - 1] = new GUIPlayer(getPlayerList()[i - 1]);
         }
         setRounds(0);
@@ -184,10 +203,16 @@ public class GUIGame extends Game {
     /**
      * This method is used to show the End Game interface
      */
-    private void EndGame() {
-        getControllerGame().getActionMenu().setDisable(true);
-        getControllerGame().getTurnMenu().setDisable(true);
-        getControllerGame().getCurrentLandName().setText("Finish!");
+    void EndGame() {
+        int maxvalue = 0;
+        for (Player player : getPlayerList())
+            if (player != null && !player.isDead() && player.getMoney() > maxvalue) {
+                maxvalue = player.getMoney();
+                gameWinner = player;
+            }
+
+        guiOutput.Print("Winner: " + gameWinner.toString());
+        getControllerGame().updateGraph();
     }
 
     /**
@@ -200,7 +225,8 @@ public class GUIGame extends Game {
             EndGame();
             return;
         }
-        if (getControllerGame().getActionMenu().isVisible()) getControllerGame().changeMenu();
+        if (getControllerGame().getActionMenu().isVisible())
+            getControllerGame().changeMenu();
         do {
             curPlayer++;
             if (curPlayer >= getPlayerNumber()) {
@@ -217,7 +243,7 @@ public class GUIGame extends Game {
         guiOutput.Print(Output.title("Player " + (curPlayer + 1)));
         getControllerGame().updateGraph();
         if (getPlayerList()[curPlayer] instanceof PlayerAI) {
-            Main.getGame().getControllerGame().HandleContinue();
+            getControllerGame().HandleContinue();
         }
     }
 }
