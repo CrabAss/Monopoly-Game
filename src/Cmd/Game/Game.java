@@ -141,6 +141,13 @@ public class Game {
         this.playerNumber = playerNumber;
     }
 
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
     /**
      * @param rounds The current round of the game.
      */
@@ -225,6 +232,7 @@ public class Game {
             for (int i = 1; i <= MAXLANDNUMBER; i++) {
                 oos.writeObject(landList[i]);
             }
+            Output.println("Game saved");
         } catch (Exception e) { e.printStackTrace(); }
     }
 

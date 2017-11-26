@@ -1,25 +1,22 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="Monopoly">
-    <output-path>$PROJECT_DIR$/out/artifacts/Monopoly</output-path>
+  <artifact type="javafx" build-on-make="true" name="MONOPOLY">
+    <output-path>$PROJECT_DIR$/out/artifacts/MONOPOLY</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="GUI.Main" />
-        <option name="description" value="" />
+        <option name="description" value="This is the game MONOPOLY as a project of COMP2021, PolyU." />
         <option name="height" value="480" />
         <option name="htmlPlaceholderId" value="" />
         <option name="nativeBundle" value="exe" />
         <option name="title" value="MONOPOLY" />
-        <option name="vendor" value="ProjectGroup 15, PolyU" />
-        <option name="version" value="0.1" />
+        <option name="vendor" value="ProjectGroup 15, COMP2021, PolyU" />
+        <option name="version" value="0.2" />
         <option name="width" value="854" />
       </options>
     </properties>
     <root id="root">
       <element id="archive" name="Monopoly.jar">
         <element id="module-output" name="Monopoly" />
-        <element id="directory" name="META-INF">
-          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-        </element>
       </element>
     </root>
   </artifact>

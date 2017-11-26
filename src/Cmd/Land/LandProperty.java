@@ -29,7 +29,7 @@ public class LandProperty extends Land {
     }
 
     @Override
-    public int run(Player player) throws BankruptException {
+    public void run(Player player) throws BankruptException {
         landOn(player);
 
         String hint = "0: do nothing; 1: rent " + property.toString() + ".";
@@ -45,7 +45,6 @@ public class LandProperty extends Land {
                 player.addProperty(property);
                 player.decMoney(property.getPrice());
                 property.setBelongs(player);
-                return -property.getPrice();
             }
         } else {
             if (property.getBelongs() == player) {
@@ -56,9 +55,7 @@ public class LandProperty extends Land {
                 Output.println(player + " has to pay to " + property.getBelongs() + ".");
                 player.decMoney(property.getRent());
                 property.getBelongs().incMoney(property.getRent());
-                return -property.getRent();
             }
         }
-        return 0;
     }
 }

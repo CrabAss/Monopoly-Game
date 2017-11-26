@@ -18,7 +18,7 @@ public class Start {
         int command;
         Output.println("This game is fictional.");
         while (true) {
-            Output.println(Output.title("Monopoly"));
+            Output.println(Output.title("MONOPOLY"));
             Output.println("1. New game");
             Output.println("2. Load game");
             Output.println("3. Quit");

@@ -15,6 +15,9 @@ public class GUIPlayer {
     public GUIPlayer(Player player){
         this.player = player;
     }
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public Player getPlayer() {
         return player;
@@ -34,7 +37,7 @@ public class GUIPlayer {
         return 0;
     }
 
-    public int run(){
+    public void run(){
         GUIOutput guiOutput = Main.getGame().getGuiOutput();
         try {
             int step = -1;
@@ -62,7 +65,6 @@ public class GUIPlayer {
                             Main.getGame().controllerGame.HandleEndTurn();
                     }
                 }
-                return -90;
 
             } else {
                 Dice dice = new Dice();
@@ -75,19 +77,17 @@ public class GUIPlayer {
 
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
-                    return Guimodule.run(player.getPosition(), player);
+                    Guimodule.run(player.getPosition(), player);
                 } else {
-                    int returnValue = player.getPosition().run(player);
+                    player.getPosition().run(player);
                     if (player instanceof PlayerAI) {
                         Main.getGame().controllerGame.HandleEndTurn();
                     }
-                    return returnValue;
                 }
             }
         } catch (BankruptException e) {
             Main.getGame().nextTurn();
         }
-        return 0;
     }
 
 }

@@ -20,9 +20,8 @@ public class LandGotoJail extends Land {
     }
 
     @Override
-    public int run(Player player) {
+    public void run(Player player) {
         landOn(player);
         player.gotoJail(jailGrid);
-        return 0;
     }
 }

@@ -16,11 +16,10 @@ public class LandTax extends Land {
     }
 
     @Override
-    public int run(Player player) {
+    public void run(Player player) {
         landOn(player);
         int Tax = player.getMoney() / 10;
         try { player.decMoney(Tax); }
         catch (Exception ignored) {}
-        return Tax;
     }
 }
