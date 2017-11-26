@@ -744,7 +744,7 @@
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="ActionLog" editable="false" prefHeight="307.0" prefWidth="187.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <TextArea fx:id="ActionLog" editable="false" prefHeight="307.0" prefWidth="187.0" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
          </children>

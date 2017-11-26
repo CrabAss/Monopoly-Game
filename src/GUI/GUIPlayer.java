@@ -72,7 +72,9 @@ public class GUIPlayer {
                 step = dice.getStep();
                 Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
                 Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
+
                 player.move(step);
+
                 Main.getGame().controllerGame.updateGraph();
 
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
