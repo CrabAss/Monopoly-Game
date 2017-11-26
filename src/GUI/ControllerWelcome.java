@@ -29,48 +29,46 @@ public class ControllerWelcome {
 
     @FXML
     private void HandleLoadGame(){
-        try {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Open Resource File");
-            //System.out.println(pic.getId());
 
-            File file = fileChooser.showOpenDialog(Main.getMainStage());
-            if (file != null) {
-                Main.getGame().initGame(6, 0);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        //System.out.println(pic.getId());
 
-                try {
-                    final int WIDTH = 854;
-                    final int HEIGHT = 480;
-                    Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
-                    Main.setStage(root, WIDTH, HEIGHT);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    Main.getGame().setLoadPath(file.getAbsolutePath());
-                    Main.getGame().loadGame();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
-                    Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().getPlayerList()[i]);
-                for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) {
-                    if (Main.getGame().getLandList()[i] instanceof LandProperty) {
-                        ((LandProperty) Main.getGame().getLandList()[i]).getProperty().setBelongs(null);
-                    }
-                }
-                for (int i = 0; i < Main.getGame().getPlayerNumber(); i++) {
-                    for (Property x : Main.getGame().getPlayerList()[i].getPropertyList()) {
-                        x.setBelongs(Main.getGame().getPlayerList()[i]);
-                    }
-                }
-                Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
-                Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
-                Main.getGame().nextTurn();
+        File file = fileChooser.showOpenDialog(Main.getMainStage());
+        if (file != null) {
+            Main.getGame().initGame(6, 0);
+
+            try {
+                final int WIDTH = 854;
+                final int HEIGHT = 480;
+                Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
+                Main.setStage(root, WIDTH, HEIGHT);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            e.printStackTrace();
+            try {
+                Main.getGame().setLoadPath(file.getAbsolutePath());
+                Main.getGame().loadGame();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
+                Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().getPlayerList()[i]);
+            for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++) {
+                if (Main.getGame().getLandList()[i] instanceof LandProperty) {
+                    ((LandProperty) Main.getGame().getLandList()[i]).getProperty().setBelongs(null);
+                }
+            }
+            for (int i = 0; i < Main.getGame().getPlayerNumber(); i++) {
+                for (Property x : Main.getGame().getPlayerList()[i].getPropertyList()) {
+                    x.setBelongs(Main.getGame().getPlayerList()[i]);
+                }
+            }
+            Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
+            Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
+            Main.getGame().nextTurn();
         }
+
     }
 
     @FXML
