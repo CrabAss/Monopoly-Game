@@ -247,6 +247,7 @@ public class Game {
             } catch (Exception e) {
                 e.printStackTrace();
                 loadSuccess = false;
+                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
             }
         }
         Output.println("Load successfully.");
