@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 /**
  * Controller for the JavaFX Form: FormWelcome.
