@@ -30,6 +30,8 @@ public class ControllerNewGame {
 
     @FXML
     private void HandleStartGame(ActionEvent event){
+
+        Main.newGame();
         Main.getGame().initGame((int)(NumberOfPlayer.getValue()), (int)(NumberOfAI.getValue()));
 
         try {

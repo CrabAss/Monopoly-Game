@@ -18,7 +18,7 @@ public class GUILandProperty {
     }
 
     public void run(Cmd.Land.Land Land, Cmd.Player.Player player){
-        Cmd.Land.LandProperty curLand = (Cmd.Land.LandProperty)Land;
+        Cmd.Land.LandProperty curLand = (Cmd.Land.LandProperty) Land;
         Cmd.Others.Property property = curLand.getProperty();
         curLand.landOn(player);
         setCurProperty(property);

@@ -28,13 +28,14 @@ public class Output {
      * @param oup the message to print out
      */
     public static void println(String oup) {
-        if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
-        else {
-            try {
+        try {
+            if (GUI.Main.isGUI())
+                GUI.Main.getGame().getGuiOutput().Print(oup);
+            else {
                 System.out.println(oup);
                 //sleep(100);
-            } catch (Exception ignored) {}
-        }
+            }
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -46,8 +47,9 @@ public class Output {
         final int MAXTITLELENGTH = GUI.Main.isGUI() ? GUI_MAXTITLELENGTH : CMD_MAXTITLELENGTH;
         int l = (MAXTITLELENGTH - oup.length()) / 2;
         int r = MAXTITLELENGTH - l - oup.length();
-        for (int i = 0; i < l; i++) oup = '-' + oup;
-        for (int i = 0; i < r; i++) oup = oup + '-';
+        oup = " " + oup + " ";
+        for (int i = 0; i < l - 1; i++) oup = '-' + oup;
+        for (int i = 0; i < r - 1; i++) oup = oup + '-';
         oup = "\n" + oup;
         return oup;
     }

@@ -15,7 +15,7 @@ public class Main extends Application {
     private final static int WIDTH = 854;
     private final static int HEIGHT = 480;
     private static Stage MainStage;
-    private static GUIGame game = new GUIGame();
+    private static GUIGame game;
     private static int GUI = 0;
 
     /**
@@ -30,6 +30,13 @@ public class Main extends Application {
      */
     public static GUIGame getGame() {
         return game;
+    }
+
+    /**
+     * To create a new game.
+     */
+    public static void newGame() {
+        Main.game = new GUIGame();
     }
 
     /**
@@ -74,10 +81,6 @@ public class Main extends Application {
         } catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    static Stage getMainStage() {
-        return MainStage;
     }
 
     @Override

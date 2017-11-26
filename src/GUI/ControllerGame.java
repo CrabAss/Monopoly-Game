@@ -8,8 +8,9 @@ import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import Cmd.Player.PlayerUser;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -23,8 +24,6 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -33,9 +32,10 @@ import java.util.TimerTask;
 public class ControllerGame {
 
     private final static int MAXPLAYERNUMBER = 6, MAXLANDNUMBER = 20;
+    private final int NEWGAMEWIDTH = 600, NEWGAMEHEIGHT = 204;
 
     @FXML
-    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent;
+    public Label CurrentLandName, CurrentLandPrice, CurrentLandRent, WinnerLbl;
 
     @FXML
     public Button ButtonContinue;
@@ -77,7 +77,7 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    public GridPane TurnMenu, ActionMenu;
+    public GridPane TurnMenu, ActionMenu, FinishPane;
 
     @FXML
     private ImageView Dice1, Dice2;
@@ -181,7 +181,7 @@ public class ControllerGame {
                 Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().getPlayerList()[i]);
 
             for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
-                if (Main.getGame().getLandList()[i] instanceof  LandProperty){
+                if (Main.getGame().getLandList()[i] instanceof LandProperty){
                     ((LandProperty)Main.getGame().getLandList()[i]).getProperty().setBelongs(null);
                 }
             }
@@ -278,6 +278,15 @@ public class ControllerGame {
         updateGraph();
     }
 
+    public void HandleRestart() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
+            Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     void updateGraph(){
 
         // reset
@@ -328,7 +337,7 @@ public class ControllerGame {
         if (Main.getGame().getPlayerAlive() > 1 && Main.getGame().getRounds() <= 100) {
             if (Main.getGame().getCurPlayer() < Main.getGame().getPlayerNumber()) {
                 GridPanePlayer[Main.getGame().getCurPlayer()].setStyle("-fx-background-color:" + color[Main.getGame().getCurPlayer()]);
-
+                FinishPane.setVisible(false);
                 Player player = Main.getGame().getPlayerList()[Main.getGame().getCurPlayer()];
                 CurrentLandName.setText(player.getPosition().getName());
                 if (player.getPosition() instanceof LandProperty) {
@@ -341,12 +350,14 @@ public class ControllerGame {
                     CurrentLandPrice.setText("--");
                     CurrentLandRent.setText("--");
                 }
-
             }
         } else {
-            ActionMenu.setDisable(true);
-            TurnMenu.setDisable(true);
-            CurrentLandName.setText("Finish!");
+            if (Main.getGame().getWinner() == null)
+                Main.getGame().EndGame();
+        }
+        if (Main.getGame().getWinner() != null) {
+            FinishPane.setVisible(true);
+            WinnerLbl.setText(Main.getGame().getWinner().getName() + "\nis the winner!");
         }
     }
 }
