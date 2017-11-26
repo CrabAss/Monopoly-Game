@@ -18,10 +18,9 @@ public class GUIPlayer {
     /**
      * @param player the player
      */
-    public GUIPlayer(Player player){
+    GUIPlayer(Player player){
         this.player = player;
     }
-
 
     /**
      * @param player set the player
@@ -30,35 +29,50 @@ public class GUIPlayer {
         this.player = player;
     }
 
+    /**
+     * @return the player
+     */
     public Player getPlayer() {
         return player;
     }
 
-    public int getMoney() {return player.getMoney();}
+    /**
+     * @return the money
+     */
+    int getMoney() {return player.getMoney();}
 
-    public String getStatus(){
+    /**
+     * @return the player current position
+     */
+    String getStatus(){
         if (player.isInJail()) return "In Jail";
         else if (player.isDead()) return "Eliminated";
         else return "Playing";
     }
 
-    public int getPosition(){
+    /**
+     * @return the GUI postion of player
+     */
+    int getPosition(){
         for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++)
             if (player.getPosition() == Main.getGame().getLandList()[i]) return i;
         return 0;
     }
 
+    /**
+     * For GUIplayer to run
+     * judge if the player is in Jail first, if yes, then adjust menu,
+     * if not, then dice and go
+     */
     public void run(){
         GUIOutput guiOutput = Main.getGame().getGuiOutput();
         try {
-            int step = -1;
-            Main.getGame().Action.setDisable(true);
+            Main.getGame().getAction().setDisable(true);
 
             if (player.isDead())
-                Main.getGame().controllerGame.HandleEndTurn();
+                Main.getGame().getControllerGame().HandleEndTurn();
 
             else if (player.isInJail()) {
-
                 int jailDay = player.getJailDay();
                 player.setJailDay(jailDay + 1);
 
@@ -66,27 +80,26 @@ public class GUIPlayer {
                 if (jailDay <= 3) {
                     guiOutput.Print(player + " has to decide to whether pay to release or dice. ");
                     guiOutput.Print("(will get released if a double is thrown)");
-                    Main.getGame().Action.setDisable(false);
-                    Main.getGame().EndTurn.setText("Dice");
+                    Main.getGame().getAction().setDisable(false);
+                    Main.getGame().getEndTurn().setText("Dice");
                     if (player instanceof PlayerAI){
                         Random rand = new Random();
-                        if (rand.nextInt(1) == 0)
-                            Main.getGame().controllerGame.HandleAction();
+                        if (rand.nextInt(2) == 0)
+                            Main.getGame().getControllerGame().HandleAction();
                         else
-                            Main.getGame().controllerGame.HandleEndTurn();
+                            Main.getGame().getControllerGame().HandleEndTurn();
                     }
                 }
 
             } else {
                 Dice dice = new Dice();
                 dice.dice();
-                step = dice.getStep();
-                Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
-                Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
+                int step = dice.getStep();
+                Main.getGame().getDice1().setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
+                Main.getGame().getDice2().setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
 
                 player.move(step);
-
-                Main.getGame().controllerGame.updateGraph();
+                Main.getGame().getControllerGame().updateGraph();
 
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
@@ -94,7 +107,7 @@ public class GUIPlayer {
                 } else {
                     player.getPosition().run(player);
                     if (player instanceof PlayerAI) {
-                        Main.getGame().controllerGame.HandleEndTurn();
+                        Main.getGame().getControllerGame().HandleEndTurn();
                     }
                 }
             }
@@ -102,5 +115,4 @@ public class GUIPlayer {
             Main.getGame().nextTurn();
         }
     }
-
 }

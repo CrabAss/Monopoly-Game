@@ -5,7 +5,6 @@ import Cmd.Others.Property;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 
@@ -16,23 +15,12 @@ import java.io.File;
  */
 public class ControllerWelcome {
 
-    private final int NEWGAMEWIDTH = 600;
-    private final int NEWGAMEHEIGHT = 204;
-
-    private final int WIDTH = 854;
-    private final int HEIGHT = 480;
-
     @FXML
-    private Button NewGame;
-    @FXML
-    private Button LoadGame;
-    @FXML
-    private Button Quit;
-
-    @FXML
-    private void HandleNewGame(ActionEvent event){
+    private void HandleNewGame(){
         try{
             Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
+            final int NEWGAMEWIDTH = 600;
+            final int NEWGAMEHEIGHT = 204;
             Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
         } catch (Exception e){
             e.printStackTrace();
@@ -40,7 +28,7 @@ public class ControllerWelcome {
     }
 
     @FXML
-    private void HandleLoadGame(ActionEvent event){
+    private void HandleLoadGame(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         //System.out.println(pic.getId());
@@ -50,6 +38,8 @@ public class ControllerWelcome {
             Main.getGame().initGame(6, 0);
 
             try{
+                final int WIDTH = 854;
+                final int HEIGHT = 480;
                 Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
                 Main.setStage(root, WIDTH, HEIGHT);
             } catch (Exception e){
@@ -80,7 +70,7 @@ public class ControllerWelcome {
     }
 
     @FXML
-    private void HandleQuit(ActionEvent event){
+    private void HandleQuit(){
         System.exit(0);
     }
 

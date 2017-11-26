@@ -23,6 +23,13 @@ public class Main extends Application {
     private static void setMainStage(Stage PrimaryStage) { MainStage = PrimaryStage; }
 
     /**
+     * @return the mainstage of program
+     */
+    static Stage getMainStage() {
+        return MainStage;
+    }
+
+    /**
      * @return the current game process
      */
     public static GUIGame getGame() {
@@ -47,13 +54,6 @@ public class Main extends Application {
      * @return the GUI flag
      */
     public static boolean isGUI() {return GUI == 1;}
-
-    /**
-     * @return the main stage
-     */
-    public static Stage getMainStage() {
-        return MainStage;
-    }
 
     /**
      * @param root the fxml

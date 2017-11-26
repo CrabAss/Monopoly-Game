@@ -8,7 +8,6 @@ import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
 import Cmd.Player.PlayerUser;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,8 +22,6 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -107,7 +104,6 @@ public class ControllerGame {
                 Land11, Land12, Land13, Land14, Land15, Land16, Land17, Land18, Land19, Land20};
 
         Main.getGame().setGuiOutput(new GUIOutput(ActionLog));
-        Main.getGame().setContinue(ButtonContinue);
         Main.getGame().setEndTurn(ButtonEndTurn);
         Main.getGame().setAction(ButtonAction);
         Main.getGame().setDice1(Dice1);
@@ -212,10 +208,10 @@ public class ControllerGame {
 
             Dice dice = new Dice();
             dice.dice();
-            Main.getGame().Dice1.setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
-            Main.getGame().Dice2.setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
-            Main.getGame().EndTurn.setText("End turn");
-            Main.getGame().Action.setDisable(true);
+            Main.getGame().getDice1().setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
+            Main.getGame().getDice2().setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
+            Main.getGame().getEndTurn().setText("End turn");
+            Main.getGame().getAction().setDisable(true);
 
             if (dice.isEqual()) {
                 player.release();
@@ -223,13 +219,16 @@ public class ControllerGame {
 
                 player.move(step);
 
-                Main.getGame().controllerGame.updateGraph();
+                Main.getGame().getControllerGame().updateGraph();
                 if (player.getPosition() instanceof Cmd.Land.LandProperty){
                     GUILandProperty Guimodule = new GUILandProperty();
                     Guimodule.run(player.getPosition(), player);
                 } else {
                     try {
                         player.getPosition().run(player);
+                        if (player instanceof PlayerAI) {
+                            Main.getGame().getControllerGame().HandleEndTurn();
+                        }
                     } catch (Exception e) {
                         updateGraph();
                         Main.getGame().nextTurn();
@@ -244,6 +243,10 @@ public class ControllerGame {
                 } catch (BankruptException e) {
                     updateGraph();
                     Main.getGame().nextTurn();
+                }
+            }else {
+                if (player instanceof PlayerAI) {
+                    Main.getGame().getControllerGame().HandleEndTurn();
                 }
             }
         }
@@ -262,11 +265,11 @@ public class ControllerGame {
                 player.addProperty(property);
                 player.decMoney(property.getPrice());
                 property.setBelongs(player);
-                Main.getGame().Action.setDisable(true);
+                Main.getGame().getAction().setDisable(true);
 
             } else { // In Jail
                 Output.println(player + " decides to pay.");
-                Main.getGame().EndTurn.setText("End turn");
+                Main.getGame().getEndTurn().setText("End turn");
                 player.decMoney(90);
                 player.release();
                 guiPlayer.run();
