@@ -40,6 +40,7 @@ public class Main extends Application {
      * To create a new game.
      */
     static void newGame() {
+        System.gc();
         Main.game = new GUIGame();
     }
 

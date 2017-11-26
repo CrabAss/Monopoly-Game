@@ -7,13 +7,12 @@ import Cmd.Others.Output;
 import Cmd.Others.Property;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerAI;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
@@ -22,6 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.ListIterator;
 import java.util.Objects;
 
 
@@ -77,6 +77,15 @@ public class ControllerGame {
     @FXML
     private ImageView Dice1, Dice2;
     private final String Color[] = {"#F8BBD0" , "#FFE0B2", "#C8E6C9" , "#B2EBF2" , "#C5CAE9" , "#E1BEE7"};
+    private final Image DiceImg[] = {
+            null,
+            new Image("GUI/resources/d1.jpg"),
+            new Image("GUI/resources/d2.jpg"),
+            new Image("GUI/resources/d3.jpg"),
+            new Image("GUI/resources/d4.jpg"),
+            new Image("GUI/resources/d5.jpg"),
+            new Image("GUI/resources/d6.jpg"),
+    };
 
 
     /**
@@ -250,8 +259,8 @@ public class ControllerGame {
 
             Dice dice = new Dice();
             dice.dice();
-            Main.getGame().getDice1().setImage(new Image("GUI/resources/d" + dice.getX() + ".jpg"));
-            Main.getGame().getDice2().setImage(new Image("GUI/resources/d" + dice.getY() + ".jpg"));
+            Main.getGame().getDice1().setImage(DiceImg[dice.getX()]);
+            Main.getGame().getDice2().setImage(DiceImg[dice.getY()]);
             Main.getGame().getEndTurn().setText("End turn");
             Main.getGame().getAction().setDisable(true);
 
@@ -412,14 +421,30 @@ public class ControllerGame {
                 }
             }
         } else {
-            if (Main.getGame().getWinner() == null)
+            if (Main.getGame().getWinner().isEmpty())
                 Main.getGame().EndGame();
         }
-        if (Main.getGame().getWinner() != null) {
-            FinishPane.setVisible(true);
-            WinnerLbl.setText(Main.getGame().getWinner().getName() + "\nis the winner!");
-            String color = Color[Character.getNumericValue(Main.getGame().getWinner().getName().charAt(Main.getGame().getWinner().getName().length() - 1)) - 1];
+        if (!Main.getGame().getWinner().isEmpty()) {
+            StringBuilder str = new StringBuilder();
+            ListIterator it = Main.getGame().getWinner().listIterator();
+            str.append(((Player) it.next()).getName());
+            String nextString;
+            while (it.hasNext()) {
+                str.append(" & ");
+                nextString = ((Player) it.next()).getName();
+                str.append(nextString.charAt(nextString.length() - 1));
+            }
+
+            WinnerLbl.setText(str.toString() + "\nis the winner!");
+            String color;
+            if (Main.getGame().getWinner().size() == 1) {
+                String winnerString = Main.getGame().getWinner().get(0).toString();
+                color = Color[Character.getNumericValue(winnerString.charAt(winnerString.length() - 1)) - 1];
+            } else
+                color = "#fff";
             FinishPane.setStyle("-fx-border-color: #000; -fx-background-color: " + color);
+
+            FinishPane.setVisible(true);
         }
     }
 }

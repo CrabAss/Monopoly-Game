@@ -8,6 +8,8 @@ import Cmd.Player.PlayerUser;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
 
+import java.util.*;
+
 /**
  * The GUIGame is a subclass of Game,
  * implement more methods which focus on GUI
@@ -20,7 +22,7 @@ public class GUIGame extends Game {
     private GUIOutput guiOutput;
     private int curPlayer;
     private String SavePath, LoadPath;
-    private Player gameWinner = null;    // winner
+    private List<Player> gameWinner = new ArrayList<>();
 
     /**
      * Build the GUIGame
@@ -126,7 +128,7 @@ public class GUIGame extends Game {
     /**
      * @return To get the game winner.
      */
-    Player getWinner() {
+    List<Player> getWinner() {
         return gameWinner;
     }
 
@@ -134,8 +136,7 @@ public class GUIGame extends Game {
      * To reset the game winner to null.
      */
     void clearWinner() {
-        //noinspection AssignmentToNull
-        gameWinner = null;
+        gameWinner.clear();
     }
 
     /**
@@ -204,16 +205,22 @@ public class GUIGame extends Game {
      * This method is used to show the End Game interface
      */
     void EndGame() {
+        clearWinner();
         int maxvalue = 0;
         for (int i = 0; i < getPlayerNumber(); i++) {
             Player player = getPlayerList()[i];
             if (player != null && !player.isDead() && player.getMoney() > maxvalue) {
                 maxvalue = player.getMoney();
-                gameWinner = player;
+            }
+        }
+        for (int i = 0; i < getPlayerNumber(); i++) {
+            Player player = getPlayerList()[i];
+            if (player != null && !player.isDead() && player.getMoney() == maxvalue) {
+                gameWinner.add(player);
             }
         }
 
-        guiOutput.Print("Winner: " + gameWinner.toString());
+        guiOutput.Print("\nWinner: " + gameWinner.toString());
         getControllerGame().updateGraph();
     }
 
