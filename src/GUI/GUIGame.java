@@ -9,38 +9,68 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.*;
 
 public class GUIGame extends Game {
-    private GUIPlayer GUIhelper[] = new GUIPlayer[getMAXPLAYERNUMBER()];
-    private GUIOutput guiOutput;
     public Button Continue, Save, Load, Auto, Retire;
     public Button Action, EndTurn;
     public ImageView Dice1, Dice2;
     public ControllerGame controllerGame;
+    private GUIPlayer GUIhelper[] = new GUIPlayer[getMAXPLAYERNUMBER()];
+    private GUIOutput guiOutput;
     private int curPlayer;
     private String SavePath, LoadPath;
 
 
-    public void setContinue(Button Continue){this.Continue = Continue;}
-    public void setSave(Button Save){this.Save = Save;}
-    public void setLoad(Button Load){this.Load = Load;}
-    public void setAuto(Button Auto){this.Auto = Auto;}
-    public void setRetire(Button Retire){this.Retire = Retire;}
+    GUIGame() {
+        super();
+    }
+
+    public void setContinue(Button Continue) {
+        this.Continue = Continue;
+    }
+
+    public void setSave(Button Save) {
+        this.Save = Save;
+    }
+
+    public void setLoad(Button Load) {
+        this.Load = Load;
+    }
+
+    public void setAuto(Button Auto) {
+        this.Auto = Auto;
+    }
+
+    public void setRetire(Button Retire) {
+        this.Retire = Retire;
+    }
+
     public void setEndTurn(Button endTurn) {
         EndTurn = endTurn;
     }
+
     public void setAction(Button action) {
         Action = action;
     }
-    public void setLoadPath(String loadPath) {
-        LoadPath = loadPath;
+
+    public String getSavePath() {
+        return SavePath;
     }
+
     public void setSavePath(String savePath) {
         SavePath = savePath;
     }
-    public String getSavePath() {return SavePath; }
-    public String getLoadPath() { return LoadPath; }
+
+    public String getLoadPath() {
+        return LoadPath;
+    }
+
+    public void setLoadPath(String loadPath) {
+        LoadPath = loadPath;
+    }
 
     @Override
-    public int getRounds() { return super.getRounds(); }
+    public int getRounds() {
+        return super.getRounds();
+    }
 
     public void setControllerGame(ControllerGame controllerGame) {
         this.controllerGame = controllerGame;
@@ -54,17 +84,21 @@ public class GUIGame extends Game {
         Dice2 = dice2;
     }
 
-    public int getCurPlayer() {return curPlayer;}
-    public GUIOutput getGuiOutput() {return guiOutput;}
-
-    GUIGame(){super();}
-
-    public void setGuiOutput(TextArea textArea) { this.guiOutput = new GUIOutput(textArea); }
+    public int getCurPlayer() {
+        return curPlayer;
+    }
 
     public void setCurPlayer(int curPlayer) {
         this.curPlayer = curPlayer;
     }
 
+    public GUIOutput getGuiOutput() {
+        return guiOutput;
+    }
+
+    public void setGuiOutput(TextArea textArea) {
+        this.guiOutput = new GUIOutput(textArea);
+    }
 
     public GUIPlayer[] getGUIhelper() {
         return GUIhelper;
@@ -74,7 +108,8 @@ public class GUIGame extends Game {
         setPlayerNumber(NumberOfplayer);
 
         for (int i = 1; i <= getPlayerNumber(); i++) {
-            if (i <= getPlayerNumber() - NumberOfAI) playerList[i - 1] = new PlayerUser("Player " + i, landList[getSTARTLAND()]);
+            if (i <= getPlayerNumber() - NumberOfAI)
+                playerList[i - 1] = new PlayerUser("Player " + i, landList[getSTARTLAND()]);
             else playerList[i - 1] = new PlayerAI("Player " + i, landList[getSTARTLAND()]);
             GUIhelper[i - 1] = new GUIPlayer(playerList[i - 1]);
         }
@@ -82,13 +117,14 @@ public class GUIGame extends Game {
         curPlayer = 10;
         setPlayerAlive(getPlayerNumber());
     }
-    public void EndGame(){
+
+    public void EndGame() {
         controllerGame.ActionMenu.setDisable(true);
         controllerGame.TurnMenu.setDisable(true);
         controllerGame.CurrentLandName.setText("Finish!");
     }
 
-    public void nextTurn(){
+    public void nextTurn() {
         if (getPlayerAlive() == 1) {
             EndGame();
             return;

@@ -11,6 +11,9 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
+/**
+ * Controller for the JavaFX Form: FormWelcome.
+ */
 public class ControllerWelcome {
 
     private final int NEWGAMEWIDTH = 600;
@@ -55,8 +58,8 @@ public class ControllerWelcome {
             try {
                 Main.getGame().setLoadPath(file.getAbsolutePath());
                 Main.getGame().loadGame();
-            } catch (Exception ex) {
-                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, e);
             }
             for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
                 Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().playerList[i]);

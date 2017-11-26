@@ -7,6 +7,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
+/**
+ * Controller for the JavaFX Form: FormNewGame.
+ */
 public class ControllerNewGame {
 
     private final int WIDTH = 854;

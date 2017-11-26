@@ -1,9 +1,8 @@
 package Cmd.Others;
 
-import static java.lang.Thread.sleep;
-
 public class Output {
-    private final static int MAXTITLELENGTH = 40;
+    private final static int CMD_MAXTITLELENGTH = 40;
+    private final static int GUI_MAXTITLELENGTH = 22;
 
     public static void print(String oup) {
         if (GUI.Main.isGUI()) GUI.Main.getGame().getGuiOutput().Print(oup);
@@ -26,6 +25,7 @@ public class Output {
     }
 
     public static String title(String oup) {
+        final int MAXTITLELENGTH = GUI.Main.isGUI() ? GUI_MAXTITLELENGTH : CMD_MAXTITLELENGTH;
         int l = (MAXTITLELENGTH - oup.length()) / 2;
         int r = MAXTITLELENGTH - l - oup.length();
         for (int i = 0; i < l; i++) oup = '-' + oup;
