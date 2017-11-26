@@ -19,7 +19,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.util.Objects;
 
 import static java.lang.Thread.sleep;
@@ -138,6 +140,62 @@ public class ControllerGame {
         }
         updateGraph();
         HandleContinue();
+    }
+    @FXML
+    public void HandleSave(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        //System.out.println(pic.getId());
+
+        File file = fileChooser.showSaveDialog(Main.getMainStage());
+        if (file != null) {
+            try {
+                Main.getGame().setCurrentPlayer(Main.getGame().getCurPlayer());
+                Main.getGame().setSavePath(file.getAbsolutePath());
+                Main.getGame().saveGame();
+
+            } catch (Exception ex) {
+                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    @FXML
+    public void HandleLoad() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        //System.out.println(pic.getId());
+
+        File file = fileChooser.showOpenDialog(Main.getMainStage());
+        if (file != null) {
+            Main.getGame().initGame(6, 0);
+
+            try {
+
+                Main.getGame().setLoadPath(file.getAbsolutePath());
+                Main.getGame().loadGame();
+            } catch (Exception ex) {
+                //Logger.getLogger(JavaFX_Text.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (int i = 0; i < Main.getGame().getPlayerNumber(); i++)
+                Main.getGame().getGUIhelper()[i].setPlayer(Main.getGame().playerList[i]);
+
+            for (int i = 1; i <= Main.getGame().getMAXLANDNUMBER(); i++){
+                if (Main.getGame().landList[i] instanceof  LandProperty){
+                    ((LandProperty)Main.getGame().landList[i]).getProperty().setBelongs(null);
+                }
+            }
+            for (int i = 0; i < Main.getGame().getPlayerNumber(); i++) {
+                for (Property x : Main.getGame().playerList[i].propertyList) {
+                    x.setBelongs(Main.getGame().playerList[i]);
+                }
+            }
+
+            System.out.println(Main.getGame().playerList[0].getPosition());
+            updateGraph();
+            Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
+            Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
+            Main.getGame().nextTurn();
+        }
     }
 
     @FXML

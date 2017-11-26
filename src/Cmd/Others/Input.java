@@ -1,5 +1,6 @@
 package Cmd.Others;
 
+import GUI.Main;
 import com.sun.xml.internal.fastinfoset.tools.FI_SAX_Or_XML_SAX_DOM_SAX_SAXEvent;
 
 import java.io.FileInputStream;
@@ -22,14 +23,14 @@ public class Input {
         catch (Exception e) { return -1; }
         return val;
     }
-
     public static ObjectInputStream getInputStream(String hint) {
         ObjectInputStream ois = null;
         String path;
         while (ois == null) {
             try {
-                Output.println(hint);
-                path = scanner.next();
+                if (!GUI.Main.isGUI()) Output.println(hint);
+                if (GUI.Main.isGUI()) path = Main.getGame().getLoadPath();
+                else path = scanner.next();
                 FileInputStream fis = new FileInputStream(path);
                 ois = new ObjectInputStream(fis);
             } catch (Exception e) {
@@ -45,8 +46,9 @@ public class Input {
         String path;
         while (oos == null) {
             try {
-                Output.println(hint);
-                path = scanner.next();
+                if (!GUI.Main.isGUI()) Output.println(hint);
+                if (GUI.Main.isGUI()) path = Main.getGame().getSavePath();
+                else path = scanner.next();
                 FileOutputStream fos = new FileOutputStream(path);
                 oos = new ObjectOutputStream(fos);
             } catch (Exception e) {

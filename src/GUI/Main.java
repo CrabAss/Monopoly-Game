@@ -18,6 +18,9 @@ public class Main extends Application {
     private static void setMainStage(Stage PrimaryStage) {
         MainStage = PrimaryStage;
     }
+    public static Stage getMainStage() {
+        return MainStage;
+    }
 
     /**
      * @return
