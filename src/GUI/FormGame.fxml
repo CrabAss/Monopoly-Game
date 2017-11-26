@@ -734,7 +734,7 @@
                            <Insets />
                        </GridPane.margin>
                    </Text>
-                  <GridPane fx:id="FinishPane" style="-fx-background-color: #fff;; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="4">
+                  <GridPane fx:id="FinishPane" alignment="CENTER" style="-fx-background-color: #fff;; -fx-border-color: #000;" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="4">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -747,12 +747,12 @@
                      <children>
                         <Label text="Congrats!" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
                            <font>
-                              <Font name="Georgia Italic" size="36.0" />
+                              <Font name="Georgia Bold Italic" size="36.0" />
                            </font>
                         </Label>
                         <Label fx:id="WinnerLbl" text="Player 1&#10;is the winner!" textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Georgia Italic" size="24.0" />
                            </font>
                         </Label>
                         <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#HandleRestart" text="Restart" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -767,7 +767,7 @@
                         </Button>
                      </children>
                      <padding>
-                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                        <Insets bottom="60.0" left="40.0" right="40.0" top="60.0" />
                      </padding>
                   </GridPane>
                </children>

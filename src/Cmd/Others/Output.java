@@ -45,12 +45,19 @@ public class Output {
      */
     public static String title(String oup) {
         final int MAXTITLELENGTH = GUI.Main.isGUI() ? GUI_MAXTITLELENGTH : CMD_MAXTITLELENGTH;
+        StringBuilder str = new StringBuilder(oup);
+
         int l = (MAXTITLELENGTH - oup.length()) / 2;
         int r = MAXTITLELENGTH - l - oup.length();
-        oup = " " + oup + " ";
-        for (int i = 0; i < l - 1; i++) oup = '-' + oup;
-        for (int i = 0; i < r - 1; i++) oup = oup + '-';
-        oup = "\n" + oup;
-        return oup;
+
+        str.insert(0, ' ');
+        str.append(' ');
+        for (int i = 0; i < l - 1; i++)
+            str.insert(0, '-');
+        for (int i = 0; i < r - 1; i++)
+            str.append('-');
+        str.insert(0, '\n');
+
+        return str.toString();
     }
 }

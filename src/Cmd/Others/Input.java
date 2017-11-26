@@ -1,7 +1,6 @@
 package Cmd.Others;
 
 import GUI.Main;
-import com.sun.javaws.exceptions.ExitException;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

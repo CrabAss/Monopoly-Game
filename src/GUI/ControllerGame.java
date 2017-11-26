@@ -72,7 +72,7 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    private GridPane TurnMenu, ActionMenu, FinishPane;
+    private GridPane ActionMenu, FinishPane;
 
     @FXML
     private ImageView Dice1, Dice2;
@@ -91,13 +91,6 @@ public class ControllerGame {
      */
     GridPane getActionMenu() {
         return ActionMenu;
-    }
-
-    /**
-     * @return the pane turn menu
-     */
-    GridPane getTurnMenu() {
-        return TurnMenu;
     }
 
     /**

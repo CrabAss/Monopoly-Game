@@ -7,7 +7,6 @@ import Cmd.Player.Player;
  * The start grid.
  */
 public class LandStart extends Land {
-    private final int BONUSMONEY = 1500;
     /**
      * Initialize landStart.
      * @param name Initialization value.
@@ -30,6 +29,7 @@ public class LandStart extends Land {
      */
     public void pass(Player player) {
         Output.println(player + " passes " + this + ".");
+        final int BONUSMONEY = 1500;
         player.incMoney(BONUSMONEY);
     }
 }
