@@ -1,6 +1,5 @@
 package Cmd;
 
-import Cmd.CmdTest;
 import Cmd.Land.Land;
 import Cmd.Land.LandOrdinary;
 import Cmd.Player.Player;

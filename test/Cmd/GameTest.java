@@ -3,7 +3,10 @@ package Cmd;
 import Cmd.Game.Game;
 import Cmd.Player.PlayerAI;
 import Cmd.Player.PlayerUser;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Assert;
 
 /**
  * Test Game
@@ -38,9 +41,9 @@ public class GameTest {
     @Test
     public void getPlayerAlive() {
         CmdTest.resetSystemOut();
-        assert game.getPlayerAlive() == 2;
+        Assert.assertEquals(game.getPlayerAlive(), 2);
         game.getPlayerList()[0].retired();
-        assert game.getPlayerAlive() == 1;
+        Assert.assertEquals(game.getPlayerAlive(), 1);
     }
 
     /**
@@ -48,7 +51,7 @@ public class GameTest {
      */
     @Test
     public void getPlayerNumber() {
-        assert game.getPlayerNumber() == 2;
+        Assert.assertEquals(game.getPlayerNumber(), 2);
     }
 
     /**
@@ -57,7 +60,7 @@ public class GameTest {
     @Test
     public void getMAXLANDNUMBER() {
         final int CORRECT = 20;
-        assert game.getMAXLANDNUMBER() == CORRECT;
+        Assert.assertEquals(game.getMAXLANDNUMBER(), CORRECT);
     }
 
     /**
@@ -65,7 +68,7 @@ public class GameTest {
      */
     @Test
     public void getMAXPLAYERNUMBER() {
-        assert game.getMAXPLAYERNUMBER() == 6;
+        Assert.assertEquals(game.getMAXPLAYERNUMBER(), 6);
     }
 
     /**
@@ -91,7 +94,7 @@ public class GameTest {
     @Test
     public void setPlayerAlive() {
         game.setPlayerAlive(2);
-        assert game.getPlayerAlive() == 2;
+        Assert.assertEquals(game.getPlayerAlive(), 2);
     }
 
     /**
@@ -99,9 +102,9 @@ public class GameTest {
      */
     @Test
     public void getSetCurrentPlayer() {
-        assert game.getCurrentPlayer() == 0;
+        Assert.assertEquals(game.getCurrentPlayer(), 0);
         game.setCurrentPlayer(1);
-        assert game.getCurrentPlayer() == 1;
+        Assert.assertEquals(game.getCurrentPlayer(), 1);
     }
 
     /**
@@ -109,9 +112,9 @@ public class GameTest {
      */
     @Test
     public void getSetRounds() {
-        assert game.getRounds() == 1;
+        Assert.assertEquals(game.getRounds(), 1);
         game.setRounds(5);
-        assert game.getRounds() == 5;
+        Assert.assertEquals(game.getRounds(), 5);
     }
 
     /**
@@ -153,6 +156,6 @@ public class GameTest {
         CmdTest.redirectInput(input);
         game.initGame();
         game.runGame();
-        assert game.getPlayerAlive() == 1;
+        Assert.assertEquals(game.getPlayerAlive(), 1);
     }
 }

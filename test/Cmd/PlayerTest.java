@@ -5,6 +5,7 @@ import Cmd.Land.LandProperty;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerUser;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +42,7 @@ public class PlayerTest {
     public void getInput() {
         String input = "2\n3\n4\n5\n8\n1\n";
         CmdTest.redirectInput(input);
-        assert player.getInput("", 2) == 1;
+        Assert.assertEquals(player.getInput("", 2), 1);
     }
 
     /**
@@ -49,7 +50,7 @@ public class PlayerTest {
      */
     @Test
     public void getPropertyList() {
-        assert player.getPropertyList().size() == 1;
+        Assert.assertEquals(player.getPropertyList().size(), 1);
     }
 
     /**
@@ -108,7 +109,7 @@ public class PlayerTest {
         final int ADDMONEY = 500;
         final int STARTMONEY = 1500;
         player.incMoney(ADDMONEY);
-        assert player.getMoney() == ADDMONEY + STARTMONEY;
+        Assert.assertEquals(player.getMoney(), ADDMONEY + STARTMONEY);
     }
 
     /**
@@ -121,7 +122,7 @@ public class PlayerTest {
         final int STARTMONEY = 1500;
         try {
             player.decMoney(DECMONEY1);
-            assert player.getMoney() == STARTMONEY - DECMONEY1;
+            Assert.assertEquals(player.getMoney(), STARTMONEY - DECMONEY1);
             player.decMoney(DECMONEY2);
         } catch (Exception ignore) {}
         assert player.isDead();
@@ -142,7 +143,7 @@ public class PlayerTest {
     @Test
     public void getMoney() {
         final int STARTMONEY = 1500;
-        assert player.getMoney() == STARTMONEY;
+        Assert.assertEquals(player.getMoney(), STARTMONEY);
     }
 
     /**
@@ -168,7 +169,7 @@ public class PlayerTest {
     public void getSetJailDay() {
         player.gotoJail(game.getLandList()[game.getJAILLAND()]);
         player.setJailDay(2);
-        assert player.getJailDay() == 2;
+        Assert.assertEquals(player.getJailDay(), 2);
     }
 
     /**

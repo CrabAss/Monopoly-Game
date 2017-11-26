@@ -51,13 +51,6 @@ public class Main extends Application {
     }
 
     /**
-     * @return return the GUI flag
-     */
-    public static int getGUI() {
-        return GUI;
-    }
-
-    /**
      * @return the GUI flag
      */
     public static boolean isGUI() {return GUI == 1;}

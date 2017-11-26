@@ -3,9 +3,6 @@ package Cmd.Player;
 import Cmd.Land.Land;
 import Cmd.Others.Input;
 import Cmd.Others.Output;
-import Cmd.Others.Property;
-
-import java.util.List;
 
 /**
  * Players controlled by human.

@@ -3,6 +3,7 @@ package Cmd;
 import Cmd.Others.Dice;
 import Cmd.Player.Player;
 import Cmd.Player.PlayerUser;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -18,7 +19,7 @@ public class DiceTest {
     @Test
     public void test() {
         dice.dice();
-        assert dice.getX() + dice.getY() == dice.getStep();
+        Assert.assertEquals(dice.getX() + dice.getY(), dice.getStep());
         if (dice.getX() != dice.getY())
             assert !dice.isEqual();
         else

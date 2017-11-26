@@ -1,28 +1,38 @@
 package Cmd;
 
 import Cmd.Others.Input;
-import Cmd.Others.Output;
-import com.sun.xml.internal.fastinfoset.tools.FI_SAX_Or_XML_SAX_DOM_SAX_SAXEvent;
-
 import java.io.*;
 
-public class CmdTest {
+/**
+ * functions for I/O stream redirecting
+ */
+class CmdTest {
     private static final InputStream stdin = System.in;
     private static final PrintStream stdout = System.out;
     private static final String path = "text.txt";
 
-    public static void redirectInput(String input) {
+    /**
+     * To redirect the input stream from user's keyboard to a string variable.
+     * @param input The string to input.
+     */
+    static void redirectInput(String input) {
         resetSystemIn();
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Input.resetScanner();
     }
 
-    public static void resetSystemIn() {
+    /**
+     * To reset the input stream to user's keyboard.
+     */
+    static void resetSystemIn() {
         System.setIn(stdin);
         Input.resetScanner();
     }
 
-    public static void redirectOutput() {
+    /**
+     * To redirect the output stream from screen to a file.
+     */
+    static void redirectOutput() {
         try {
             System.setOut(new PrintStream(new FileOutputStream(path)));
         } catch (Exception e) {
@@ -30,11 +40,19 @@ public class CmdTest {
         }
     }
 
-    public static void resetSystemOut() {
+    /**
+     * To reset the output stream to screen.
+     */
+    static void resetSystemOut() {
         System.setOut(stdout);
     }
 
-    public static boolean searchOutput(String target) {
+    /**
+     * To search a specific target keyword in the output
+     * @param target The target keyword to search in the output.
+     * @return whether the target keyword exists in the output or not
+     */
+    static boolean searchOutput(String target) {
         try {
             FileReader fis = new FileReader(path);
             BufferedReader bis = new BufferedReader(fis);

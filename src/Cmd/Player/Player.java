@@ -194,9 +194,8 @@ public abstract class Player implements Serializable {
     /**
      * A player retired.
      * To remove the player out of the game.
-     * @throws BankruptException emit the signal of bankrupt to terminate the turn of the player.
      */
-    private void bankrupt() throws BankruptException {
+    private void bankrupt() {
         Output.println(name + " runs out of money.");
         Output.println(name + " is bankrupted and eliminated.");
         status = 2;
