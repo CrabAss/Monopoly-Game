@@ -31,13 +31,12 @@ import java.util.Objects;
 public class ControllerGame {
 
     private final static int MAXPLAYERNUMBER = 6, MAXLANDNUMBER = 20;
-    private final int NEWGAMEWIDTH = 600, NEWGAMEHEIGHT = 204;
 
     @FXML
     private Label CurrentLandName, CurrentLandPrice, CurrentLandRent, WinnerLbl;
 
     @FXML
-    public Button ButtonContinue, ButtonAction, ButtonEndTurn;
+    private Button ButtonAction, ButtonEndTurn;
 
     @FXML
     private GridPane GridPanePlayer1, GridPanePlayer2, GridPanePlayer3,
@@ -73,7 +72,7 @@ public class ControllerGame {
     private TextArea ActionLog;
 
     @FXML
-    public GridPane TurnMenu, ActionMenu, FinishPane;
+    private GridPane TurnMenu, ActionMenu, FinishPane;
 
     @FXML
     private ImageView Dice1, Dice2;
@@ -83,7 +82,7 @@ public class ControllerGame {
     /**
      * @return the label landname
      */
-    Label getCurrentLandName() {
+    private Label getCurrentLandName() {
         return CurrentLandName;
     }
 
@@ -232,6 +231,7 @@ public class ControllerGame {
             }
 
             //System.out.println(Main.getGame().getPlayerList()[0].getPosition());
+            Main.getGame().clearWinner();
             updateGraph();
             Main.getGame().setCurPlayer(Main.getGame().getCurrentPlayer());
             Main.getGame().setCurPlayer(Main.getGame().getCurPlayer() - 1);
@@ -335,9 +335,13 @@ public class ControllerGame {
         updateGraph();
     }
 
+    /**
+     * handle restart event
+     */
     public void HandleRestart() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FormNewGame.fxml"));
+            final int NEWGAMEHEIGHT = 204, NEWGAMEWIDTH = 600;
             Main.setStage(root, NEWGAMEWIDTH, NEWGAMEHEIGHT);
         } catch (Exception e){
             e.printStackTrace();
@@ -421,6 +425,8 @@ public class ControllerGame {
         if (Main.getGame().getWinner() != null) {
             FinishPane.setVisible(true);
             WinnerLbl.setText(Main.getGame().getWinner().getName() + "\nis the winner!");
+            String color = Color[Character.getNumericValue(Main.getGame().getWinner().getName().charAt(Main.getGame().getWinner().getName().length() - 1)) - 1];
+            FinishPane.setStyle("-fx-border-color: #000; -fx-background-color: " + color);
         }
     }
 }

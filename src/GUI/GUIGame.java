@@ -124,11 +124,20 @@ public class GUIGame extends Game {
     }
 
     /**
-     * @return
+     * @return To get the game winner.
      */
-    public Player getWinner() {
+    Player getWinner() {
         return gameWinner;
     }
+
+    /**
+     * To reset the game winner to null.
+     */
+    void clearWinner() {
+        //noinspection AssignmentToNull
+        gameWinner = null;
+    }
+
     /**
      * @return return the GUIhelper list
      */
@@ -194,7 +203,7 @@ public class GUIGame extends Game {
     /**
      * This method is used to show the End Game interface
      */
-    public void EndGame() {
+    void EndGame() {
         int maxvalue = 0;
         for (Player player : getPlayerList())
             if (player != null && !player.isDead() && player.getMoney() > maxvalue) {

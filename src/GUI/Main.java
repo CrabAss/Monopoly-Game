@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  * Class Main is used to excute the program and call main stage
@@ -40,7 +39,7 @@ public class Main extends Application {
     /**
      * To create a new game.
      */
-    public static void newGame() {
+    static void newGame() {
         Main.game = new GUIGame();
     }
 

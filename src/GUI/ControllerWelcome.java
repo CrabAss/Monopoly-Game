@@ -34,9 +34,10 @@ public class ControllerWelcome {
 
         File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
+            Main.newGame();
             Main.getGame().initGame(6, 0);
 
-            try{
+            try {
                 final int WIDTH = 854;
                 final int HEIGHT = 480;
                 Parent root = FXMLLoader.load(getClass().getResource("FormGame.fxml"));
