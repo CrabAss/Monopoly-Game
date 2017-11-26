@@ -205,11 +205,13 @@ public class GUIGame extends Game {
      */
     void EndGame() {
         int maxvalue = 0;
-        for (Player player : getPlayerList())
+        for (int i = 0; i < getPlayerNumber(); i++) {
+            Player player = getPlayerList()[i];
             if (player != null && !player.isDead() && player.getMoney() > maxvalue) {
                 maxvalue = player.getMoney();
                 gameWinner = player;
             }
+        }
 
         guiOutput.Print("Winner: " + gameWinner.toString());
         getControllerGame().updateGraph();
