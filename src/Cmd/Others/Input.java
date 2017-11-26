@@ -1,6 +1,7 @@
 package Cmd.Others;
 
 import GUI.Main;
+import com.sun.javaws.exceptions.ExitException;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -50,6 +51,7 @@ public class Input {
             } catch (Exception e) {
                 Output.println("Invalid input.");
                 readSuccessfully = false;
+                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
             }
         }
         return ois;
@@ -75,6 +77,7 @@ public class Input {
             } catch (Exception e) {
                 Output.println("Invalid input.");
                 readSuccessfully = false;
+                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
             }
         }
         return oos;
