@@ -8,6 +8,9 @@ import javafx.scene.image.*;
 
 import java.util.Random;
 
+/**
+ * 
+ */
 public class GUIPlayer {
 
     private Player player;

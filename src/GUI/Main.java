@@ -7,44 +7,53 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Class Main is used to excute the program and call main stage
+ */
 public class Main extends Application {
-
     private final static int WIDTH = 854;
     private final static int HEIGHT = 480;
     private static Stage MainStage;
     private static GUIGame game = new GUIGame();
-    public static int GUI = 0;
+    private static int GUI = 0;
 
+    /**
+     * @param PrimaryStage the default program stage
+     */
     private static void setMainStage(Stage PrimaryStage) {
         MainStage = PrimaryStage;
     }
-    public static Stage getMainStage() {
-        return MainStage;
-    }
 
     /**
-     * @return
+     * @return the current game process
      */
     public static GUIGame getGame() {
         return game;
     }
 
     /**
-     * @param GUI
+     * @param GUI the flag to judge if the program is using GUI
      */
     public static void setGUI(int GUI) {
         Main.GUI = GUI;
     }
 
     /**
-     * @return
+     * @return return the GUI flag
+     */
+    public static int getGUI() {
+        return GUI;
+    }
+
+    /**
+     * @return the GUI flag
      */
     public static boolean isGUI() {return GUI == 1;}
 
     /**
-     * @param root
-     * @param width
-     * @param height
+     * @param root the fxml
+     * @param width the stage width
+     * @param height the stage height
      */
     public static void setStage(Parent root, int width, int height) {
         try {
@@ -68,10 +77,9 @@ public class Main extends Application {
     }
 
     /**
-     * @param args
+     * @param args lunch javafx
      */
     public static void main(String[] args) {
         launch(args);
     }
-
 }
