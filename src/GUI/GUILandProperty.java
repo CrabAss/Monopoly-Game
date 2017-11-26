@@ -1,11 +1,9 @@
 package GUI;
 
-import Cmd.Land.LandProperty;
 import Cmd.Others.BankruptException;
 import Cmd.Others.Output;
 import Cmd.Others.Property;
 import Cmd.Player.PlayerAI;
-import sun.swing.BakedArrayList;
 
 import java.util.Random;
 

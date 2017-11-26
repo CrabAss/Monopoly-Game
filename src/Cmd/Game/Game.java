@@ -17,19 +17,10 @@ public class Game {
     private final int MAXPLAYERNUMBER = 6;
     private final int STARTLAND = 1;
     private final int JAILLAND = 6;
-    /**
-     *
-     */
-    public Land landList[] = new Land[MAXLANDNUMBER + 1];
-    /**
-     *
-     */
-    public Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
+    private Land landList[] = new Land[MAXLANDNUMBER + 1];
+    private Player playerList[] = new Player[MAXPLAYERNUMBER + 1];
     private int playerAlive, playerNumber, currentPlayer;
-    /**
-     *
-     */
-    protected int rounds;
+    private int rounds;
 
     private final String landName[] = {"",
             "Start", "Central", "Wan Chai", "Tax Paid", "Stanley",
@@ -78,7 +69,7 @@ public class Game {
     /**
      * @return The maximum amount of players.
      */
-    public int getMAXPLAYERNUMBER() {
+    protected int getMAXPLAYERNUMBER() {
         return MAXPLAYERNUMBER;
     }
 
@@ -90,8 +81,22 @@ public class Game {
     /**
      * @return The number of the "Start" land.
      */
-    public int getSTARTLAND() {
+    protected int getSTARTLAND() {
         return STARTLAND;
+    }
+
+    /**
+     * @return The land list of the game
+     */
+    public Land[] getLandList() {
+        return landList;
+    }
+
+    /**
+     * @return The player list of the game
+     */
+    public Player[] getPlayerList() {
+        return playerList;
     }
 
     /**
@@ -125,20 +130,28 @@ public class Game {
     /**
      * @param playerAlive The current amount of alive players.
      */
-    public void setPlayerAlive(int playerAlive) {
+    protected void setPlayerAlive(int playerAlive) {
         this.playerAlive = playerAlive;
     }
 
     /**
      * @param playerNumber The current amount of total players.
      */
-    public void setPlayerNumber(int playerNumber) {
+    protected void setPlayerNumber(int playerNumber) {
         this.playerNumber = playerNumber;
     }
 
+    /**
+     * @return The current player of the game.
+     */
     public int getCurrentPlayer() {
         return currentPlayer;
     }
+
+    /**
+     * Set the current player of the game.
+     * @param currentPlayer The current player to set.
+     */
     public void setCurrentPlayer(int currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -146,7 +159,7 @@ public class Game {
     /**
      * @param rounds The current round of the game.
      */
-    public void setRounds(int rounds) {
+    protected void setRounds(int rounds) {
         this.rounds = rounds;
     }
 
@@ -160,7 +173,7 @@ public class Game {
     /**
      * Initialize landList:
      */
-    public void initLand() {
+    private void initLand() {
         for (int i = 1; i <= MAXLANDNUMBER; i++)
             switch (landName[i]){
                 case "Start":
@@ -179,7 +192,7 @@ public class Game {
                     landList[i] = new LandOrdinary(landName[i], i);
                     break;
                 case "Go to Jail":
-                    landList[i] = new LandGotoJail(landName[i], i, landList[JAILLAND]);;
+                    landList[i] = new LandGotoJail(landName[i], i, landList[JAILLAND]);
                     break;
                 default:
                     landList[i] = new LandProperty(new Property(landName[i], landPrice[i], landRent[i]), i);
@@ -190,7 +203,10 @@ public class Game {
         landList[MAXLANDNUMBER].setNextLand(landList[1]);
     }
 
-    private void initGame() {
+    /**
+     * To initialize the player status and round count of a game
+     */
+    public void initGame() {
         String hint1 = "Please input the number of players (2-6):";
         playerNumber = Input.getInput(hint1, 2, 6);
 
@@ -210,15 +226,7 @@ public class Game {
     }
 
     /**
-     *
-     */
-    public void newGame(){
-        initGame();
-        runGame();
-    }
-
-    /**
-     *
+     * To save the game
      */
     public void saveGame() {
         String hint = "Please input the data path:";
@@ -237,26 +245,34 @@ public class Game {
     }
 
     /**
-     *
+     * To load the game
      */
     public void loadGame() {
         String hint = "Please input the data path:";
         ObjectInputStream ois = Input.getInputStream(hint);
-        try {
-            playerNumber = ois.readInt();
-            playerAlive = ois.readInt();
-            currentPlayer = ois.readInt();
-            for (int i = 0; i < playerNumber; i++)
-                playerList[i] = (Player) ois.readObject();
-            for (int i = 1; i <= MAXLANDNUMBER; i++)
-                landList[i] = (Land) ois.readObject();
-        } catch (Exception e) { e.printStackTrace(); }
+
+        boolean loadSuccess = false;
+        while (!loadSuccess) {
+            loadSuccess = true;
+            try {
+                playerNumber = ois.readInt();
+                playerAlive = ois.readInt();
+                currentPlayer = ois.readInt();
+                for (int i = 0; i < playerNumber; i++)
+                    playerList[i] = (Player) ois.readObject();
+                for (int i = 1; i <= MAXLANDNUMBER; i++)
+                    landList[i] = (Land) ois.readObject();
+            } catch (Exception e) {
+                e.printStackTrace();
+                loadSuccess = false;
+            }
+        }
     }
 
     /**
-     *
+     * to report the location of players
      */
-    void report() {
+    private void report() {
         Output.println(Output.title("Players' Location"));
         for (Player player : playerList)
             if (player != null && !player.isDead()) {
@@ -265,7 +281,7 @@ public class Game {
     }
 
     /**
-     *
+     * to run the game
      */
     public void runGame() {
         String hint = "0: continue; 1: report; 2: auto; 3: retire; 4: save; 5: load. :";
@@ -286,7 +302,7 @@ public class Game {
                                 report();
                                 break;
                             case 2:
-                                player = playerList[currentPlayer] = ((PlayerUser) player).toRobot();
+                                player = playerList[currentPlayer] = player.toRobot();
                                 break;
                             case 3:
                                 player.retired();

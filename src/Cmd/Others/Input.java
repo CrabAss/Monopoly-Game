@@ -1,7 +1,6 @@
 package Cmd.Others;
 
 import GUI.Main;
-import com.sun.xml.internal.fastinfoset.tools.FI_SAX_Or_XML_SAX_DOM_SAX_SAXEvent;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,13 +8,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import static java.lang.Thread.sleep;
+//import static java.lang.Thread.sleep;
 
+/**
+ * contains the methods for input in the game
+ */
 public class Input {
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Get an integer from cmd.
+     * @return The input integer or -1 for invalid input.
+     */
     public static int getInt() {
-        int val = -1;
+        int val;
         try {
             if (scanner.hasNextInt()) val = scanner.nextInt();
             else { return -1; }
@@ -23,10 +29,18 @@ public class Input {
         catch (Exception e) { return -1; }
         return val;
     }
+
+    /**
+     * Get the datapath from cmd and return the input stream.
+     * @param hint The guidance message to be printed.
+     * @return The input stream.
+     */
     public static ObjectInputStream getInputStream(String hint) {
         ObjectInputStream ois = null;
+        boolean readSuccessfully = false;
         String path;
-        while (ois == null) {
+        while (!readSuccessfully) {
+            readSuccessfully = true;
             try {
                 if (!GUI.Main.isGUI()) Output.println(hint);
                 if (GUI.Main.isGUI()) path = Main.getGame().getLoadPath();
@@ -35,16 +49,23 @@ public class Input {
                 ois = new ObjectInputStream(fis);
             } catch (Exception e) {
                 Output.println("Invalid input.");
-                ois = null;
+                readSuccessfully = false;
             }
         }
         return ois;
     }
 
+    /**
+     * Get the datapath from cmd and return the output stream.
+     * @param hint The guidance message to be printed.
+     * @return The output stream.
+     */
     public static ObjectOutputStream getOutputStream(String hint) {
         ObjectOutputStream oos = null;
+        boolean readSuccessfully = false;
         String path;
-        while (oos == null) {
+        while (!readSuccessfully) {
+            readSuccessfully = true;
             try {
                 if (!GUI.Main.isGUI()) Output.println(hint);
                 if (GUI.Main.isGUI()) path = Main.getGame().getSavePath();
@@ -53,12 +74,19 @@ public class Input {
                 oos = new ObjectOutputStream(fos);
             } catch (Exception e) {
                 Output.println("Invalid input.");
-                oos = null;
+                readSuccessfully = false;
             }
         }
         return oos;
     }
 
+    /**
+     * Get a valid integer from cmd. Won't stop until valid input is received.
+     * @param hint The guidance message to be printed.
+     * @param lo The lowerbound of the integer.
+     * @param hi The upperbound of the integer.
+     * @return The valid integer.
+     */
     public static int getInput(String hint, int lo, int hi) {
         Output.println(hint);
         int inp = Input.getInt();
@@ -69,6 +97,13 @@ public class Input {
         }
         return inp;
     }
+
+    /**
+     * Get a valid integer from cmd. Won't stop until valid input is received.
+     * @param hint The guidance message to be printed.
+     * @param limit The upperbound of the integer.
+     * @return The valid integer.
+     */
     public static int getInput(String hint, int limit) {
         return getInput(hint, 0, limit);
     }
