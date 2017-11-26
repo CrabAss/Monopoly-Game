@@ -19,7 +19,7 @@ public class Output {
         else {
             try {
                 System.out.println(oup);
-//                sleep(100);
+                //sleep(100);
             } catch (Exception ignored) {}
         }
     }
