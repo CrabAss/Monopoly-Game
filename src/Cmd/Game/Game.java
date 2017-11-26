@@ -139,6 +139,9 @@ public class Game {
     public int getCurrentPlayer() {
         return currentPlayer;
     }
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 
     /**
      * @param rounds The current round of the game.

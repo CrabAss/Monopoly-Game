@@ -150,6 +150,7 @@ public class ControllerGame {
         File file = fileChooser.showSaveDialog(Main.getMainStage());
         if (file != null) {
             try {
+                Main.getGame().setCurrentPlayer(Main.getGame().getCurPlayer());
                 Main.getGame().setSavePath(file.getAbsolutePath());
                 Main.getGame().saveGame();
 
