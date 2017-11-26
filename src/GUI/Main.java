@@ -20,9 +20,7 @@ public class Main extends Application {
     /**
      * @param PrimaryStage the default program stage
      */
-    private static void setMainStage(Stage PrimaryStage) {
-        MainStage = PrimaryStage;
-    }
+    private static void setMainStage(Stage PrimaryStage) { MainStage = PrimaryStage; }
 
     /**
      * @return the current game process
@@ -55,7 +53,7 @@ public class Main extends Application {
      * @param width the stage width
      * @param height the stage height
      */
-    public static void setStage(Parent root, int width, int height) {
+    static void setStage(Parent root, int width, int height) {
         try {
             MainStage.hide();
             MainStage.getIcons().add(new Image("GUI/resources/icon.png"));

@@ -9,15 +9,23 @@ import javafx.scene.image.*;
 import java.util.Random;
 
 /**
- * 
+ *  GUI Player contains a player
  */
 public class GUIPlayer {
 
     private Player player;
 
+    /**
+     * @param player the player
+     */
     public GUIPlayer(Player player){
         this.player = player;
     }
+
+
+    /**
+     * @param player set the player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
