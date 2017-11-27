@@ -9,7 +9,7 @@ import java.io.*;
 class CmdTest {
     private static final InputStream stdin = System.in;
     private static final PrintStream stdout = System.out;
-    private static final String path = "text.txt";
+    private static final String path = "test.txt";
 
     /**
      * To redirect the input stream from user's keyboard to a string variable.
@@ -67,4 +67,5 @@ class CmdTest {
             return false;
         }
     }
+
 }

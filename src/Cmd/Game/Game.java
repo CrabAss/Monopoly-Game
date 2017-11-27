@@ -116,7 +116,7 @@ public class Game {
     /**
      * @param playerNumber The current amount of total players.
      */
-    protected void setPlayerNumber(int playerNumber) {
+    public void setPlayerNumber(int playerNumber) {
         this.playerNumber = playerNumber;
     }
 
@@ -229,11 +229,11 @@ public class Game {
      * To load the game
      */
     public void loadGame() {
-        String hint = "Please input the data path:";
-        ObjectInputStream ois = Input.getInputStream(hint);
 
         boolean loadSuccess = false;
         while (!loadSuccess) {
+            String hint = "Please input the data path:";
+            ObjectInputStream ois = Input.getInputStream(hint);
             loadSuccess = true;
             try {
                 playerNumber = ois.readInt();
@@ -245,9 +245,9 @@ public class Game {
                 for (int i = 1; i <= MAXLANDNUMBER; i++)
                     landList[i] = (Land) ois.readObject();
             } catch (Exception e) {
-                e.printStackTrace();
                 loadSuccess = false;
-                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
+                if (GUI.Main.isGUI()) { System.out.println("Error"); System.exit(0); }
+                else { System.out.println("Invalid input."); }
             }
         }
         Output.println("Load successfully.");
@@ -273,6 +273,7 @@ public class Game {
             for ( ; currentPlayer < playerNumber; currentPlayer++) {
                 Player player = playerList[currentPlayer];
                 if (playerAlive == 1) break;
+                System.out.println(player.isDead());
                 if (player.isDead())
                     continue;
                 if (player instanceof PlayerUser) {

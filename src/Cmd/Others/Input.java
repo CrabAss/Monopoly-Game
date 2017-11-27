@@ -18,20 +18,24 @@ public class Input {
 
     /**
      * Get an integer from cmd.
+     *
      * @return The input integer or -1 for invalid input.
      */
     public static int getInt() {
         int val;
         try {
-            if (scanner.hasNextInt()) val = scanner.nextInt();
-            else { return -1; }
+            val = scanner.nextInt();
+        } catch (Exception e) {
+            if (scanner.hasNext())
+                scanner.next();
+            return -1;
         }
-        catch (Exception e) { return -1; }
         return val;
     }
 
     /**
      * Get the datapath from cmd and return the input stream.
+     *
      * @param hint The guidance message to be printed.
      * @return The input stream.
      */
@@ -50,7 +54,10 @@ public class Input {
             } catch (Exception e) {
                 Output.println("Invalid input.");
                 readSuccessfully = false;
-                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
+                if (GUI.Main.isGUI()) {
+                    System.out.println("Error");
+                    System.exit(0);
+                }
             }
         }
         return ois;
@@ -58,6 +65,7 @@ public class Input {
 
     /**
      * Get the datapath from cmd and return the output stream.
+     *
      * @param hint The guidance message to be printed.
      * @return The output stream.
      */
@@ -76,7 +84,10 @@ public class Input {
             } catch (Exception e) {
                 Output.println("Invalid input.");
                 readSuccessfully = false;
-                if (GUI.Main.isGUI()) {System.out.println("Error"); System.exit(0);}
+                if (GUI.Main.isGUI()) {
+                    System.out.println("Error");
+                    System.exit(0);
+                }
             }
         }
         return oos;
@@ -84,9 +95,10 @@ public class Input {
 
     /**
      * Get a valid integer from cmd. Won't stop until valid input is received.
+     *
      * @param hint The guidance message to be printed.
-     * @param lo The lowerbound of the integer.
-     * @param hi The upperbound of the integer.
+     * @param lo   The lowerbound of the integer.
+     * @param hi   The upperbound of the integer.
      * @return The valid integer.
      */
     public static int getInput(String hint, int lo, int hi) {
@@ -102,7 +114,8 @@ public class Input {
 
     /**
      * Get a valid integer from cmd. Won't stop until valid input is received.
-     * @param hint The guidance message to be printed.
+     *
+     * @param hint  The guidance message to be printed.
      * @param limit The upperbound of the integer.
      * @return The valid integer.
      */

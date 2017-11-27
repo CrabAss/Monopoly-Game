@@ -18,6 +18,7 @@ public class DiceTest {
      */
     @Test
     public void test() {
+        CmdTest.redirectOutput();
         dice.dice();
         Assert.assertEquals(dice.getX() + dice.getY(), dice.getStep());
         if (dice.getX() != dice.getY())

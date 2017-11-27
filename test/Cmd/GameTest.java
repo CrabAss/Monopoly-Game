@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 /**
  * Test Game
  */
@@ -47,11 +50,13 @@ public class GameTest {
     }
 
     /**
-     * test getPlayerNumber
+     * test getPlayerNumber and setPlayerNumber
      */
     @Test
     public void getPlayerNumber() {
         Assert.assertEquals(game.getPlayerNumber(), 2);
+        game.setPlayerNumber(6);
+        Assert.assertEquals(game.getPlayerNumber(), 6);
     }
 
     /**
@@ -135,7 +140,7 @@ public class GameTest {
      */
     @Test
     public void saveLoadGame() {
-        String input = "text0.txt\ntext0.txt\n";
+        String input = "test0.txt\ntest0.txt\n";
         CmdTest.redirectInput(input);
         game.saveGame();
         Assert.assertTrue(CmdTest.searchOutput("Save successfully."));
@@ -149,10 +154,16 @@ public class GameTest {
      */
     @Test
     public void runGame() {
-        String input = "6\n0\n1\n1\n1\n1\n1\n2\n";
+        String input = "6\n0\n0\n1\n1\n1\n1\n2\n3\n";
         CmdTest.redirectInput(input);
+        game.initGame();
         game.runGame();
-        input = "2\n0\n1\n1\n4\ntext0.txt\n5\ntext1.txt\ntext0.txt\n3\n";
+        try {
+            FileOutputStream fos = new FileOutputStream("test2.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject("Invalid.");
+        } catch (Exception ignore) {}
+        input = "2\n0\n1\n1\n4\ntest0.txt\n5\ntest2.txt\ntest1.txt\ntest0.txt\n3\n";
         CmdTest.redirectInput(input);
         game.initGame();
         game.runGame();

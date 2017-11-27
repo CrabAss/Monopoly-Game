@@ -27,8 +27,8 @@ public abstract class Player implements Serializable {
 
     /**
      * Initialize player.
-     * @param name Initialization value.
-     * @param position Initialization value.
+     * @param name          Initialization value.
+     * @param position      Initialization value.
      */
     public Player(String name, Land position) {
         this.name = name;
@@ -39,12 +39,12 @@ public abstract class Player implements Serializable {
 
     /**
      * Initialize player.
-     * @param name Initialization value.
-     * @param money Initialization value.
-     * @param status Initialization value.
-     * @param jailDay Initialization value.
-     * @param propertyList Initialization value.
-     * @param position Initialization value.
+     * @param name              Initialization value.
+     * @param money             Initialization value.
+     * @param status            Initialization value.
+     * @param jailDay           Initialization value.
+     * @param propertyList      Initialization value.
+     * @param position          Initialization value.
      */
     public Player(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
         this(name, position);
@@ -56,15 +56,15 @@ public abstract class Player implements Serializable {
 
     /**
      * Get response from the player when he has to make a choice.
-     * @param hint The guidance message.
-     * @param limit The number of choices.
-     * @return An integer as the choice of the player.
+     * @param hint      The guidance message.
+     * @param limit     The number of choices.
+     * @return          An integer as the choice of the player.
      */
     public abstract int getInput(String hint, int limit);
 
     /**
      * Player moves forwards for some steps.
-     * @param step The number of steps the player should move.
+     * @param step      The number of steps the player should move.
      */
     public void move(int step) {
         for (int i = 1; i <= step; i++) {

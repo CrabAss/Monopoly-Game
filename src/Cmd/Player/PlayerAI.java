@@ -14,8 +14,8 @@ public class PlayerAI extends Player {
 
     /**
      * Initialize playerAI.
-     * @param name Initialization value.
-     * @param position Initialization value.
+     * @param name      Initialization value.
+     * @param position  Initialization value.
      */
     public PlayerAI(String name, Land position) {
         super(name, position);
@@ -24,12 +24,12 @@ public class PlayerAI extends Player {
 
     /**
      * Initialize playerAI.
-     * @param name Initialization value.
-     * @param money Initialization value.
-     * @param status Initialization value.
-     * @param jailDay Initialization value.
-     * @param propertyList Initialization value.
-     * @param position Initialization value.
+     * @param name          Initialization value.
+     * @param money         Initialization value.
+     * @param status        Initialization value.
+     * @param jailDay       Initialization value.
+     * @param propertyList  Initialization value.
+     * @param position      Initialization value.
      */
     PlayerAI(String name, int money, int status, int jailDay, List<Property> propertyList, Land position) {
         super(name, money, status, jailDay, propertyList, position);
